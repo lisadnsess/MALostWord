@@ -1,7 +1,4 @@
 <!-- markdownlint-disable MD033 MD041 -->
-<p align="center">
-  <img alt="LOGO" src="https://cdn.jsdelivr.net/gh/lisadnsess/MALostWord@main/docs/Cz1_256×256.png" width="256" height="256" />
-</p>
 
 <div align="center">
 
@@ -42,8 +39,8 @@
 ## 鸣谢
 
 本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！  
-UI 由 **[MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)**大力支持！  
-项目入门由 **[M9A](https://github.com/MAA1999/M9A)**参考学习！  
+UI 由 **[MFAAvalonia](https://github.com/SweetSmellFox/MFAAvalonia)** 大力支持！  
+项目入门由 **[M9A](https://github.com/MAA1999/M9A)** 参考学习！  
 
 感谢以下开发者对本项目作出的贡献:
 
