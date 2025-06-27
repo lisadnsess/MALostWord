@@ -1,0 +1,75 @@
+{
+    "controller": [
+        {
+            "name": "安卓端",
+            "type": "Adb"
+        }
+    ],
+    "resource": [
+        {
+            "name": "官服",
+            "path": [
+                "{PROJECT_DIR}/resource/base"
+            ]
+        }
+
+    ],
+  "agent": {
+        "child_exec": "{PROJECT_DIR}/python/python.exe",
+        "child_args": [
+            "{PROJECT_DIR}/agent/main.py",
+            "-u"
+        ]
+    },
+
+    "task": [
+      {
+          "name": "永远战线",
+          "entry": "EFA_ActionAll",
+          "advanced": [
+                "永远战线战斗策略",
+                "永远战线战斗次数"
+            ],
+            "option":["永远战线战斗次数"]
+      }
+    ],
+    "advanced":{
+      "永远战线战斗策略": {
+      "field": "永远战线战斗策略",
+      "type": "string",
+      "default": "fight1.json",
+      "pipeline_override": {
+          "EFA_ActionAll": {
+            "fight_json_dir": "{PROJECT_DIR}/agent/FightStrategy/{永远战线战斗策略}"
+          }
+      }
+      },
+      "永远战线战斗次数": {
+      "field": "永远战线战斗次数",
+      "type": "string",
+      "default": "-1",
+      "pipeline_override": {
+          "EFA_ActionAll": {
+            "repeat": "{永远战线战斗次数}"
+          }
+      }
+      }
+    },
+
+    "option": {
+      "永远战线111":
+      {
+        "cases": [
+          {
+            "field": "ce",
+            "type": "string",
+            "default": "cs.png",
+            "pipeline_override":
+            {
+              
+            }
+          }
+        ]
+      }
+    }
+}
