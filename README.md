@@ -6,11 +6,11 @@
 # MALostWord
 
 ![项目Logo](docs/Cz1_256×256.png)
-</div>
+
 
 基于全新架构的 东方归言录 小助手。图像技术 + 模拟控制，解放双手！  
 由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！
-
+</div>
 
 
 <p align="center">
