@@ -11,6 +11,7 @@ from .change_json import get_fight_json
 from .GeneralAgent import run_task_param, SuppressOutput
 from utils import logger
 
+
 @AgentServer.custom_recognition("EFA_ActionAll")
 class EFA_ActionAll(CustomRecognition):
     def analyze(
@@ -22,11 +23,13 @@ class EFA_ActionAll(CustomRecognition):
         data = json.loads(argv.custom_recognition_param)["fight_json_dir"]
         repeat = int(json.loads(argv.custom_recognition_param)["repeat"])
 
-        parent_dir  = Path(__file__).resolve().parent.parent
+        parent_dir = Path(__file__).resolve().parent.parent
         json_dir = os.path.join(parent_dir, "FightStrategy", data)
         if not os.path.exists(json_dir):
             json_dir = os.path.join(parent_dir, "FightStrategy", "fight1.json")
-        logger.info(f"进行战斗：{json_dir}")
+            # json_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+            #                         os.path.join("FightStrategy", "fight1.json"))
+        print(f"json dir: {json_dir}")
         a_json = get_fight_json(json_dir)
         new_ctx = context.clone()
 
@@ -35,7 +38,8 @@ class EFA_ActionAll(CustomRecognition):
             start_time_in = time.time()
 
             repeat_number_now += 1
-            logger.info(f"正在进行第{repeat_number_now}次循环")
+            print(f"repeat {repeat_number_now}")
+            logger.info(f"repeat {repeat_number_now}")
             with SuppressOutput():
                 run_task_param(new_ctx, "EF_ActionLine")
             print(f"Start fight")
@@ -54,5 +58,6 @@ class EFA_ActionAll(CustomRecognition):
             end_time_in = time.time()  # 记录结束时间
 
             execution_time = end_time_in - start_time_in
-            logger.info(f"战斗时间：{execution_time} 秒")
+            print(f"代码运行时间：{execution_time} 秒")
+            logger.info(f"代码运行时间：{execution_time} 秒")
         return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
