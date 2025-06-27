@@ -1,0 +1,88 @@
+{
+  "DT_JoinInDailyTasks": {
+    "doc": "进入任务",
+    "next": [
+      "DT_JoinInDailyTasksFlag"
+    ],
+    "interrupt": [
+      "DT_JoinInDailyTasksClick"
+    ]
+  },
+  "DT_JoinInDailyTasksClick": {
+    "doc": "进入任务点击",
+    "post_wait_freezes": 500,
+    "recognition": "OCR",
+    "expected": "任务",
+    "roi": [
+      726,
+      609,
+      166,
+      55
+    ],
+    "action": "Click",
+    "next": []
+  },
+  "DT_JoinInDailyTasksFlag": {
+    "doc": "进入任务标志",
+    "post_wait_freezes": 500,
+    "recognition": "OCR",
+    "expected": [
+      "今日任务",
+      "本周任务",
+      "本期任务"
+    ],
+    "roi": [
+      260,
+      240,
+      975,
+      49
+    ],
+    "next": [
+      "DT_GetDailyTasksFinishFlag"
+    ],
+    "interrupt": [
+      "DT_GetDailyTasks1"
+    ]
+  },
+  "DT_GetDailyTasks1": {
+    "doc": "全部收取",
+    "post_wait_freezes": 500,
+    "recognition": "OCR",
+    "expected": [
+      "全部收取"
+    ],
+    "roi": [
+      1064,
+      640,
+      181,
+      60
+    ],
+    "action": "Click",
+    "next": []
+  },
+  "DT_GetDailyTasksFinishFlag": {
+    "doc": "全部收取",
+    "post_wait_freezes": 500,
+    "recognition": "ColorMatch",
+    "method": 4,
+    "upper": [
+      178,
+      126,
+      63
+    ],
+    "lower": [
+      170,
+      93,
+      52
+    ],
+    "count": 100,
+    "roi": [
+      1064,
+      640,
+      181,
+      60
+    ],
+    "action": "Click",
+    "next": "BL_ReturnHome"
+  }
+}

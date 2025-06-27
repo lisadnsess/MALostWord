@@ -1,0 +1,387 @@
+{
+  "MCA_ActionOneScreen":{
+    "doc": "使用技能##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "MCA_ActionOneScreen",
+    "custom_recognition_param":
+    {
+      "fight_data": {}
+    },
+    "roi": [151, 516, 977, 137],
+    "next": []
+  },
+  "MCA_ActionSkillOpen":
+  {
+    "doc": "使用技能##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "MCA_ActionSkillOpen",
+    "custom_recognition_param": {
+            "open_skill": []
+        },
+    "roi": [151, 516, 977, 137],
+    "next": []
+  },
+
+  "MC_OpenSkillList" : {
+    "doc": "打开技能列表",
+    "timeout": 100000,
+    "next": ["MC_SkillListOpenFlag"],
+    "interrupt":["MC_SkillListOpen"]
+  },
+  "MC_CloseSkillList" : {
+    "doc": "关闭技能列表",
+    "next": ["MC_SkillListCloseFlag"],
+    "interrupt":["MC_SkillListClose"]
+  },
+  "MC_SkillListOpen":
+  {
+    "doc": "打开技能列表",
+    "recognition": "OCR",
+    "expected" : "技能",
+    "roi" : [1175,492,89,89],
+    "action": "Click",
+    "post_delay": 300,
+    "next": []
+  },
+  "MC_SkillListOpenFlag":
+  {
+    "doc": "打开技能列表标记",
+    "recognition": "TemplateMatch",
+    "template" : "MC_image/技能开标记.png",
+    "roi" : [1175,492,89,89],
+    "next": []
+  },
+  "MC_SkillListClose":
+  {
+    "doc": "关闭技能列表",
+    "recognition": "TemplateMatch",
+    "template" : "MC_image/技能开标记.png",
+    "roi" : [1175,492,89,89],
+    "action": "Click",
+    "post_delay": 300,
+    "next": []
+  },
+  "MC_SkillListCloseFlag":
+  {
+    "doc": "关闭技能列表标记",
+    "recognition": "OCR",
+    "expected" : "技能",
+    "roi" : [1175,492,89,89],
+    "next": []
+  },
+
+  "MCA_SkillOpen_OCR": {
+    "recognition": "OCR",
+    "roi": [151, 516, 977, 137],
+    "expected": ["等级"]
+  },
+
+  "MCA_SkillOpenOne": {
+    "next": ["MCA_SkillOpenFinishFlag"],
+    "interrupt": ["MCA_SkillOpenConfirm","MCA_SkillOpenClick"]
+  },
+  "MCA_SkillOpenFinishFlag" :
+  {
+    "doc": "使用技能标记",
+    "recognition": "OCR",
+    "expected" : ["剩余"],
+    "roi" : "set in code"
+  },
+  "MCA_SkillOpenClick" :
+  {
+    "doc": "点击技能",
+    "recognition": "OCR",
+    "expected" : ["等级"],
+    "action": "Click",
+    "next" : ["MCA_SkillOpenConfirm"],
+    "post_delay": 300
+  },
+  "MCA_SkillOpenConfirm"   :
+  {
+    "doc": "点击技能标记",
+    "recognition": "OCR",
+    "expected" : ["决定"],
+    "roi" : [684,565,170,51],
+    "action": "Click",
+    "target": [684, 565, 170, 51],
+    "post_delay": 300
+  },
+  "MCA_ActionChangeCharacter":{
+    "doc": "人员换位##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "MCA_ActionChangeCharacter",
+    "custom_recognition_param": {
+            "change_character": []
+    }
+  },
+
+  "MCA_ActionChooseTarget": {
+    "doc": "选择攻击目标##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "MCA_ActionChooseTarget",
+    "custom_recognition_param": {
+      "target": {
+        "target_order":2,
+        "target_order_name": "妖精"
+      }
+
+    }
+  },
+  "MCA_ChooseTargetStart": {
+    "doc": "初始目标名称",
+    "recognition": "OCR",
+    "roi" : [168,0,89,23]
+  },
+
+
+  "MCA_ActionBoost": {
+    "doc": "使用灵力强化##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "MCA_ActionBoost",
+    "custom_recognition_param": {
+            "boost_number": 2
+        }
+  },
+  "MCA_CurrentBoostFlag": {
+    "doc": "当前灵力值",
+    "recognition": "OCR",
+    "expected" : ["\\d"],
+    "roi" : [1003,547,133,50]
+  },
+  "MCA_CurrentBoostFinish": {
+    "doc": "点击灵力值",
+    "next": ["MCA_CurrentBoostFinalFlag","MCA_CurrentBoostFinalFlag1"],
+    "interrupt": ["MCA_CurrentBoostClick"]
+  },
+  "MCA_CurrentBoostClick": {
+    "doc": "单次点击",
+    "recognition": "OCR",
+    "expected" : ["\\d"],
+    "roi" : [1003,547,133,50],
+    "action": "Click"
+  },
+  "MCA_CurrentBoostFinalFlag": {
+    "doc": "目标灵力值检测",
+    "recognition": "OCR",
+    "expected" :  "set in code",
+    "roi" : [1003,547,133,50]
+  },
+  "MCA_CurrentBoostFinalFlag1": {
+    "doc": "目标灵力值检测",
+    "recognition": "TemplateMatch",
+    "template" : "MC_image/灵力强化满.png",
+    "roi" : [1003,484,126,71],
+    "threshold": 0.8,
+    "green_mask": true
+  },
+
+
+
+
+  "MCA_ActionShield": {
+    "doc": "使用擦弹##########_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "MCA_ActionShield",
+    "custom_recognition_param": {
+            "shield_number":2
+    },
+    "roi" : [1073,340,158,119],
+    "next": []
+  },
+  "MCA_GetShieldNumber":
+  {
+    "doc": "已擦弹数量位置",
+    "recognition": "TemplateMatch",
+    "template" : ["MC_image/擦弹.png"],
+    "roi" : [1073,340,158,119],
+
+    "threshold": 0.55
+  },
+
+  "MCA_ShieldLine": {
+    "doc": "擦弹点击流程",
+    "next": ["MCA_GetShieldFinishFlag","MCA_GetShieldFinishFlag1","MCA_GetShieldFinishFlag2"],
+    "interrupt": ["MCA_GetShieldClick"]
+  },
+  "MCA_GetShieldClick":
+  {
+    "doc": "已擦弹数量位置",
+    "target" : [1121,379,54,48],
+    "action": "Click",
+    "post_delay": 500
+  },
+  "MCA_GetShieldFinishFlag":
+  {
+    "doc": "已擦弹数量位置",
+    "recognition": "TemplateMatch",
+    "template" : ["MC_image/擦弹.png"],
+    "roi" : [1073,340,158,119],
+    "threshold": 0.55,
+    "index": 0,
+    "post_delay": 500
+  },
+  "MCA_GetShieldFinishFlag1":
+  {
+    "doc": "已擦弹数量位置",
+    "recognition": "TemplateMatch",
+    "template" : ["MC_image/擦弹满.png"],
+    "roi" : [1102,295,92,56],
+    "green_mask": true,
+    "threshold": 0.9,
+    "post_delay": 500
+  },
+  "MCA_GetShieldFinishFlag2":
+  {
+    "doc": "已擦弹数量位置",
+    "recognition": "TemplateMatch",
+    "template" : ["MC_image/擦弹.png"],
+    "roi" : [1073,340,158,119],
+    "threshold": 0.55,
+    "index": 3,
+    "post_delay": 500
+  },
+
+
+
+  "MCA_ActionSpellCardUse":
+  {
+    "doc": "使用符卡##########_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "MCA_ActionSpellCardUse",
+    "custom_recognition_param": {
+            "target_SpellCard":5
+    },
+    "roi": [151, 516, 977, 137],
+    "next": []
+  },
+  "MCA_GetSpellCardLocation":
+  {
+    "doc": "符卡位置",
+    "recognition": "OCR",
+    "expected" : ["等级"],
+    "roi" : [0,0,0,0]
+  },
+  "MCA_SpellCardClickOne":
+  {
+    "doc": "使用符卡",
+    "timeout": 100000 ,
+    "next": ["MCA_SpellCardFinishFlag1","MCA_SpellCardFinishFlag2"],
+    "interrupt":["MCA_SpellCardClick"]
+  },
+  "MCA_SpellCardClickOneFlag":
+  {
+    "doc": "使用符卡",
+    "timeout": 100000 ,
+    "next": ["MCA_SpellCardFinishFlag1","MCA_SpellCardFinishFlag2"],
+    "interrupt":[]
+  },
+  "MCA_SpellCardClick":
+  {
+    "doc": "点击符卡",
+    "recognition": "OCR",
+    "expected" : ["等级"],
+    "roi" : "set in code",
+    "action": "Click"
+  },
+  "MCA_SpellCardFinishFlag1" : {
+    "doc": "完成使用符卡",
+    "recognition": "OCR",
+    "expected" : ["符卡"],
+    "roi" : [8,422,116,108]
+  },
+  "MCA_SpellCardFinishFlag2" : {
+    "doc": "完成使用符卡",
+    "recognition": "OCR",
+    "expected" : ["点击画面"],
+    "roi" : [558,547,164,65]
+  },
+  
+  "MC_OpenSpellCardList" : {
+    "doc": "打开符卡列表",
+    "next": ["MC_SpellCardListOpenFlag"],
+    "interrupt":["MC_SpellCardListOpen"]
+  },
+  "MC_CloseSpellCardList" : {
+    "doc": "关闭符卡列表",
+    "next": ["MC_SpellCardListCloseFlag"],
+    "interrupt":["MC_SpellCardListClose"]
+  },
+
+  "MC_SpellCardListOpen" : {
+    "doc": "打开符卡列表",
+    "recognition": "OCR",
+    "expected" : "符卡",
+    "roi" : [8,422,116,108],
+    "action": "Click"
+  },
+  "MC_SpellCardListOpenFlag" : {
+    "doc": "打开符卡列表",
+    "recognition": "OCR",
+    "expected" : "射击",
+    "roi" : [8,422,116,108]
+  },
+  "MC_SpellCardListClose" : {
+    "doc": "关闭符卡列表",
+    "recognition": "OCR",
+    "expected" : "射击",
+    "roi" : [8,422,116,108],
+    "action": "Click"
+  },
+  "MC_SpellCardListCloseFlag" : {
+    "doc": "关闭符卡列表",
+    "recognition": "OCR",
+    "expected" : "符卡",
+    "roi" : [8,422,116,108]
+  },
+
+
+  "MC_FightAutoOpen": {
+    "doc": "打开自动战斗",
+    "next": ["MC_FightAutoOpenFlag"],
+    "interrupt":["MC_FightAutoOpenClick"]
+  },
+  "MC_FightAutoOpenClick": {
+    "doc": "打开自动战斗点击",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [162,179,178],
+    "lower" : [152,157,166],
+    "roi" : [553,11,71,34],
+    "count": 200,
+    "action": "Click"
+  },
+  "MC_FightAutoOpenFlag": {
+    "doc": "确认自动战斗",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [255,204,104],
+    "lower" : [254,140,81],
+    "roi" : [553,11,71,34],
+    "count": 200
+  },
+
+  "MC_FightAutoClose": {
+    "doc": "关闭自动战斗",
+    "next": ["MC_FightAutoCloseFlag"],
+    "interrupt":["MC_FightAutoCloseClick"]
+  },
+  "MC_FightAutoCloseFlag": {
+    "doc": "确认关闭自动战斗",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [162,179,178],
+    "lower" : [152,157,166],
+    "roi" : [553,11,71,34],
+    "count": 200
+  },
+  "MC_FightAutoCloseClick": {
+    "doc": "关闭自动战斗点击",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [255,204,104],
+    "lower" : [254,140,81],
+    "roi" : [553,11,71,34],
+    "count": 200,
+    "action": "Click"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "ClickConfirm":{
+    "doc": "",
+    "recognition": "OCR",
+    "expected" : "确认",
+    "roi" : [482,309,311,87],
+    "action": "Click",
+    "target" : [123,117,954,417],
+    "post_wait_freezes": {
+            "time": 500,
+            "target": [248,203,782,311]
+        },
+    "next": [],
+    "interrupt": []
+  },
+  "ClickColor":{
+    "doc": "",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [162,179,178],
+    "lower" : [152,157,166],
+    "count": 200,
+    "roi" : [553,11,71,34],
+    "action": "Click",
+    "target" : [123,117,954,417],
+    "post_wait_freezes": {
+            "time": 500,
+            "target": [248,203,782,311]
+        },
+    "next": [],
+    "interrupt": []
+  },
+  "ClickPNG" : {
+    "doc": "进入探索",
+    "post_wait_freezes": 500,
+    "recognition": "TemplateMatch",
+    "template": "BL_image/home_flag.png",
+    "roi" : [123,117,954,417],
+    "action": "Click",
+    "next": [],
+    "interrupt":[]
+  },
+  "BL_ActionStart":
+  {
+    "doc": "返回主界面",
+    "post_wait_freezes": 500,
+    "next": ["BL_HomeFlag"],
+    "interrupt":["BL_ReturnHome","BL_ReturnOne"]
+  },
+  "BL_HomeFlag":
+  {
+    "recognition": "TemplateMatch",
+    "template": "BL_image/home_flag.png",
+    "roi" : [0,0,0,0],
+    "post_wait_freezes": 500
+  },
+  "BL_ReturnHome":
+  {
+    "doc": "返回初始界面",
+    "pre_wait_freezes": 1000,
+    "recognition": "TemplateMatch",
+    "template": "BL_image/back_home.png",
+    "roi" : [0,0,0,0],
+    "action": "Click",
+    "post_wait_freezes": 1000,
+    "next": [],
+    "interrupt":[]
+  },
+  "BL_ReturnHomeError":
+  {
+    "doc": "返回初始界面",
+    "pre_wait_freezes": 1000,
+    "recognition": "TemplateMatch",
+    "template": "BL_image/back_home.png",
+    "roi" : [0,0,0,0],
+    "action": "Click",
+    "post_wait_freezes": 1000,
+    "next": [],
+    "interrupt":[]
+  },
+  "BL_ReturnOne":
+  {
+    "doc": "返回初始界面",
+    "pre_wait_freezes": 1000,
+    "recognition": "TemplateMatch",
+    "template": "BL_image/back_one.png",
+    "roi" : [0,0,0,0],
+    "action": "Click",
+    "post_wait_freezes": 1000,
+    "next": [],
+    "interrupt":[]
+  }
+}

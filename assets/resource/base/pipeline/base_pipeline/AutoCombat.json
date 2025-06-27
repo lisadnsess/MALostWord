@@ -1,0 +1,245 @@
+{
+  "AC_FightChooseHelp": {
+    "doc": "选择助战",
+    "next": [
+          "AC_FightChooseHelpFinish"
+        ],
+    "interrupt": [
+          "AC_FightHelp"
+        ]
+  },
+  "AC_FightHelp" : {
+    "doc": "不选择助战",
+    "recognition": "OCR",
+    "expected" : "没有助战角色",
+    "roi" : [475,199,288,91],
+    "action": "Click"
+  },
+  "AC_FightChooseHelpFinish": {
+    "doc": "完成选择助战",
+    "recognition": "OCR",
+    "expected" : "舞台信息",
+    "roi" : [877,150,171,41],
+    "post_wait_freezes": 500
+  },
+  "AC_FightReplayRepeat": {
+    "doc": "打开回放以及自律",
+    "pre_wait_freezes": {
+            "time": 500,
+            "target": [846,526,429,176]
+        },
+    "next": [
+          "AC_ReplayRepeatFlag"
+        ],
+    "interrupt": [
+      "AC_FightReplayOpen",
+      "AC_FightRepeatOpen",
+      "AC_FightRepeatOpenConfirm"
+    ]
+  },
+
+  "AC_FightReplayOpen" : {
+    "doc": "回放从关到开",
+    "pre_wait_freezes": {
+            "time": 500,
+            "target": [846,526,429,176]
+        },
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [101,123,132],
+    "lower" : [101,118,125],
+    "count": 100,
+    "roi" : [1103,547,164,37],
+    "action": "Click",
+    "next": []
+  },
+  "AC_FightRepeatOpen" : {
+    "doc": "重复战斗从关到开",
+    "pre_wait_freezes": {
+            "time": 500,
+            "target": [846,526,429,176]
+        },
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [166,174,190],
+    "lower" : [157,166,182],
+    "count": 100,
+    "roi" : [855,590,84,85],
+    "action": "Click",
+    "next" : []
+  },
+  "AC_FightRepeatOpenConfirm" : {
+    "doc": "确认打开回放",
+    "recognition": "OCR",
+    "expected" : "决定",
+    "roi" : [695,613,182,46],
+    "action": "Click"
+  },
+    "AC_ReplayRepeatFlag": {
+    "doc": "完成打开回放以及自律并开始战斗",
+    "recognition": "TemplateMatch",
+    "template": "AC_image/回放加自律开.png",
+    "recommended roi" : [856,587,344,95],
+    "action": "Click",
+    "threshold" : 0.95,
+    "target": [1000,606,131,56],
+    "next": ["AC_StartRepeatFlag"],
+    "interrupt":[]
+  },
+    "AC_StartRepeatFlag":{
+      "doc": "开始回放战斗",
+      "recognition": "OCR",
+      "expected" : "自律再战",
+      "roi" : [1056,69,211,50],
+      "timeout" : 120000,
+      "pre_delay": 5000,
+      "post_wait_freezes": {
+            "time": 500,
+            "target": [214,37,848,647]
+        },
+      "next": ["AC_RepeatFinish"]
+  },
+  "AC_RepeatFinish" : {
+    "doc": "回放结束",
+    "pre_wait_freezes": {
+            "time": 500,
+            "target": [214,37,848,647]
+        },
+    "recognition": "OCR",
+    "expected" : "自律再战已结束",
+    "roi" : [417,46,443,56],
+    "action": "Click",
+    "target": [558,608,160,45],
+    "next": "BL_ReturnHome"
+  },
+
+
+
+
+
+  "AC_FightReplayClose" : {
+    "doc": "回放从开到关",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [249,134,45],
+    "lower" : [249,133,43],
+    "count": 100,
+    "roi" : [1103,547,164,37],
+    "action": "Click"
+  },
+  "AC_FightRepeatClose" : {
+    "doc": "重复战斗从开到关",
+    "pre_wait_freezes": {
+            "time": 500,
+            "target": [846,526,429,176]
+        },
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [255,162,117],
+    "lower" : [245,145,106],
+    "count": 100,
+    "roi" : [855,590,84,85],
+    "action": "Click"
+  },
+
+
+
+
+
+
+  "AC_FightBegin" : {
+    "doc": "开始战斗",
+    "recognition": "OCR",
+    "expected" : "出发",
+    "roi" : [1006,605,129,53],
+    "action": "Click",
+    "next": ["AC_FightEnd"],
+    "interrupt": [
+      "AC_FightAutoOpen",
+      "AC_FightAutoClose"
+        ]
+  },
+  "AC_FightAutoOpen": {
+    "doc": "打开自动战斗",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [162,179,178],
+    "lower" : [152,157,166],
+    "roi" : [553,11,71,34],
+    "count": 200,
+    "action": "Click",
+    "next" : ["AC_FightAutoClose"]
+
+  },
+  "AC_FightAutoClose": {
+    "doc": "等待自动战斗结束",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [255,213,111],
+    "lower" : [250,139,79],
+    "roi" : [553,11,71,34],
+    "count": 200,
+    "post_wait_freezes": {
+            "time": 500,
+            "target": [248,203,782,311]
+        }
+  },
+  "AC_FightEnd": {
+    "doc": "战斗结束",
+    "recognition": "OCR",
+    "expected" : ["点击画面","获得报酬"],
+    "roi" : [527,87,234,538],
+    "action": "Click",
+    "next": []
+  },
+  "AC_FightEndChoose1": {
+    "doc": "选择下一步，结束战斗",
+    "recognition": "OCR",
+    "expected_code": "Set in code.",
+    "expected" : ["下一步"],
+    "roi" : [1066,624,152,53],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": "BL_ReturnHome"
+  },
+  "AC_FightEndChoose2": {
+    "doc": "选择下个探索,继续战斗",
+    "pre_wait_freezes": 500,
+    "recognition": "OCR",
+    "expected" : ["下个探索"],
+    "roi" : [342,626,127,47],
+    "action": "Click",
+    "post_wait_freezes": {
+            "time": 500,
+            "target": [0, 0, 0, 0]
+        },
+    "timeout" : 200000,
+    "next": ["AC_FightEndChoose2End"],
+    "interrupt": ["AC_FightEnd","AC_FightDefault"]
+  },
+  "AC_FightEndChoose2End": {
+    "doc": "已没有下一个探索",
+    "recognition": "OCR",
+    "expected" : ["已没有下一个探索"],
+    "roi" : [502,336,273,43],
+    "action": "Click",
+    "post_wait_freezes": {
+            "time": 500,
+            "target": [294,588,961,121]
+        },
+    "next": ["AC_FightEndChoose1"],
+    "interrupt": [
+        ]
+  },
+  "AC_FightDefault": {
+    "doc": "战斗失败",
+    "recognition": "OCR",
+    "expected" : ["满身","满身疮痍","游戏结束"],
+
+    "roi" : [443,310,402,105],
+
+    "threshold": 0.95,
+    "target" :[1098,606,119,33],
+    "next":[]
+  }
+}

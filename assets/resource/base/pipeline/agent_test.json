@@ -1,0 +1,19 @@
+{
+  "agent_test_start": {
+    "timeout": 30000,
+    "next": [
+      "agent_1"
+    ]
+  },
+  "agent_1":
+  {
+    "recognition": "Custom",
+    "custom_recognition": "MyRecognitionAgentTest",
+    "next" : "agent_2"
+    },
+    "agent_2":
+  {
+    "action": "Custom",
+    "custom_action": "MyCustomActionAgentTest"
+    }
+}

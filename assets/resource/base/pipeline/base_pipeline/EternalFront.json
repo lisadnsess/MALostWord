@@ -1,0 +1,80 @@
+{
+  "EFA_ActionAll":{
+    "doc": "永远战线##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "EFA_ActionAll",
+    "custom_recognition_param": {
+            "fight_json_dir": "fight1.json",
+      "repeat": -1
+        },
+    "next": []
+  },
+
+  "EF_ActionLine"   :
+  {
+    "doc": "开场流水线",
+    "next": ["EF_StartConfirmFlag"],
+    "interrupt":["EF_ActionIn","EF_StartConfirm1","EF_StartConfirm2"]
+  },
+  "EF_ActionIn":
+  {
+    "doc": "进入战线",
+    "recognition": "OCR",
+    "expected" : ["已完成"],
+    "roi" : [609,107,110,46],
+    "action": "Click"
+  },
+  "EF_StartConfirm1"   :
+  {
+    "doc": "下一步",
+    "recognition": "OCR",
+    "expected" : ["确定"],
+    "roi" : [1076,575,104,36],
+    "action": "Click"
+  },
+  "EF_StartConfirm2"   :
+  {
+    "doc": "下一步",
+    "recognition": "OCR",
+    "expected" : ["出发"],
+    "roi" : [1088,575,76,40],
+    "action": "Click"
+  },
+  "EF_StartConfirmFlag":
+  {
+    "doc": "进入战斗标记",
+    "recognition": "OCR",
+    "expected" : "技能",
+    "roi" : [1175,492,89,89]
+  },
+
+  "EF_ConnectFight":
+  {
+    "doc": "战斗之间链接",
+    "next": ["EF_StartConfirmFlag","EF_FinishFlag"],
+    "interrupt":["EF_ConnectClick1","EF_ConnectClick2"]
+  },
+  "EF_ConnectClick1"   :
+  {
+    "doc": "点击画面",
+    "recognition": "OCR",
+    "expected" : ["点击画面"],
+    "roi" : [558,546,164,67],
+    "action": "Click"
+  },
+  "EF_ConnectClick2"   :
+  {
+    "doc": "下一步",
+    "recognition": "OCR",
+    "expected" : ["下一步"],
+    "roi" : [1094,629,95,40],
+    "action": "Click"
+  },
+  "EF_FinishFlag"   :
+  {
+    "doc": "下一步",
+    "recognition": "OCR",
+    "expected" : ["已完成"],
+    "roi" : [609,107,110,46]
+  }
+}

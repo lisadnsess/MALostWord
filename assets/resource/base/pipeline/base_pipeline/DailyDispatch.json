@@ -1,0 +1,77 @@
+{
+  "DD_JoinInDispatch" : {
+    "doc": "进入派遣",
+    "recognition": "TemplateMatch",
+    "template": ["DD_image/派遣1.png","DD_image/派遣2.png"],
+    "roi" : [1016,360,122,136],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": ["DD_JoinInDispatchFlag"],
+    "interrupt":[]
+  },
+  "DD_JoinInDispatchFlag" : {
+    "doc": "进入派遣",
+    "recognition": "OCR",
+    "expected" : "可派遣的数量",
+    "roi" : [44,569,162,80],
+    "post_wait_freezes": 500,
+    "next": ["DD_GetDispatchFlag","BL_ReturnHome"],
+    "interrupt":[]
+  },
+
+  "DD_GetDispatchFlag" : {
+    "doc": "确定有无可收取派遣",
+   "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [255,195,119],
+    "lower" : [253,165,103],
+    "count": 100,
+    "roi" : [48,654,156,46],
+    "next": ["DD_GetFinishDispatch"],
+    "interrupt":[]
+  },
+
+  "DD_GetFinishDispatch" : {
+    "doc": "收取派遣",
+    "recognition": "OCR",
+    "expected" : "一键完成",
+    "roi" : [48,565,159,139],
+    "action": "Click",
+    "next": ["DD_GetDispatchFinishFlag"],
+    "interrupt":["DD_CloseGet1","DD_CloseGet2","DD_CloseGet3"]
+  },
+  "DD_CloseGet1" : {
+    "doc": "收取派遣",
+    "recognition": "OCR",
+    "expected" : "关闭",
+    "roi" : [520,611,234,85],
+    "action": "Click"
+  },
+  "DD_CloseGet2" : {
+    "doc": "确认道具",
+    "recognition": "OCR",
+    "expected" : ["结束","结果"],
+    "roi" : [427,27,433,236],
+    "action": "Click",
+    "target": [104,644,143,39]
+  },
+  "DD_CloseGet3" : {
+    "doc": "获得报酬",
+    "recognition": "OCR",
+    "expected" : ["获得报酬"],
+    "roi" : [507,63,253,118],
+    "action": "Click"
+  },
+  "DD_GetDispatchFinishFlag": {
+    "doc": "",
+    "recognition": "ColorMatch",
+    "method" : 4,
+    "upper" : [128,103,64],
+    "lower" : [127,83,52],
+    "count": 100,
+    "roi" : [48,654,156,46],
+    "action": "Click",
+    "next": [],
+    "interrupt":[]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "CE_JoinInExplore" : {
+    "doc": "进入探索",
+    "post_wait_freezes": 500,
+    "recognition": "TemplateMatch",
+    "template": "CE_image/探索.png",
+    "roi" : [1059,466,199,226],
+    "action": "Click",
+    "next": [],
+    "interrupt":[]
+  },
+  "CE_ExploreCombat1" : {
+    "doc": "进入主线",
+    "recognition": "OCR",
+    "expected" : "主线",
+    "roi" : [595,623,617,54],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": []
+  },
+  "CE_ExploreCombat2" : {
+    "doc": "进入每日",
+    "recognition": "OCR",
+    "expected" : "每日",
+    "roi" : [595,623,617,54],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": []
+  },
+  "CE_ExploreCombat3" : {
+    "doc": "进入活动",
+    "recognition": "OCR",
+    "expected" : "活动",
+    "roi" : [595,623,617,54],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": []
+  },
+  "CE_ExploreCombat4" : {
+    "doc": "进入特别",
+    "recognition": "OCR",
+    "expected" : "特别",
+    "roi" : [595,623,617,54],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": []
+  },
+  "CE_ExploreCombat5" : {
+    "doc": "进入油库里",
+    "recognition": "OCR",
+    "expected" : "油库里",
+    "roi" : [595,623,617,54],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": []
+  },
+
+  "CE_CombatFlag1" :
+  {
+    "recognition": "TemplateMatch",
+    "template": "CE_image/主线.png",
+    "roi" : [568,611,667,71],
+    "threshold": 0.9,
+    "action": "Click"
+  },
+  "CE_CombatFlag2" :
+  {
+    "recognition": "TemplateMatch",
+    "template": "CE_image/每日.png",
+    "roi" : [568,611,667,71],
+    "threshold": 0.9,
+    "action": "Click"
+  },
+  "CE_CombatFlag3" :
+  {
+    "recognition": "TemplateMatch",
+    "template": "CE_image/活动.png",
+    "roi" : [568,611,667,71],
+    "threshold": 0.9,
+    "action": "Click"
+  },
+  "CE_CombatFlag4" :
+  {
+    "recognition": "TemplateMatch",
+    "template": "CE_image/特别.png",
+    "roi" : [568,611,667,71],
+    "threshold": 0.9,
+    "action": "Click"
+  },
+  "CE_CombatFlag5" :
+  {
+    "recognition": "TemplateMatch",
+    "template": "CE_image/油库里.png",
+    "roi" : [568,611,667,71],
+    "threshold": 0.9,
+    "action": "Click"
+  },
+
+  "CE_Combat2OpenFlag" : {
+    "doc": "确认进入",
+    "recognition": "OCR",
+    "expected" : "今日剩余次数",
+    "roi" : [987,56,205,41],
+    "post_wait_freezes": 500,
+    "next": ["CE_Combat2SwipeDown"]
+  },
+  "CE_Combat2SwipeDown":
+  {
+    "recognition": "TemplateMatch",
+    "template" : "CE_image/今日剩余次数.png",
+    "roi" : [973,45,253,69],
+    "action":"Swipe",
+    "begin" : [1214,124,1,1],
+    "end" : [1213,594,1,1],
+    "duration" : 1000,
+    "post_wait_freezes": 500,
+    "next": ["CE_Combat2Choose90"]
+  },
+  "CE_Combat2Choose90" : {
+    "doc": "",
+    "pre_wait_freezes": 500,
+    "recognition": "OCR",
+    "expected" : ["90","推荐等级90"],
+    "roi" : [1011,397,194,154],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": []
+  },
+  "CEA_Combat2Open":
+  {
+    "recognition": "Custom",
+    "custom_recognition": "CEA_GetDailyTime",
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": []
+  }
+
+}

@@ -1,84 +1,78 @@
 {
-    "controller": [
-        {
-            "name": "安卓端",
-            "type": "Adb"
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio"
-            }
-        }
-    ],
-    "resource": [
-        {
-            "name": "官服",
-            "path": [
-                "{PROJECT_DIR}/resource"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "{PROJECT_DIR}/resource",
-                "{PROJECT_DIR}/resource_bilibili"
-            ]
-        }
-    ],
-    "agent": {
-        "child_exec": "python",
-        "child_args": [
-            "{PROJECT_DIR}/agent/main.py"
-        ]
-    },
-    "task": [
-        {
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
-        },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
-        },
-        {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
-        }
-    ],
-    "option": {
-        "任务选项1": {
-            "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
-        }
+  "name": "M9A",
+  "url": "https://github.com/MAA1999/M9A",
+  "controller": [
+    {
+      "name": "安卓端",
+      "type": "Adb"
     }
+  ],
+  "resource": [
+    {
+      "name": "官服",
+      "path": [
+        "{PROJECT_DIR}/resource/base"
+      ]
+    },
+    {
+      "name": "测试",
+      "path": [
+        "{PROJECT_DIR}/assets/resource/base"
+      ]
+    }
+  ],
+  "agent": {
+    "child_exec": "{PROJECT_DIR}/python/python.exe",
+    "child_args": [
+      "{PROJECT_DIR}/agent/main.py",
+      "-u"
+    ]
+  },
+  "task": [
+    {
+      "name": "永远战线",
+      "entry": "EFA_ActionAll",
+      "advanced": [
+        "永远战线战斗策略",
+        "永远战线战斗次数"
+      ],
+      "option": [
+        "永远战线战斗次数"
+      ]
+    }
+  ],
+  "advanced": {
+    "永远战线战斗策略": {
+      "field": "永远战线战斗策略",
+      "type": "string",
+      "default": "fight1.json",
+      "pipeline_override": {
+        "EFA_ActionAll": {
+          "fight_json_dir": "{PROJECT_DIR}/agent/FightStrategy/{永远战线战斗策略}"
+        }
+      }
+    },
+    "永远战线战斗次数": {
+      "field": "永远战线战斗次数",
+      "type": "string",
+      "default": "-1",
+      "pipeline_override": {
+        "EFA_ActionAll": {
+          "repeat": "{永远战线战斗次数}"
+        }
+      }
+    }
+  },
+  "option": {
+    "永远战线111": {
+      "cases": [
+        {
+          "field": "ce",
+          "type": "string",
+          "default": "cs.png",
+          "pipeline_override": {}
+        }
+      ]
+    }
+  }
 }
