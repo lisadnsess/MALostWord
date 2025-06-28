@@ -13,12 +13,6 @@
       "path": [
         "{PROJECT_DIR}/resource/base"
       ]
-    },
-    {
-      "name": "测试",
-      "path": [
-        "{PROJECT_DIR}/assets/resource/base"
-      ]
     }
   ],
   "agent": {
