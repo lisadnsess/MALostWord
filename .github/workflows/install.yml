@@ -91,6 +91,11 @@ jobs:
           out-file-path: "MFA"
           extract: true
 
+      - name: Remove MFAAvalonia archive
+        run: |
+          rm -f MFA/MFAAvalonia-*-win-x64*
+        shell: bash
+
       - name: Setup Embed Python
         shell: powershell
         run: |
