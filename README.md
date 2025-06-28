@@ -19,7 +19,7 @@
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white">
   <img alt="platform" src="https://img.shields.io/badge/platform-Windows-blueviolet">
   <br>
-  <img alt="license" src="https://img.shields.io/github/license/lisadnsess/MALostWord">
+  <img alt="license" src="https://img.shields.io/badge/License-MIT-yellow.svg">
 </p>
 
 ## 功能列表
