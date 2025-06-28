@@ -99,5 +99,5 @@ if __name__ == "__main__":
     install_resource()
     install_chores()
     install_agent()
-    os.remove(working_dir / "MFAAvalonia-*-win-x64*")
+
     print(f"Install to {install_path} successfully.")
