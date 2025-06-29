@@ -3,24 +3,30 @@ import os
 import sys
 
 
-def run_task_param(new_ctx, action_name, param_name=None, param_data=None):
+def run_task_param(new_ctx, action_name, param_name=None, param_data=None, pipeline_override_data=None):
     # print(param_data)
     # print(type(param_data))
+    if pipeline_override_data:
+        ctx_return = new_ctx.run_task(action_name, pipeline_override={action_name: pipeline_override_data})
+        return ctx_return
     if not param_name and not param_data:
-        new_ctx.run_task(action_name)
+        ctx_return = new_ctx.run_task(action_name)
+        return ctx_return
 
     if type(param_data) is dict:
-        new_ctx.run_task(
+        ctx_return = new_ctx.run_task(
             action_name,
             pipeline_override=
             {action_name: {"custom_recognition_param": param_data}}
         )
+        return ctx_return
     else:
-        new_ctx.run_task(
+        ctx_return = new_ctx.run_task(
             action_name,
             pipeline_override=
             {action_name: {"custom_recognition_param": {param_name: param_data}}}
         )
+        return ctx_return
     pass
 
 

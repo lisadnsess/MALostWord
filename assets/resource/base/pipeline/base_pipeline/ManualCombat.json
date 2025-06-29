@@ -1,6 +1,6 @@
 {
   "MCA_ActionOneScreen":{
-    "doc": "使用技能##########_##########_####################_##########_####################_##########_##########",
+    "doc": "单面战斗##########_##########_####################_##########_####################_##########_##########",
     "recognition": "Custom",
     "custom_recognition": "MCA_ActionOneScreen",
     "custom_recognition_param":
@@ -113,6 +113,30 @@
     "custom_recognition_param": {
             "change_character": []
     }
+  },
+  "MCA_CurrentCharacter"   :
+  {
+    "doc": "当前角色",
+    "recognition": "OCR",
+    "expected" : ["\\d"],
+    "roi" : [840,34,25,33]
+  },
+  "MCA_ReturnOneCharacter": {
+    "next": ["MCA_ReturnOneCharacterFlag"],
+    "interrupt": ["MCA_ReturnOneCharacterClick"]
+  },
+  "MCA_ReturnOneCharacterClick"   :
+  {
+    "doc": "返回第一人位置点击",
+    "action": "Click",
+    "target": [48,657,56,27]
+  },
+  "MCA_ReturnOneCharacterFlag"   :
+  {
+    "doc": "返回第一人位置",
+    "recognition": "OCR",
+    "expected" : ["1"],
+    "roi" : [840,34,25,33]
   },
 
   "MCA_ActionChooseTarget": {

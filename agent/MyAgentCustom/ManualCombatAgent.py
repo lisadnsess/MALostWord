@@ -6,7 +6,7 @@ from maa.custom_recognition import CustomRecognition
 from maa.context import Context
 import json
 from .GeneralAgent import run_task_param
-
+from utils import logger
 
 @AgentServer.custom_recognition("MCA_ActionOneScreen")
 class MCA_ActionOneScreen(CustomRecognition):
@@ -29,7 +29,8 @@ class MCA_ActionOneScreen(CustomRecognition):
         if data["change_character"]:
             print("run change")
             run_task_param(new_ctx, "MCA_ActionChangeCharacter", "change_character", data["change_character"])
-            run_task_param(new_ctx, "MCA_ActionSkillOpen", "open_skill", data["open_skill2"])
+            if data["open_skill2"]:
+                run_task_param(new_ctx, "MCA_ActionSkillOpen", "open_skill", data["open_skill2"])
         for data_one in data["fight"].values():
             print(data_one["target"])
             if data_one["target"]["target_use"]:
@@ -87,6 +88,45 @@ class MCA_ActionSkillOpen(CustomRecognition):
         context.run_task("MC_CloseSkillList")
         return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="完成技能")
 
+
+@AgentServer.custom_recognition("MCA_ActionChangeCharacter")
+class MCA_ActionChangeCharacter(CustomRecognition):
+    def analyze(
+            self,
+            context: Context,
+            argv: CustomRecognition.AnalyzeArg,
+    ) -> CustomRecognition.AnalyzeResult:
+        print("##########_##########_##########")
+        change_character = json.loads(argv.custom_recognition_param)["change_character"]
+        current_character = run_task_param(context, "MCA_CurrentCharacter").nodes[0].recognition.filterd_results[0].text
+        roi = [1094, 48, 54, 45]
+        if current_character == "2" or current_character == "3":
+            context.tasker.controller.post_click(70, 670).wait()
+            time.sleep(0.5)
+            context.tasker.controller.post_click(70, 670).wait()
+            time.sleep(0.5)
+        current_character = int(
+            run_task_param(context, "MCA_CurrentCharacter").nodes[0].recognition.filterd_results[0].text)
+
+        new_ctx = context.clone()
+
+        for index in range(3):
+            if current_character in change_character:
+                # logger.info(f"交换{current_character}位角色")
+                print(f"交换{current_character}位角色")
+                context.tasker.controller.post_click(int(roi[0] + roi[2] / 2), int(roi[1] + roi[3] / 2)).wait()
+                time.sleep(2)
+                current_character = \
+                    int(run_task_param(context, "MCA_CurrentCharacter").nodes[0].recognition.filterd_results[0].text)
+            if index < 2:
+                context.tasker.controller.post_click(320, 580).wait()
+                current_character += 1
+                run_task_param(new_ctx, "MCA_CurrentCharacter",
+                               pipeline_override_data={"expected": [str(current_character)]})
+
+        run_task_param(context, "MCA_ReturnOneCharacter")
+
+        return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
 
 @AgentServer.custom_recognition("MCA_ActionBoost")
 class MCA_ActionBoost(CustomRecognition):
