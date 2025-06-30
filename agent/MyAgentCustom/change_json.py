@@ -25,7 +25,11 @@ def get_fight_json(fight_json_dir_in):
     with open(fight_json_dir_in, encoding="utf-8") as f:
         raw_json = json.load(f)
     new_json = {}
-    for index_fight, fight_one in enumerate(raw_json.values()):
+    index_fight = 0
+    for fight_key, fight_one in raw_json.items():
+        if not "fight" in fight_key:
+            continue
+        index_fight +=1
         new_json["fight" + str(index_fight)] = {}
         fight_one_dic = new_json["fight" + str(index_fight)]
         pass

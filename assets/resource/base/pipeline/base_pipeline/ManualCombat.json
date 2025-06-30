@@ -296,7 +296,7 @@
   {
     "doc": "使用符卡",
     "timeout": 100000 ,
-    "next": ["MCA_SpellCardFinishFlag1","MCA_SpellCardFinishFlag2"],
+    "next": ["MCA_SpellCardFinishFlag1","MCA_SpellCardFinishFlag2","MCA_SpellCardFinishFlag3"],
     "interrupt":[]
   },
   "MCA_SpellCardClick":
@@ -318,6 +318,14 @@
     "recognition": "OCR",
     "expected" : ["点击画面"],
     "roi" : [558,547,164,65]
+  },
+  "MCA_SpellCardFinishFlag3"   :
+  {
+    "doc": "下一步",
+    "recognition": "OCR",
+    "expected" : ["下一步"],
+    "roi" : [1094,629,95,40],
+    "action": "Click"
   },
   
   "MC_OpenSpellCardList" : {

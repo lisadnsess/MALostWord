@@ -1,0 +1,90 @@
+{
+  "DMA_ActionDailyMaterial":{
+    "doc": "每日素材本##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "DMA_ActionDailyMaterial",
+    "custom_recognition_param":{
+      "fight_data": {}
+    },
+    "roi": [151, 516, 977, 137],
+    "next": []
+  },
+  "DM_JoinInExplore" : {
+    "doc": "进入探索",
+    "recognition": "OCR",
+    "expected" : "探索",
+    "roi" : [1059,466,199,226],
+    "action": "Click",
+    "next": ["DM_JoinInDailyMaterialFlag"],
+    "interrupt" : ["DM_JoinInDailyMaterial"]
+  },
+  "DM_JoinInDailyMaterial" : {
+    "doc": "进入每日",
+    "recognition": "OCR",
+    "expected" : "每日",
+    "roi" : [595,623,617,54],
+    "action": "Click",
+    "post_wait_freezes": 500
+  },
+  "DM_JoinInDailyMaterialFlag" :
+  {
+    "doc": "确认进入每日",
+    "recognition": "OCR",
+    "expected" : "每日",
+    "roi" : [568,611,667,71],
+    "threshold": 0.9
+  },
+  "DM_DailyMaterialOpen" : {
+    "doc": "进入今日开放的关卡",
+    "post_wait_freezes": {
+            "time": 500,
+            "target": [248,203,782,311]
+        },
+    "next": ["DM_DailyMaterialOpenFlag"],
+    "interrupt":["DM_DailyMaterialOpenClick"]
+  },
+  "DM_DailyMaterialOpenFlag" : {
+    "doc": "确认进入",
+    "recognition": "OCR",
+    "expected" : "今日剩余次数",
+    "roi" : [987,56,205,41],
+    "next": []
+  },
+  "DM_DailyMaterialOpenClick" : {
+    "doc": "进入点击",
+    "recognition": "OCR",
+    "expected" : "寻找指南书",
+    "roi" : [572, 63, 649, 544],
+    "action": "Click",
+    "post_wait_freezes": 500
+  },
+
+  "DM_IfDailyMaterialFinish" : {
+    "doc": "确认剩余次数",
+    "recognition": "OCR",
+    "expected" : ["0"],
+    "roi" : [1138,56,55,42]
+  },
+
+  "DM_DailyMaterialSwipeDown":
+  {
+    "doc": "下滑确保打最高等级日常",
+    "recognition": "OCR",
+    "expected" : "今日剩余次数",
+    "roi" : [973,45,253,69],
+    "action":"Swipe",
+    "begin" : [1214,124,1,1],
+    "end" : [1213,594,1,1],
+    "duration" : 1000,
+    "post_wait_freezes": 500,
+    "next": ["CE_Combat2Choose90"]
+  },
+  "DM_Combat2Choose90" : {
+    "doc": "",
+    "recognition": "OCR",
+    "expected" : ["90","推荐等级90"],
+    "roi" : [1011,397,194,154],
+    "action": "Click",
+    "post_wait_freezes": 500
+  }
+}

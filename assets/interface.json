@@ -30,10 +30,12 @@
       "advanced": [
         "永远战线战斗策略",
         "永远战线战斗次数"
-      ],
-      "option": [
-        "永远战线战斗次数"
       ]
+    },
+    {
+      "name": "日常材料本（测试）",
+      "entry": "DMA_ActionDailyMaterial",
+      "doc": "日常材料，目前没测过周末的全开能不能全打"
     }
   ],
   "advanced": {
@@ -56,18 +58,6 @@
           "repeat": "{永远战线战斗次数}"
         }
       }
-    }
-  },
-  "option": {
-    "永远战线111": {
-      "cases": [
-        {
-          "field": "ce",
-          "type": "string",
-          "default": "cs.png",
-          "pipeline_override": {}
-        }
-      ]
     }
   }
 }
