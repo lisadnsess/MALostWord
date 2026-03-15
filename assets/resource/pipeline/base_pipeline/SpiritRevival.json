@@ -1,0 +1,10 @@
+{
+  "SRA_ActionSpiritRevival":{
+    "doc": "复灵塔##########_##########_####################_##########_####################_##########_##########",
+    "recognition": "Custom",
+    "custom_recognition": "SRA_ActionSpiritRevival",
+    "custom_recognition_param":{
+      "fight_json_dir": "fight2.json"
+    }
+  }
+}

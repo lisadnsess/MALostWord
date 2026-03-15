@@ -1,0 +1,61 @@
+{
+  "RD_Interval_1": {"doc": "#########################################################################################"},
+  "RD_Action": {
+    "doc": "开始领取每日奖励",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {
+      "info": [
+        "##########_##########_##########",
+        "开始领取每日奖励"
+      ]
+    },
+    "next": ["RD_ActionFlag"],
+    "interrupt": ["RD_GetIn","BL_ReturnHome"]
+  },
+  "RD_GetIn": {
+    "doc": "进入任务",
+    "recognition": "OCR",
+    "expected" : "任务",
+    "roi" : [784,615,78,43],
+    "action": "Click",
+    "next": []
+  },
+  "RD_ActionFlag": {
+    "doc": "确认进入任务",
+    "recognition": "OCR",
+    "expected" : "全部收取",
+    "roi" : [1101,653,107,33],
+    "next": ["RD_Finish"],
+    "interrupt": ["RD_Close0","RD_Close1"]
+  },
+  "RD_Close0": {
+    "doc": "领取任务",
+    "recognition": "OCR",
+    "expected" : "全部收取",
+    "roi" : [1101,653,107,33],
+    "action": "Click"
+  },
+  "RD_Close1": {
+    "doc": "领取任务",
+    "recognition": "OCR",
+    "expected" : "关闭",
+    "roi" : [517,565,336,137],
+    "action": "Click"
+  },
+  "RD_Finish": {
+    "doc": "确认进入任务",
+    "recognition": "TemplateMatch",
+    "template": "RD_image/完成每日领取.png",
+    "roi" : [677,381,130,78],
+
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {
+      "info": [
+        "完成领取每日"
+      ]
+    },
+    "next": ["BL_ReturnHome"]
+  }
+}

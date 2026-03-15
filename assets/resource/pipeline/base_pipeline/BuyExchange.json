@@ -1,0 +1,165 @@
+{
+  "BE_Interval_0": {"doc": "#########################################################################################"},
+  "BE_Action": {
+    "doc": "开始交换所购物",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {
+      "info": [
+        "##########_##########_##########",
+        "开始交换所购物"
+      ]
+    },
+    "next": ["BE_ActionFlag"],
+    "interrupt": ["BE_GetIn","BL_ReturnHome"]
+  },
+  "BE_GetIn": {
+    "doc": "进入交换所",
+    "recognition": "OCR",
+    "expected" : "交换所",
+    "roi" : [108,283,104,51],
+    "action": "Click"
+  },
+  "BE_ActionFlag": {
+    "doc": "确认进入交换所",
+    "recognition": "OCR",
+    "expected" : "交换所",
+    "roi" : [70,3,91,42],
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"debug": "进入交换所"},
+    "next": ["BE_GetInSplitToken"]
+  },
+
+
+  "BE_GetInSplitToken": {
+    "doc": "进入割符界面",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"info": "进入割符交换"},
+    "next": ["BE_SplitToken"],
+    "interrupt":[
+      "BE_SplitTokenClick",
+      "BE_Swipe"
+    ]
+  },
+  "BE_Swipe" :
+  {
+    "doc": "向右滑行",
+    "action": "Swipe",
+    "begin" : [300,640,1,1],
+    "end" : [150,640,1,1],
+    "duration" : 1000
+  },
+  "BE_SplitTokenClick": {
+    "doc": "进入割符界面",
+    "recognition": "OCR",
+    "expected" : "割符交换",
+    "roi" : [427,613,514,65],
+    "action": "Click"
+  },
+  "BE_SplitToken": {
+    "doc": "进入割符界面",
+
+    "recognition": "TemplateMatch",
+    "template": "BE_image/割符.png",
+    "roi" : [719,49,43,40],
+
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"debug": "成功进入割符界面"},
+
+    "next": ["BE_SplitTokenStart"]
+  },
+  "BE_SplitTokenStart": {
+    "doc": "购买并切换下一个",
+    "recognition": "Custom",
+    "custom_recognition": "UF_RunPipeline",
+    "custom_recognition_param": {
+      "pipeline_name": ["BE_BuyAction"]
+    },
+    "next": ["BE_GetInInsertCoins"]
+  },
+
+  "BE_GetInInsertCoins": {
+    "doc": "进入赛钱界面",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"info": "进入赛钱交换"},
+    "next": ["BE_InsertCoins"],
+    "interrupt":[
+      "BE_InsertCoinsClick",
+      "BE_Swipe"
+    ]
+  },
+  "BE_InsertCoinsClick": {
+    "doc": "进入割符界面",
+    "recognition": "OCR",
+    "expected" : "赛钱交换",
+    "roi" : [427,613,514,65],
+    "action": "Click"
+  },
+  "BE_InsertCoins": {
+    "doc": "进入赛钱界面",
+
+    "recognition": "TemplateMatch",
+    "template": "BE_image/赛钱.png",
+    "roi" : [719,49,43,40],
+
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"debug": "成功进入赛钱界面"},
+    "next": ["BE_InsertCoinsStart"]
+  },
+  "BE_InsertCoinsStart": {
+    "doc": "购买并切换下一个",
+    "recognition": "Custom",
+    "custom_recognition": "UF_RunPipeline",
+    "custom_recognition_param": {
+      "pipeline_name": ["BE_BuyAction"]
+    },
+    "next": ["BE_FinishAll"]
+  },
+
+  "BE_FinishAll": {
+    "doc": "完成商店购买",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"info": ["完成商店购买"]},
+    "next": ["BL_ReturnHome"]
+  },
+
+  "BE_Interval_1": {"doc": "#########################################################################################"},
+  "BE_BuyAction": {
+    "doc": "开始购买材料",
+    "next": ["BE_BuyActionFinish"],
+    "interrupt": [
+      "BE_BuyAction1",
+      "BE_BuyAction0"
+    ]
+  },
+  "BE_BuyAction0": {
+    "doc": "开始购买材料",
+    "recognition": "OCR",
+    "expected" : ["人之替身","封结晶"],
+    "roi" : [78,100,142,56],
+    "action": "Click",
+    "post_delay": 500
+  },
+  "BE_BuyAction1": {
+    "doc": "开始购买材料",
+    "recognition": "OCR",
+    "expected" : ["交换确认"],
+    "roi" : [576,83,125,46],
+    "action": "Click",
+    "target":[739,579,85,38],
+    "post_delay": 500
+  },
+  "BE_BuyActionFinish": {
+    "doc": "开始购买材料",
+    "recognition": "OCR",
+    "expected" : ["厚爱","承","蒙","绘卷祝词","指南书","卷轴"],
+    "roi" : [77,112,157,212],
+    "post_delay": 500
+  }
+}

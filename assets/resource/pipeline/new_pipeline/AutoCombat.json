@@ -1,0 +1,562 @@
+{
+    "$__mpe_config_AutoCombat": {
+        "$__mpe_code": {
+            "prefix": "",
+            "savedViewport": {
+                "x": 347,
+                "y": -3,
+                "zoom": 0.8
+            },
+            "filename": "AutoCombat",
+            "version": "v1.2.3"
+        }
+    },
+    "AC_FightChooseHelp": {
+        "doc": "选择助战",
+        "$__mpe_code": {
+            "position": {
+                "x": -486,
+                "y": 2013
+            }
+        },
+        "next": [
+            "AC_FightChooseHelpFinish", "[JumpBack]AC_FightHelp"
+        ]
+    },
+    "AC_FightHelp": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "没有助战角色",
+                "roi": [
+                    475, 199, 288, 91
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "doc": "不选择助战",
+        "$__mpe_code": {
+            "position": {
+                "x": -12,
+                "y": 1859
+            }
+        }
+    },
+    "AC_FightChooseHelpFinish": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "舞台信息",
+                "roi": [
+                    877, 150, 171, 41
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "doc": "完成选择助战",
+        "$__mpe_code": {
+            "position": {
+                "x": -19,
+                "y": 2162
+            }
+        },
+        "next": [
+            "AC_FightReplayRepeat"
+        ]
+    },
+    "AC_FightReplayRepeat": {
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": [
+                        "打开回放以及自律"
+                    ]
+                }
+            }
+        },
+        "doc": "打开回放以及自律",
+        "$__mpe_code": {
+            "position": {
+                "x": 561,
+                "y": 2171
+            }
+        },
+        "next": [
+            "AC_ReplayRepeatFlag", "[JumpBack]AC_FightReplayOpen", "[JumpBack]AC_FightRepeatOpenConfirm", "[JumpBack]AC_FightRepeatOpen"
+        ]
+    },
+    "AC_FightReplayOpen": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "AC_image/回放关闭状态.png",
+                "roi": [
+                    1109, 553, 20, 21
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "doc": "回放从关到开",
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1538
+            }
+        }
+    },
+    "AC_FightRepeatOpen": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "AC_image/自律关闭状态.png",
+                "roi": [
+                    861, 597, 70, 73
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "post_delay": 500,
+        "doc": "重复战斗从关到开",
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1849
+            }
+        }
+    },
+    "AC_FightRepeatOpenConfirm": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    695, 613, 182, 46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "post_delay": 500,
+        "doc": "确认打开回放",
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 2567
+            }
+        }
+    },
+    "AC_ReplayRepeatFlag": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "AC_image/回放加自律开.png",
+                "roi": [
+                    856, 587, 344, 95
+                ],
+                "threshold": 0.95
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1000, 606, 131, 56
+                ]
+            }
+        },
+        "doc": "完成打开回放以及自律并开始战斗",
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 2192
+            }
+        },
+        "next": [
+            "AC_StartRepeatFlag"
+        ]
+    },
+    "AC_StartRepeatFlag": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "自律再战",
+                "roi": [
+                    1056, 69, 211, 50
+                ]
+            }
+        },
+        "pre_delay": 5000,
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                214, 37, 848, 647
+            ]
+        },
+        "timeout": -1,
+        "doc": "等待战斗结束",
+        "$__mpe_code": {
+            "position": {
+                "x": 1282,
+                "y": 2182
+            }
+        },
+        "next": [
+            "AC_RepeatFinish"
+        ]
+    },
+    "AC_RepeatFinish": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "自律再战已结束",
+                "roi": [
+                    417, 46, 443, 56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    558, 608, 160, 45
+                ]
+            }
+        },
+        "pre_wait_freezes": {
+            "time": 500,
+            "target": [
+                214, 37, 848, 647
+            ]
+        },
+        "doc": "回放结束",
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 2192
+            }
+        }
+    },
+    "AC_FightReplayClose": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "method": 4,
+                "upper": [
+                    249, 134, 45
+                ],
+                "lower": [
+                    249, 133, 43
+                ],
+                "count": 100,
+                "roi": [
+                    1103, 547, 164, 37
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "doc": "回放从开到关",
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        }
+    },
+    "AC_FightRepeatClose": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "method": 4,
+                "upper": [
+                    255, 162, 117
+                ],
+                "lower": [
+                    245, 145, 106
+                ],
+                "count": 100,
+                "roi": [
+                    855, 590, 84, 85
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "pre_wait_freezes": {
+            "time": 500,
+            "target": [
+                846, 526, 429, 176
+            ]
+        },
+        "doc": "重复战斗从开到关",
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        }
+    },
+    "AC_FightBegin": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "出发",
+                "roi": [
+                    1006, 605, 129, 53
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "doc": "开始战斗",
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 1110
+            }
+        },
+        "next": [
+            "AC_FightEnd", "[JumpBack]AC_FightAutoOpen", "[JumpBack]AC_FightAutoClose"
+        ]
+    },
+    "AC_FightAutoOpen": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "method": 4,
+                "upper": [
+                    162, 179, 178
+                ],
+                "lower": [
+                    152, 157, 166
+                ],
+                "roi": [
+                    553, 11, 71, 34
+                ],
+                "count": 200
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "doc": "打开自动战斗",
+        "$__mpe_code": {
+            "position": {
+                "x": 949,
+                "y": 975
+            }
+        },
+        "next": [
+            "AC_FightAutoClose"
+        ]
+    },
+    "AC_FightAutoClose": {
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "method": 4,
+                "upper": [
+                    255, 213, 111
+                ],
+                "lower": [
+                    250, 139, 79
+                ],
+                "roi": [
+                    553, 11, 71, 34
+                ],
+                "count": 200
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                248, 203, 782, 311
+            ]
+        },
+        "doc": "等待自动战斗结束",
+        "$__mpe_code": {
+            "position": {
+                "x": 1231,
+                "y": 1145
+            }
+        }
+    },
+    "AC_FightEnd": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "点击画面", "获得报酬"
+                ],
+                "roi": [
+                    527, 87, 234, 538
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "doc": "战斗结束",
+        "$__mpe_code": {
+            "position": {
+                "x": 956,
+                "y": 696
+            }
+        }
+    },
+    "AC_FightEndChoose1": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "下一步"
+                ],
+                "roi": [
+                    1066, 624, 152, 53
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "post_wait_freezes": 500,
+        "doc": "选择下一步，结束战斗",
+        "expected_code": "Set in code.",
+        "$__mpe_code": {
+            "position": {
+                "x": 1132,
+                "y": 12
+            }
+        },
+        "next": [
+            "BL_ReturnHome"
+        ]
+    },
+    "AC_FightEndChoose2": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "下个探索"
+                ],
+                "roi": [
+                    342, 626, 127, 47
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "pre_wait_freezes": 500,
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                0, 0, 0, 0
+            ]
+        },
+        "timeout": 200000,
+        "doc": "选择下个探索,继续战斗",
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 78
+            }
+        },
+        "next": [
+            "AC_FightEndChoose2End", "[JumpBack]AC_FightEnd", "[JumpBack]AC_FightDefault"
+        ]
+    },
+    "AC_FightEndChoose2End": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "已没有下一个探索"
+                ],
+                "roi": [
+                    502, 336, 273, 43
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                294, 588, 961, 121
+            ]
+        },
+        "doc": "已没有下一个探索",
+        "$__mpe_code": {
+            "position": {
+                "x": 812,
+                "y": 21
+            }
+        },
+        "next": [
+            "AC_FightEndChoose1"
+        ]
+    },
+    "AC_FightDefault": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "满身", "满身疮痍", "游戏结束"
+                ],
+                "roi": [
+                    443, 310, 402, 105
+                ],
+                "threshold": 0.95
+            }
+        },
+        "action": {
+            "type": "DoNothing",
+            "param": {
+                "target": [
+                    1098, 606, 119, 33
+                ]
+            }
+        },
+        "doc": "战斗失败",
+        "$__mpe_code": {
+            "position": {
+                "x": 869,
+                "y": 344
+            }
+        }
+    },
+    "$__mpe_external_BL_ReturnHome_AutoCombat": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1452,
+                "y": 130
+            }
+        }
+    }
+}

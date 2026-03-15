@@ -1,0 +1,113 @@
+{
+  "DP_Action": {
+    "doc": "每日资源本",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {
+      "info": [
+        "##########_##########_##########",
+        "开始每日祈愿"
+      ]
+    },
+    "next": ["DP_JoinInFlag"],
+    "interrupt":[
+      "DP_JoinInPrayer"
+    ]
+  },
+  "DP_Interval_0": {
+    "doc": "#########################################################################################"
+  },
+  "DP_JoinInFlag": {
+    "recognition": "OCR",
+    "expected" : "祈愿",
+    "roi" : [65,0,83,49],
+    "next": ["DP_StandardPrayer"],
+    "interrupt":[
+      "DP_ClickNextPrayer"
+    ]
+  },
+
+  "DP_JoinInPrayer": {
+    "recognition": "OCR",
+    "expected" : "祈愿",
+    "roi" : [912,607,147,58],
+    "action": "Click",
+    "post_wait_freezes": 1000
+  },
+
+  "DP_Interval_1": {
+    "doc": "#########################################################################################"
+  },
+  "DP_ClickNextPrayer": {
+    "doc": "切换下一个卡池",
+    "target" : [5,213,158,46],
+    "action": "Click",
+    "post_wait_freezes": 500
+  },
+  "DP_RelicPrayer": {
+    "doc": "免费EPIC祈愿"
+  },
+  "DP_StandardPrayer": {
+    "doc": "绘卷祈愿",
+    "recognition": "TemplateMatch",
+    "template": "DP_image/绘卷祝词.png",
+    "roi" : [1,79,294,127],
+    "threshold": 0.9,
+    "next": ["DP_1Times"]
+  },
+  "DP_Interval_2": {
+    "doc": "#########################################################################################"
+  },
+  "DP_1Times": {
+    "doc": "单抽",
+    "recognition": "OCR",
+    "expected" : "进行1次祈愿",
+    "roi" : [687,522,242,82],
+    "action": "Click",
+    "next": ["DP_TimesStep1"]
+
+  },
+  "DP_10Times": {
+    "doc": "十连",
+    "recognition": "OCR",
+    "expected" : "进行10次祈愿",
+    "roi" : [961,522,242,83],
+    "action": "Click",
+    "next": ["DP_TimesStep1"]
+  },
+  "DP_TimesStep1": {
+    "doc": "点击决定",
+    "recognition": "OCR",
+    "expected" : "决定",
+    "roi" : [732,516,94,46],
+    "action": "Click",
+    "next": ["DP_TimesStep4"],
+    "interrupt":[
+      "DP_TimesStep2",
+      "DP_TimesStep3"
+    ],
+    "post_wait_freezes": 1000
+  },
+  "DP_TimesStep2": {
+    "doc": "点击画面",
+    "recognition": "OCR",
+    "expected" : "快进",
+    "roi" : [1188,8,62,33],
+    "action": "Click",
+    "post_wait_freezes": 100
+  },
+  "DP_TimesStep3": {
+    "doc": "点击画面",
+    "target" : [242,235,116,65],
+    "action": "Click",
+    "post_wait_freezes": 100
+  },
+  "DP_TimesStep4": {
+    "doc": "完成祈愿",
+    "recognition": "OCR",
+    "expected" : "祈愿",
+    "roi" : [64,1,77,45],
+    "next": ["BL_ActionStart"]
+
+  }
+}

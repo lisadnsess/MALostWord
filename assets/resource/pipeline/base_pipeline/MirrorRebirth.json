@@ -1,0 +1,116 @@
+{
+
+  "MR_Action": {
+    "doc": "每日转生镜",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {
+      "info": [
+        "##########_##########_##########",
+        "开始转生镜扫荡"
+      ]
+    },
+    "next": ["MR_JoinInFlag"],
+    "interrupt":[
+      "MR_JoinInExplore",
+      "MR_JoinInMirrorRebirth"
+    ]
+  },
+  "MR_Interval_0": {
+    "doc": "#########################################################################################"
+  },
+  "MR_JoinInFlag": {
+    "doc": "确认进入每日",
+    "recognition": "TemplateMatch",
+    "template": "MR_image/特别.png",
+    "roi" : [978,627,108,46],
+    "action": "Click",
+    "threshold": 0.9,
+    "next": ["MR_All"]
+  },
+  "MR_JoinInExplore" : {
+    "doc": "进入探索",
+    "recognition": "OCR",
+    "expected" : "探索",
+    "roi" : [1059,466,199,226],
+    "action": "Click"
+  },
+  "MR_JoinInMirrorRebirth" : {
+    "doc": "进入特别",
+    "recognition": "OCR",
+    "expected" : "特别",
+    "roi" : [595,623,617,54],
+    "action": "Click",
+    "post_wait_freezes": 500
+  },
+  "MR_Interval_1": {
+    "doc": "#########################################################################################"
+  },
+  "MR_All": {
+    "doc": "总扫荡流程",
+    "next": ["MR_AllStep4"],
+    "interrupt":[
+      "MR_AllStep1",
+      "MR_AllStep2",
+      "MR_AllStep3"
+    ]
+  },
+
+
+  "MR_AllStep1": {
+    "doc": "进入转生镜",
+    "recognition": "OCR",
+    "expected" : "转生镜探索",
+    "roi" : [696,52,370,171],
+    "action": "Click",
+    "post_wait_freezes": 500
+  },
+  "MR_AllStep2": {
+    "doc": "点击一键探索",
+    "recognition": "OCR",
+    "expected" : "探索",
+    "roi" : [468,81,84,34],
+    "action": "Click",
+    "post_wait_freezes": 500
+  },
+  "MR_AllStep3": {
+    "doc": "点击决定",
+    "recognition": "OCR",
+    "expected" : "探索一览",
+    "roi" : [184,47,158,52],
+    "action": "Click",
+    "target": [918,600,97,44],
+    "post_wait_freezes": 500
+  },
+  "MR_AllStep4": {
+    "doc": "在次确认",
+    "recognition": "OCR",
+    "expected" : "确认",
+    "roi" : [590,51,102,38],
+    "action": "Click",
+    "target":  [766,608,67,33],
+    "post_wait_freezes": 500,
+    "next": ["MR_AllStepFlag"]
+  },
+
+
+  "MR_AllStepFlag": {
+    "doc": "完成扫荡",
+    "recognition": "OCR",
+    "expected" : "点击画面",
+    "roi" : [539,540,195,77],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": ["MR_Close"]
+  },
+  "MR_Close": {
+    "doc": "完成扫荡",
+    "recognition": "OCR",
+    "expected" : "探索一览",
+    "roi" : [184,47,158,52],
+    "action": "Click",
+    "target" : [689,605,78,40],
+    "post_wait_freezes": 500,
+    "next": ["BL_ActionStart"]
+  }
+}

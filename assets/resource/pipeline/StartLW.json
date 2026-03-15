@@ -1,0 +1,113 @@
+{
+  "SL_Action":
+  {
+    "post_wait_freezes": 500,
+    "next": [
+      "SL_HomeFlag"
+    ],
+    "interrupt": [
+      "SL_StartDownload",
+      "SL_StartGame",
+      "SL_SkipDaily",
+      "SL_CloseAll",
+      "SL_StartLostWordApp"
+    ]
+  },
+  "SL_HomeFlag":
+  {
+    "doc": "确认进入主界面",
+    "pre_wait_freezes": 500,
+    "recognition": "TemplateMatch",
+    "template": "SL_image/home_flag.png",
+    "recommended roi" : [1100,519,106,105],
+    "threshold": 0.95,
+    "action": "Click",
+    "target": [494,170,213,177],
+    "post_wait_freezes": 500
+  },
+  "SL_StartDownload":
+  {
+    "doc": "确认游戏更新下载",
+    "recognition": "OCR",
+    "expected" : "是否要下载",
+    "roi" : [482,309,311,87],
+    "action": "Click",
+    "target" : [695,484,167,41],
+    "next": []
+  },
+  "SL_StartGame" : {
+    "doc": "点击开始游戏",
+    "recognition": "TemplateMatch",
+    "template": "SL_image/start_game.png",
+    "roi" : [123,117,954,417],
+    "action": "Click",
+    "target": [471,524,339,71],
+    "post_wait_freezes": 500,
+    "next": [],
+    "interrupt": []
+  },
+  "SL_SkipDaily" : {
+    "doc": "跳过每日签到",
+    "recognition": "TemplateMatch",
+    "template": "SL_image/登录跳过.png",
+    "roi" : [1076,6,199,149],
+    "action": "Click",
+    "post_wait_freezes": 500,
+    "next": [],
+    "interrupt": []
+  },
+  "SL_CloseAll" : {
+    "doc": "关闭界面",
+    "recognition": "TemplateMatch",
+    "template": "SL_image/close.png",
+    "roi" : [0,0,0,0],
+    "threshold": 0.6,
+    "action": "Click",
+    "post_wait_freezes": 500
+  },
+  "SL_StartLostWordApp":
+  {
+    "doc": "打开LWapp",
+    "action": "StartApp",
+    "package": "com.gg.touhoulw/com.gg.touhoulw.SplashActivity",
+    "post_wait_freezes": 500
+  },
+  "SL_StopLostWordApp":
+  {
+    "doc": "关闭LWapp",
+    "action": "StopApp",
+    "package": "com.gg.touhoulw/com.gg.touhoulw.SplashActivity",
+    "post_wait_freezes": 500
+  },
+
+  "SL_SkipDaily_test" : {
+    "doc": "跳过每日签到",
+    "recognition": "TemplateMatch",
+    "template": "SL_image/登录跳过.png",
+    "roi" : [1076,6,199,149],
+    "action": "Click"
+  },
+  "SL_Close0_test" : {
+    "doc": "跳过每日签到",
+    "recognition": "TemplateMatch",
+    "template": "SL_image/close.png",
+    "roi" : [1048,3,75,76],
+    "threshold": 0.5,
+    "action": "Click"
+  },
+  "SL_Close1_test" : {
+    "doc": "跳过每日签到",
+    "recognition": "TemplateMatch",
+    "template": "SL_image/close.png",
+    "roi" : [1175,0,104,90],
+    "threshold": 0.6,
+    "action": "Click"
+  },
+  "SL_CloseAll_test" : {
+    "doc": "跳过每日签到",
+    "recognition": "TemplateMatch",
+    "template": "SL_image/close.png",
+    "roi" : [0,0,0,0],
+    "threshold": 0.6
+  }
+}

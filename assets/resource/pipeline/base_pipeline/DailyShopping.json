@@ -1,0 +1,87 @@
+{
+  "DS_Interval_0": {"doc": "#########################################################################################"},
+  "DS_Action": {
+    "doc": "开始商店购物",
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {
+      "info": [
+        "##########_##########_##########",
+        "开始商店购物"
+      ]
+    },
+    "next": ["DS_ActionFlag"],
+    "interrupt": ["DS_GetIn","BL_ReturnHome"]
+  },
+  "DS_GetIn": {
+    "doc": "进入商店",
+    "recognition": "OCR",
+    "expected" : "商店",
+    "roi" : [83,614,63,44],
+    "action": "Click"
+  },
+  "DS_ActionFlag": {
+    "doc": "确认进入商店",
+    "recognition": "OCR",
+    "expected" : "商店",
+    "roi" : [52,3,100,54],
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"debug": "进入商店"},
+    "next": ["DS_GetInTimeLimited"]
+  },
+  "DS_GetInTimeLimited": {
+    "doc": "进入期间限定",
+    "recognition": "OCR",
+    "expected" : "期间限定",
+    "roi" : [15,92,89,327],
+    "action": "Click",
+    "next": ["DS_GetInPartnerCultivation"]
+  },
+  "DS_GetInPartnerCultivation": {
+    "doc": "进入伙伴育成",
+    "recognition": "OCR",
+    "expected" : "伙伴育成",
+    "roi" : [194,609,596,58],
+    "action": "Click",
+    "next": ["DS_FinishBuy"],
+    "interrupt": ["DS_BuyOneAction0","DS_BuyOneAction1","DS_BuyOne"]
+  },
+  "DS_Interval_1": {"doc": "#########################################################################################"},
+  "DS_BuyOne": {
+    "doc": "购买免费",
+    "recognition": "OCR",
+    "expected" : "每日1次免费",
+    "roi" : [203,418,170,63],
+    "action": "Click",
+    "pre_wait_freezes":400
+  },
+  "DS_BuyOneAction1": {
+    "doc": "确认购买",
+    "recognition": "OCR",
+    "expected" : "购入",
+    "roi" : [696,546,166,91],
+    "action": "Click",
+    "pre_wait_freezes":400
+  },
+  "DS_BuyOneAction0": {
+    "doc": "确认购买",
+    "recognition": "OCR",
+    "expected" : "点击画面",
+    "roi" : [565,556,152,51],
+    "action": "Click",
+    "pre_wait_freezes":400
+  },
+  "DS_FinishBuy": {
+    "doc": "确认购买",
+    "recognition": "OCR",
+    "expected" : "限购",
+    "roi" : [203,418,170,63],
+
+    "action": "Custom",
+    "custom_action": "UF_ActionLogger",
+    "custom_action_param": {"info": ["完成商店购物"]},
+
+    "next": ["BL_ReturnHome"]
+  }
+}
