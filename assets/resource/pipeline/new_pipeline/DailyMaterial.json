@@ -1,258 +1,71 @@
 {
     "$__mpe_config_DailyMaterial": {
         "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\DailyMaterial.json",
+            "filename": "DailyMaterial",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545271681,
             "prefix": "",
             "savedViewport": {
-                "x": -2310,
-                "y": -1560,
-                "zoom": 1.06
+                "x": -665,
+                "y": -537,
+                "zoom": 0.87
             },
-            "filename": "DailyMaterial",
             "version": "v1.2.3"
         }
     },
-    "DMA_Print": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "DMA_Print"
-            }
-        },
-        "doc": "测试输出",
+    "$__mpe_external_AC_FightReplayRepeat_DailyMaterial": {
         "$__mpe_code": {
             "position": {
-                "x": 732,
-                "y": 12
+                "x": 3204,
+                "y": 1891
             }
         }
     },
-    "DM_Interval_0": {
-        "doc": "#########################################################################################",
+    "$__mpe_external_BL_ActionStart_DailyMaterial": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
-                "y": 12
+                "x": 2572,
+                "y": 883
             }
         }
     },
-    "DM_Action": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "UF_ActionLogger",
-                "custom_action_param": {
-                    "info": [
-                        "##########_##########_##########",
-                        "开始每日资源本"
-                    ]
-                }
-            }
-        },
-        "doc": "每日资源本",
-        "$__mpe_code": {
-            "position": {
-                "x": 835,
-                "y": 329
-            }
-        },
-        "next": [
-            "DM_ActionFlag",
-            "[JumpBack]DM_JoinInExplore",
-            "[JumpBack]DM_JoinInDailyMaterial",
-            "[JumpBack]BL_ReturnHome"
-        ]
-    },
-    "DM_JoinInExplore": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "探索",
-                "roi": [
-                    1059,
-                    466,
-                    199,
-                    226
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "进入探索",
-        "$__mpe_code": {
-            "position": {
-                "x": 1286,
-                "y": 478
-            }
-        }
-    },
-    "DM_JoinInDailyMaterial": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "每日",
-                "roi": [
-                    595,
-                    623,
-                    617,
-                    54
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "post_wait_freezes": 500,
-        "doc": "进入每日",
+    "$__mpe_external_BL_ReturnHome_DailyMaterial": {
         "$__mpe_code": {
             "position": {
                 "x": 1292,
-                "y": 12
+                "y": 369
             }
         }
     },
-    "DM_ActionFlag": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "DM_image/每日.png",
-                "roi": [
-                    568,
-                    611,
-                    667,
-                    71
-                ],
-                "threshold": 0.9
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "确认进入每日",
+    "$__mpe_external_BL_ReturnOne_DailyMaterial": {
         "$__mpe_code": {
             "position": {
-                "x": 1292,
-                "y": 820
-            }
-        },
-        "next": [
-            "DMA_GetDate"
-        ]
-    },
-    "DM_SkipExperience": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": "伙伴经验值",
-                "roi": [
-                    688,
-                    74,
-                    383,
-                    107
-                ]
-            }
-        },
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1214,
-                    125,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        1214,
-                        550,
-                        1,
-                        1
-                    ]
-                ],
-                "duration": 1000
-            }
-        },
-        "doc": "跳过经验本",
-        "$__mpe_code": {
-            "position": {
-                "x": 2258,
-                "y": 1072
+                "x": 3212,
+                "y": 1571
             }
         }
-    },
-    "DM_Interval_1": {
-        "doc": "#########################################################################################",
-        "$__mpe_code": {
-            "position": {
-                "x": 252,
-                "y": 12
-            }
-        }
-    },
-    "DMA_GetDate": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "DMA_GetDate"
-            }
-        },
-        "timeout": 86400000,
-        "doc": "获取日期",
-        "$__mpe_code": {
-            "position": {
-                "x": 1612,
-                "y": 837
-            }
-        },
-        "next": [
-            "DMA_DailyMaterialAll",
-            "[JumpBack]DMA_DailyMaterialAllNext"
-        ]
     },
     "DMA_DailyMaterialAll": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "DMA_DailyMaterialAll",
-                "custom_recognition_param": {
-                    "current_data": "set in code"
-                }
-            }
-        },
-        "doc": "全部素材本",
         "$__mpe_code": {
             "position": {
                 "x": 1932,
                 "y": 798
             }
         },
+        "doc": "全部素材本",
         "next": [
             "DMA_FinishLogger"
-        ]
-    },
-    "DMA_FinishLogger": {
+        ],
         "recognition": {
-            "type": "Custom",
             "param": {
-                "custom_recognition": "DMA_Logger",
+                "custom_recognition": "DMA_DailyMaterialAll",
                 "custom_recognition_param": {
-                    "info": "已完成每日资源本"
+                    "current_data": "set in code"
                 }
-            }
-        },
-        "doc": "完成每日素材本",
-        "$__mpe_code": {
-            "position": {
-                "x": 2252,
-                "y": 798
-            }
-        },
-        "next": [
-            "BL_ActionStart"
-        ]
+            },
+            "type": "Custom"
+        }
     },
     "DMA_DailyMaterialAllNext": {
         "$__mpe_code": {
@@ -266,130 +79,135 @@
             "[JumpBack]DM_SkipExperience"
         ]
     },
-    "DM_Interval_2": {
-        "doc": "#########################################################################################",
+    "DMA_FinishLogger": {
         "$__mpe_code": {
             "position": {
-                "x": 492,
-                "y": 12
+                "x": 2252,
+                "y": 798
             }
+        },
+        "doc": "完成每日素材本",
+        "next": [
+            "BL_ActionStart"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "DMA_Logger",
+                "custom_recognition_param": {
+                    "info": "已完成每日资源本"
+                }
+            },
+            "type": "Custom"
         }
     },
-    "DM_DailyMaterialOne": {
+    "DMA_GetDate": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 837
+            }
+        },
+        "doc": "获取日期",
+        "next": [
+            "DMA_DailyMaterialAll",
+            "[JumpBack]DMA_DailyMaterialAllNext"
+        ],
         "recognition": {
-            "type": "OCR",
             "param": {
-                "expected": "set in code",
-                "roi": [
-                    944,
-                    73,
-                    189,
-                    523
-                ]
+                "custom_recognition": "DMA_GetDate"
+            },
+            "type": "Custom"
+        },
+        "timeout": 86400000
+    },
+    "DMA_Print": {
+        "$__mpe_code": {
+            "position": {
+                "x": 732,
+                "y": 12
+            }
+        },
+        "doc": "测试输出",
+        "recognition": {
+            "param": {
+                "custom_recognition": "DMA_Print"
+            },
+            "type": "Custom"
+        }
+    },
+    "DM_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 835,
+                "y": 329
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "进入单次素材本",
-        "$__mpe_code": {
-            "position": {
-                "x": 2216,
-                "y": 1505
-            }
-        },
-        "next": [
-            "DM_DailyMaterialOneFlag"
-        ]
-    },
-    "DM_DailyMaterialOneFlag": {
-        "recognition": {
-            "type": "OCR",
             "param": {
-                "expected": [
-                    "今日剩余次数",
-                    "剩余次数"
-                ],
-                "roi": [
-                    989,
-                    55,
-                    142,
-                    39
-                ]
-            }
-        },
-        "doc": "确认进入素材本",
-        "$__mpe_code": {
-            "position": {
-                "x": 2549,
-                "y": 1501
-            }
-        },
-        "next": [
-            "DM_IfFinish",
-            "DM_CombatChoose90",
-            "[JumpBack]DM_SwipeDown"
-        ]
-    },
-    "DM_IfFinish": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "0"
-                ],
-                "roi": [
-                    967,
-                    57,
-                    234,
-                    39
-                ]
-            }
-        },
-        "doc": "确认是否已经完成",
-        "$__mpe_code": {
-            "position": {
-                "x": 2892,
-                "y": 1513
-            }
-        },
-        "next": [
-            "BL_ReturnOne"
-        ]
-    },
-    "DM_SwipeDown": {
-        "action": {
-            "type": "Swipe",
-            "param": {
-                "begin": [
-                    1211,
-                    125,
-                    1,
-                    1
-                ],
-                "end": [
-                    [
-                        1212,
-                        594,
-                        1,
-                        1
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始每日资源本"
                     ]
-                ],
-                "duration": 1000
-            }
+                }
+            },
+            "type": "Custom"
         },
-        "doc": "下滑确保打最高等级日常",
+        "doc": "每日资源本",
+        "next": [
+            "DM_ActionFlag",
+            "[JumpBack]DM_JoinInExplore",
+            "[JumpBack]DM_JoinInDailyMaterial",
+            "[JumpBack]BL_ReturnHome"
+        ]
+    },
+    "DM_ActionFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 2900,
-                "y": 1173
+                "x": 1292,
+                "y": 820
             }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "确认进入每日",
+        "next": [
+            "DMA_GetDate"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    568,
+                    611,
+                    667,
+                    71
+                ],
+                "template": "DM_image/每日.png",
+                "threshold": 0.9
+            },
+            "type": "TemplateMatch"
         }
     },
     "DM_CombatChoose90": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2892,
+                "y": 1822
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "选择90级副本",
+        "next": [
+            "AC_FightReplayRepeat"
+        ],
+        "post_wait_freezes": 500,
         "recognition": {
-            "type": "OCR",
             "param": {
                 "expected": [
                     "90",
@@ -401,54 +219,239 @@
                     194,
                     154
                 ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DM_DailyMaterialOne": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2216,
+                "y": 1505
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "param": {},
+            "type": "Click"
         },
-        "post_wait_freezes": 500,
-        "doc": "选择90级副本",
+        "doc": "进入单次素材本",
+        "next": [
+            "DM_DailyMaterialOneFlag"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "set in code",
+                "roi": [
+                    944,
+                    73,
+                    189,
+                    523
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DM_DailyMaterialOneFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2549,
+                "y": 1501
+            }
+        },
+        "doc": "确认进入素材本",
+        "next": [
+            "DM_IfFinish",
+            "DM_CombatChoose90",
+            "[JumpBack]DM_SwipeDown"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "今日剩余次数",
+                    "剩余次数"
+                ],
+                "roi": [
+                    989,
+                    55,
+                    142,
+                    39
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DM_IfFinish": {
         "$__mpe_code": {
             "position": {
                 "x": 2892,
-                "y": 1822
+                "y": 1513
             }
         },
+        "doc": "确认是否已经完成",
         "next": [
-            "AC_FightReplayRepeat"
-        ]
+            "BL_ReturnOne"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "0"
+                ],
+                "roi": [
+                    967,
+                    57,
+                    234,
+                    39
+                ]
+            },
+            "type": "OCR"
+        }
     },
-    "$__mpe_external_BL_ReturnHome_DailyMaterial": {
+    "DM_Interval_0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DM_Interval_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DM_Interval_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DM_JoinInDailyMaterial": {
         "$__mpe_code": {
             "position": {
                 "x": 1292,
-                "y": 369
+                "y": 12
             }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入每日",
+        "post_wait_freezes": 500,
+        "recognition": {
+            "param": {
+                "expected": "每日",
+                "roi": [
+                    595,
+                    623,
+                    617,
+                    54
+                ]
+            },
+            "type": "OCR"
         }
     },
-    "$__mpe_external_BL_ActionStart_DailyMaterial": {
+    "DM_JoinInExplore": {
         "$__mpe_code": {
             "position": {
-                "x": 2572,
-                "y": 883
+                "x": 1286,
+                "y": 478
             }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入探索",
+        "recognition": {
+            "param": {
+                "expected": "探索",
+                "roi": [
+                    1059,
+                    466,
+                    199,
+                    226
+                ]
+            },
+            "type": "OCR"
         }
     },
-    "$__mpe_external_BL_ReturnOne_DailyMaterial": {
+    "DM_SkipExperience": {
         "$__mpe_code": {
             "position": {
-                "x": 3212,
-                "y": 1571
+                "x": 2258,
+                "y": 1072
             }
+        },
+        "action": {
+            "param": {
+                "begin": [
+                    1214,
+                    125,
+                    1,
+                    1
+                ],
+                "duration": 1000,
+                "end": [
+                    [
+                        1214,
+                        550,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "doc": "跳过经验本",
+        "recognition": {
+            "param": {
+                "expected": "伙伴经验值",
+                "roi": [
+                    688,
+                    74,
+                    383,
+                    107
+                ]
+            },
+            "type": "OCR"
         }
     },
-    "$__mpe_external_AC_FightReplayRepeat_DailyMaterial": {
+    "DM_SwipeDown": {
         "$__mpe_code": {
             "position": {
-                "x": 3204,
-                "y": 1891
+                "x": 2900,
+                "y": 1173
             }
-        }
+        },
+        "action": {
+            "param": {
+                "begin": [
+                    1211,
+                    125,
+                    1,
+                    1
+                ],
+                "duration": 1000,
+                "end": [
+                    [
+                        1212,
+                        594,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "doc": "下滑确保打最高等级日常"
     }
 }

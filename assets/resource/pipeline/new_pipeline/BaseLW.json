@@ -1,94 +1,110 @@
 {
     "$__mpe_config_BaseLW": {
         "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\BaseLW.json",
+            "filename": "BaseLW",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545264338,
             "prefix": "",
             "savedViewport": {
-                "x": 373,
-                "y": -584,
-                "zoom": 0.92
+                "x": 581,
+                "y": -448,
+                "zoom": 0.87
             },
-            "filename": "BaseLW",
             "version": "v1.2.3"
         }
     },
     "BL_ActionStart": {
-        "post_wait_freezes": 500,
-        "doc": "返回主界面",
         "$__mpe_code": {
             "position": {
                 "x": 12,
                 "y": 814
             }
         },
+        "doc": "返回主界面",
         "next": [
-            "BL_HomeFlag", "[JumpBack]BL_ReturnHome", "[JumpBack]BL_ReturnOne"
-        ]
+            "BL_HomeFlag",
+            "[JumpBack]BL_ReturnHome",
+            "[JumpBack]BL_ReturnOne"
+        ],
+        "post_wait_freezes": 500
     },
     "BL_HomeFlag": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "BL_image/home_flag.png",
-                "roi": [
-                    0, 0, 0, 0
-                ]
-            }
-        },
-        "post_wait_freezes": 500,
         "$__mpe_code": {
             "position": {
                 "x": 333,
                 "y": 516
             }
+        },
+        "post_wait_freezes": 500,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "template": "BL_image/home_flag.png"
+            },
+            "type": "TemplateMatch"
         }
     },
     "BL_ReturnHome": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "BL_image/back_home.png",
-                "roi": [
-                    0, 0, 0, 0
-                ],
-                "threshold": [0.6]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "pre_wait_freezes": 1000,
-        "post_wait_freezes": 1000,
-        "doc": "返回初始界面",
         "$__mpe_code": {
             "position": {
                 "x": 338,
                 "y": 1049
             }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "返回初始界面",
+        "post_wait_freezes": 1000,
+        "pre_wait_freezes": 1000,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "template": "BL_image/back_home.png",
+                "threshold": [
+                    0.6
+                ]
+            },
+            "type": "TemplateMatch"
         }
     },
     "BL_ReturnOne": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": "BL_image/back_one.png",
-                "roi": [
-                    0, 0, 0, 0
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "pre_wait_freezes": 1000,
-        "post_wait_freezes": 1000,
-        "doc": "返回上級界面",
         "$__mpe_code": {
             "position": {
                 "x": 333,
                 "y": 747
             }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "返回上級界面",
+        "post_wait_freezes": 1000,
+        "pre_wait_freezes": 1000,
+        "recognition": {
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "template": "BL_image/back_one.png"
+            },
+            "type": "TemplateMatch"
         }
     }
 }

@@ -1,61 +1,196 @@
 {
-  "RD_Interval_1": {"doc": "#########################################################################################"},
-  "RD_Action": {
-    "doc": "开始领取每日奖励",
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {
-      "info": [
-        "##########_##########_##########",
-        "开始领取每日奖励"
-      ]
+    "$__mpe_config_新建Pipeline14": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\ReceiveDaily.json",
+            "filename": "新建Pipeline14",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545244738,
+            "prefix": "",
+            "savedViewport": {
+                "x": 558,
+                "y": 193,
+                "zoom": 0.38
+            },
+            "version": "v1.2.3"
+        }
     },
-    "next": ["RD_ActionFlag"],
-    "interrupt": ["RD_GetIn","BL_ReturnHome"]
-  },
-  "RD_GetIn": {
-    "doc": "进入任务",
-    "recognition": "OCR",
-    "expected" : "任务",
-    "roi" : [784,615,78,43],
-    "action": "Click",
-    "next": []
-  },
-  "RD_ActionFlag": {
-    "doc": "确认进入任务",
-    "recognition": "OCR",
-    "expected" : "全部收取",
-    "roi" : [1101,653,107,33],
-    "next": ["RD_Finish"],
-    "interrupt": ["RD_Close0","RD_Close1"]
-  },
-  "RD_Close0": {
-    "doc": "领取任务",
-    "recognition": "OCR",
-    "expected" : "全部收取",
-    "roi" : [1101,653,107,33],
-    "action": "Click"
-  },
-  "RD_Close1": {
-    "doc": "领取任务",
-    "recognition": "OCR",
-    "expected" : "关闭",
-    "roi" : [517,565,336,137],
-    "action": "Click"
-  },
-  "RD_Finish": {
-    "doc": "确认进入任务",
-    "recognition": "TemplateMatch",
-    "template": "RD_image/完成每日领取.png",
-    "roi" : [677,381,130,78],
-
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {
-      "info": [
-        "完成领取每日"
-      ]
+    "$__mpe_external_BL_ReturnHome_新建Pipeline14": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1212,
+                "y": 886
+            }
+        }
     },
-    "next": ["BL_ReturnHome"]
-  }
+    "RD_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 690
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始领取每日奖励"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "开始领取每日奖励",
+        "next": [
+            "RD_ActionFlag",
+            "[JumpBack]RD_GetIn",
+            "[JumpBack]BL_ReturnHome"
+        ]
+    },
+    "RD_ActionFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 572,
+                "y": 352
+            }
+        },
+        "doc": "确认进入任务",
+        "next": [
+            "RD_Finish",
+            "[JumpBack]RD_Close0",
+            "[JumpBack]RD_Close1"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "全部收取",
+                "roi": [
+                    1101,
+                    653,
+                    107,
+                    33
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "RD_Close0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 892,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "领取任务",
+        "recognition": {
+            "param": {
+                "expected": "全部收取",
+                "roi": [
+                    1101,
+                    653,
+                    107,
+                    33
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "RD_Close1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 892,
+                "y": 689
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "领取任务",
+        "recognition": {
+            "param": {
+                "expected": "关闭",
+                "roi": [
+                    517,
+                    565,
+                    336,
+                    137
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "RD_Finish": {
+        "$__mpe_code": {
+            "position": {
+                "x": 892,
+                "y": 319
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "完成领取每日"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "确认进入任务",
+        "next": [
+            "BL_ReturnHome"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    677,
+                    381,
+                    130,
+                    78
+                ],
+                "template": "RD_image/完成每日领取.png"
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "RD_GetIn": {
+        "$__mpe_code": {
+            "position": {
+                "x": 572,
+                "y": 689
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入任务",
+        "recognition": {
+            "param": {
+                "expected": "任务",
+                "roi": [
+                    784,
+                    615,
+                    78,
+                    43
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "RD_Interval_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    }
 }

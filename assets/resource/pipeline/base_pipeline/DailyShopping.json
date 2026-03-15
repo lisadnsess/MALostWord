@@ -1,87 +1,299 @@
 {
-  "DS_Interval_0": {"doc": "#########################################################################################"},
-  "DS_Action": {
-    "doc": "开始商店购物",
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {
-      "info": [
-        "##########_##########_##########",
-        "开始商店购物"
-      ]
+    "$__mpe_config_新建Pipeline9": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\DailyShopping.json",
+            "filename": "新建Pipeline9",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545218790,
+            "prefix": "",
+            "savedViewport": {
+                "x": 391,
+                "y": 117,
+                "zoom": 0.38
+            },
+            "version": "v1.2.3"
+        }
     },
-    "next": ["DS_ActionFlag"],
-    "interrupt": ["DS_GetIn","BL_ReturnHome"]
-  },
-  "DS_GetIn": {
-    "doc": "进入商店",
-    "recognition": "OCR",
-    "expected" : "商店",
-    "roi" : [83,614,63,44],
-    "action": "Click"
-  },
-  "DS_ActionFlag": {
-    "doc": "确认进入商店",
-    "recognition": "OCR",
-    "expected" : "商店",
-    "roi" : [52,3,100,54],
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"debug": "进入商店"},
-    "next": ["DS_GetInTimeLimited"]
-  },
-  "DS_GetInTimeLimited": {
-    "doc": "进入期间限定",
-    "recognition": "OCR",
-    "expected" : "期间限定",
-    "roi" : [15,92,89,327],
-    "action": "Click",
-    "next": ["DS_GetInPartnerCultivation"]
-  },
-  "DS_GetInPartnerCultivation": {
-    "doc": "进入伙伴育成",
-    "recognition": "OCR",
-    "expected" : "伙伴育成",
-    "roi" : [194,609,596,58],
-    "action": "Click",
-    "next": ["DS_FinishBuy"],
-    "interrupt": ["DS_BuyOneAction0","DS_BuyOneAction1","DS_BuyOne"]
-  },
-  "DS_Interval_1": {"doc": "#########################################################################################"},
-  "DS_BuyOne": {
-    "doc": "购买免费",
-    "recognition": "OCR",
-    "expected" : "每日1次免费",
-    "roi" : [203,418,170,63],
-    "action": "Click",
-    "pre_wait_freezes":400
-  },
-  "DS_BuyOneAction1": {
-    "doc": "确认购买",
-    "recognition": "OCR",
-    "expected" : "购入",
-    "roi" : [696,546,166,91],
-    "action": "Click",
-    "pre_wait_freezes":400
-  },
-  "DS_BuyOneAction0": {
-    "doc": "确认购买",
-    "recognition": "OCR",
-    "expected" : "点击画面",
-    "roi" : [565,556,152,51],
-    "action": "Click",
-    "pre_wait_freezes":400
-  },
-  "DS_FinishBuy": {
-    "doc": "确认购买",
-    "recognition": "OCR",
-    "expected" : "限购",
-    "roi" : [203,418,170,63],
-
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"info": ["完成商店购物"]},
-
-    "next": ["BL_ReturnHome"]
-  }
+    "$__mpe_external_BL_ReturnHome_新建Pipeline9": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2092,
+                "y": 1287
+            }
+        }
+    },
+    "DS_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 697
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始商店购物"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "开始商店购物",
+        "next": [
+            "DS_ActionFlag",
+            "[JumpBack]DS_GetIn",
+            "[JumpBack]BL_ReturnHome"
+        ]
+    },
+    "DS_ActionFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 812,
+                "y": 666
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": "进入商店"
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "确认进入商店",
+        "next": [
+            "DS_GetInTimeLimited"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "商店",
+                "roi": [
+                    52,
+                    3,
+                    100,
+                    54
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_BuyOne": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1772,
+                "y": 351
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "购买免费",
+        "pre_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "expected": "每日1次免费",
+                "roi": [
+                    203,
+                    418,
+                    170,
+                    63
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_BuyOneAction0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1772,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "确认购买",
+        "pre_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "expected": "点击画面",
+                "roi": [
+                    565,
+                    556,
+                    152,
+                    51
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_BuyOneAction1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1772,
+                "y": 1058
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "确认购买",
+        "pre_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "expected": "购入",
+                "roi": [
+                    696,
+                    546,
+                    166,
+                    91
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_FinishBuy": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1772,
+                "y": 690
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "完成商店购物"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "确认购买",
+        "next": [
+            "BL_ReturnHome"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "限购",
+                "roi": [
+                    203,
+                    418,
+                    170,
+                    63
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_GetIn": {
+        "$__mpe_code": {
+            "position": {
+                "x": 812,
+                "y": 359
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入商店",
+        "recognition": {
+            "param": {
+                "expected": "商店",
+                "roi": [
+                    83,
+                    614,
+                    63,
+                    44
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_GetInPartnerCultivation": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1452,
+                "y": 689
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入伙伴育成",
+        "next": [
+            "DS_FinishBuy",
+            "[JumpBack]DS_BuyOneAction0",
+            "[JumpBack]DS_BuyOneAction1",
+            "[JumpBack]DS_BuyOne"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "伙伴育成",
+                "roi": [
+                    194,
+                    609,
+                    596,
+                    58
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_GetInTimeLimited": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1132,
+                "y": 696
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入期间限定",
+        "next": [
+            "DS_GetInPartnerCultivation"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "期间限定",
+                "roi": [
+                    15,
+                    92,
+                    89,
+                    327
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_Interval_0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DS_Interval_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    }
 }

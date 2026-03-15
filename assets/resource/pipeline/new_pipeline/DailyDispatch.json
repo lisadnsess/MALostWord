@@ -1,848 +1,17 @@
 {
     "$__mpe_config_DailyDispatch1": {
         "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\DailyDispatch.json",
+            "filename": "DailyDispatch1",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545267923,
             "prefix": "",
             "savedViewport": {
-                "x": 181,
-                "y": -1092,
-                "zoom": 1
+                "x": -620,
+                "y": -1234,
+                "zoom": 0.87
             },
-            "filename": "DailyDispatch1",
             "version": "v1.2.3"
-        }
-    },
-    "DD_Interval_0": {
-        "doc": "#########################################################################################",
-        "$__mpe_code": {
-            "position": {
-                "x": 12,
-                "y": 12
-            }
-        }
-    },
-    "DD_Action": {
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "UF_ActionLogger",
-                "custom_action_param": {
-                    "info": [
-                        "##########_##########_##########",
-                        "开始派遣"
-                    ]
-                }
-            }
-        },
-        "doc": "开始派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 12,
-                "y": 1259
-            }
-        },
-        "next": [
-            "DD_FinishDispatch",
-            "[JumpBack]DD_GetInDispatch"
-        ]
-    },
-    "DD_GetInDispatch": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": [
-                    "DD_image/派遣1.png",
-                    "DD_image/派遣2.png"
-                ],
-                "roi": [
-                    1016,
-                    360,
-                    122,
-                    136
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "post_wait_freezes": 500,
-        "doc": "进入派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 332,
-                "y": 1529
-            }
-        }
-    },
-    "DD_Interval_1": {
-        "doc": "#########################################################################################",
-        "$__mpe_code": {
-            "position": {
-                "x": 252,
-                "y": 12
-            }
-        }
-    },
-    "DD_FinishDispatch": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    49,
-                    575,
-                    152,
-                    76
-                ],
-                "expected": [
-                    "\\d"
-                ]
-            }
-        },
-        "doc": "收获已完成派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 332,
-                "y": 1220
-            }
-        },
-        "next": [
-            "DD_FinishDispatchFlag",
-            "[JumpBack]DD_FinishDispatchOperate_0",
-            "[JumpBack]DD_FinishDispatchOperate_1",
-            "[JumpBack]DD_FinishDispatchOperate_2",
-            "[JumpBack]DD_FinishDispatchOperate_3"
-        ]
-    },
-    "DD_FinishDispatchFlag": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    49,
-                    575,
-                    152,
-                    76
-                ],
-                "expected": [
-                    "0"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    30,
-                    240,
-                    65,
-                    40
-                ]
-            }
-        },
-        "doc": "完成收获已完成派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 652,
-                "y": 1575
-            }
-        },
-        "next": [
-            "DD_FirstDispatchClick"
-        ]
-    },
-    "DD_FirstDispatchClick": {
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    458,
-                    71,
-                    69,
-                    45
-                ]
-            }
-        },
-        "doc": "选择临时派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 1017,
-                "y": 1611
-            }
-        },
-        "next": [
-            "DDA_ChooseNew"
-        ]
-    },
-    "DD_FinishDispatchOperate_0": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    75,
-                    661,
-                    104,
-                    29
-                ],
-                "expected": [
-                    "完成"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "收获已完成派遣操作_0",
-        "$__mpe_code": {
-            "position": {
-                "x": 652,
-                "y": 600
-            }
-        }
-    },
-    "DD_FinishDispatchOperate_1": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    603,
-                    628,
-                    79,
-                    43
-                ],
-                "expected": [
-                    "关闭"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "收获已完成派遣操作_1",
-        "$__mpe_code": {
-            "position": {
-                "x": 652,
-                "y": 925
-            }
-        }
-    },
-    "DD_FinishDispatchOperate_2": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    112,
-                    644,
-                    125,
-                    38
-                ],
-                "expected": [
-                    "确认道具"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "收获已完成派遣操作_2",
-        "$__mpe_code": {
-            "position": {
-                "x": 652,
-                "y": 1250
-            }
-        }
-    },
-    "DD_FinishDispatchOperate_3": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    563,
-                    549,
-                    151,
-                    64
-                ],
-                "expected": [
-                    "点击画面"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "收获已完成派遣操作_3",
-        "$__mpe_code": {
-            "position": {
-                "x": 652,
-                "y": 275
-            }
-        }
-    },
-    "DD_Interval_2": {
-        "doc": "#########################################################################################",
-        "$__mpe_code": {
-            "position": {
-                "x": 492,
-                "y": 12
-            }
-        }
-    },
-    "DDA_ChooseNew": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_CountClean",
-                "custom_recognition_param": {
-                    "clean_node_name": "DDA_ChooseNewCount",
-                    "target_number": 3
-                }
-            }
-        },
-        "doc": "开始新派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 1292,
-                "y": 1599
-            }
-        },
-        "next": [
-            "DDA_ChooseNewCount",
-            "[JumpBack]DD_OneDispatch"
-        ]
-    },
-    "DDA_ChooseNewCount": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_Count",
-                "custom_recognition_param": {
-                    "current_number": 0,
-                    "target_number": 3
-                }
-            }
-        },
-        "doc": "三次派遣后返回true",
-        "$__mpe_code": {
-            "position": {
-                "x": 1612,
-                "y": 1553
-            }
-        },
-        "next": [
-            "DD_FinishLogger"
-        ]
-    },
-    "DD_FinishLogger": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_Logger",
-                "custom_recognition_param": {
-                    "info": "派遣已完成"
-                }
-            }
-        },
-        "doc": "派遣已完成",
-        "$__mpe_code": {
-            "position": {
-                "x": 1932,
-                "y": 1560
-            }
-        },
-        "next": [
-            "BL_ActionStart"
-        ]
-    },
-    "DD_ChooseNewNext": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_Logger",
-                "custom_recognition_param": {
-                    "debug": "开始单次选取"
-                }
-            }
-        },
-        "doc": "开始单次执行任务",
-        "$__mpe_code": {
-            "position": {
-                "x": 1577,
-                "y": 1879
-            }
-        },
-        "next": [
-            "DD_StartNewDispatch"
-        ]
-    },
-    "DD_Interval_3": {
-        "doc": "#########################################################################################",
-        "$__mpe_code": {
-            "position": {
-                "x": 732,
-                "y": 12
-            }
-        }
-    },
-    "DD_StartNewDispatch": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_Logger",
-                "custom_recognition_param": {
-                    "debug": "DD_StartNewDispatch"
-                }
-            }
-        },
-        "doc": "开始找寻新派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 1826,
-                "y": 1880
-            }
-        }
-    },
-    "DD_FindFinishDispatch": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1004,
-                    499,
-                    154,
-                    44
-                ],
-                "expected": [
-                    "中止派遣"
-                ]
-            }
-        },
-        "doc": "存在已有派遣，派遣次数减1",
-        "$__mpe_code": {
-            "position": {
-                "x": 1092,
-                "y": 2747
-            }
-        },
-        "next": [
-            "DD_NextOne"
-        ]
-    },
-    "DD_MaxGetDispatch": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    501,
-                    332,
-                    278,
-                    51
-                ],
-                "expected": [
-                    "不能进行更多的派遣了"
-                ]
-            }
-        },
-        "doc": "派遣达上限",
-        "$__mpe_code": {
-            "position": {
-                "x": 1452,
-                "y": 12
-            }
-        }
-    },
-    "DD_NoTemporary": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    605,
-                    309,
-                    250,
-                    56
-                ],
-                "expected": [
-                    "未发生临时派遣",
-                    "未发生"
-                ]
-            }
-        },
-        "doc": "无临时派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 831,
-                "y": 2088
-            }
-        }
-    },
-    "DD_FindDispatchTarget1": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    549,
-                    65,
-                    166,
-                    61
-                ],
-                "expected": [
-                    "封结晶",
-                    "神结晶"
-                ]
-            }
-        },
-        "doc": "找到目标派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 1091,
-                "y": 3445
-            }
-        }
-    },
-    "DD_LastOne": {
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "template": [
-                    "DD_image/最后一个.png"
-                ],
-                "roi": [
-                    950,
-                    587,
-                    247,
-                    128
-                ]
-            }
-        },
-        "doc": "最后一个",
-        "$__mpe_code": {
-            "position": {
-                "x": 1090,
-                "y": 2073
-            }
-        }
-    },
-    "DD_NextOne": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    453,
-                    596,
-                    116,
-                    44
-                ],
-                "expected": [
-                    "等级"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "pre_wait_freezes": {
-            "time": 500,
-            "target": [
-                255,
-                251,
-                945,
-                317
-            ]
-        },
-        "post_wait_freezes": {
-            "time": 500,
-            "target": [
-                255,
-                251,
-                945,
-                317
-            ]
-        },
-        "doc": "下一个",
-        "$__mpe_code": {
-            "position": {
-                "x": 1580,
-                "y": 2627
-            }
-        },
-        "next": [
-            "DD_OneDispatchFinish"
-        ]
-    },
-    "DDA_ChangeGetDispatch": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_ChangePipeline",
-                "custom_recognition_param": {
-                    "target_pipeline": "DD_GetDispatch",
-                    "change_str": {
-                        "expected": [
-                            "封结晶",
-                            "指南书",
-                            "华片",
-                            "灵点",
-                            "神结晶"
-                        ]
-                    }
-                }
-            }
-        },
-        "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "UF_ActionLogger",
-                "custom_action_param": {
-                    "debug": "##########_##########_##########"
-                }
-            }
-        },
-        "doc": "运行中修改参数",
-        "$__mpe_code": {
-            "position": {
-                "x": 1329,
-                "y": 2295
-            }
-        },
-        "next": [
-            "DDA_ChangeGetDispatchLogger"
-        ]
-    },
-    "DDA_ChangeGetDispatchLogger": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_Logger",
-                "custom_recognition_param": {
-                    "debug": "修改目标"
-                }
-            }
-        },
-        "doc": "打印日志",
-        "$__mpe_code": {
-            "position": {
-                "x": 1587,
-                "y": 2319
-            }
-        },
-        "next": [
-            "DD_GetInDaily"
-        ]
-    },
-    "DD_GetInDaily": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    32,
-                    116,
-                    64,
-                    45
-                ],
-                "expected": [
-                    "每日"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "进入每日",
-        "$__mpe_code": {
-            "position": {
-                "x": 1884,
-                "y": 2341
-            }
-        },
-        "next": [
-            "DD_ChooseFirstClick"
-        ]
-    },
-    "DD_ChooseFirstClick": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    458,
-                    71,
-                    69,
-                    45
-                ],
-                "expected": [
-                    "等级"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {}
-        },
-        "doc": "选择第一个",
-        "$__mpe_code": {
-            "position": {
-                "x": 2173,
-                "y": 2328
-            }
-        }
-    },
-    "DD_GetInTemporary": {
-        "action": {
-            "type": "DoNothing",
-            "param": {
-                "target": [
-                    30,
-                    240,
-                    65,
-                    40
-                ]
-            }
-        },
-        "doc": "进入临时",
-        "$__mpe_code": {
-            "position": {
-                "x": 1212,
-                "y": 12
-            }
-        }
-    },
-    "DD_Interval_4": {
-        "doc": "#########################################################################################",
-        "$__mpe_code": {
-            "position": {
-                "x": 972,
-                "y": 12
-            }
-        }
-    },
-    "DDA_ChooseRole": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_RecognitionCustom",
-                "custom_recognition_param": {
-                    "recognition_action": {
-                        "recognition": "OCR",
-                        "expected": "推荐编成",
-                        "roi": [
-                            298,
-                            507,
-                            118,
-                            32
-                        ]
-                    },
-                    "recognition_flag": {
-                        "recognition": "TemplateMatch",
-                        "template": [
-                            "DD_image/添加角色.png"
-                        ],
-                        "roi": [
-                            1043,
-                            348,
-                            113,
-                            117
-                        ],
-                        "inverse": true
-                    },
-                    "recognition_operate": {
-                        "post_delay": 1000,
-                        "action": "Click"
-                    }
-                }
-            }
-        },
-        "doc": "选择派遣角色",
-        "$__mpe_code": {
-            "position": {
-                "x": 2667,
-                "y": 2764
-            }
-        },
-        "next": [
-            "DDA_ChooseRoleFinish"
-        ]
-    },
-    "DDA_ChooseRoleFinish": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_RecognitionCustom",
-                "custom_recognition_param": {
-                    "recognition_action": {
-                        "recognition": "OCR",
-                        "roi": [
-                            1010,
-                            493,
-                            150,
-                            54
-                        ],
-                        "expected": [
-                            "决定"
-                        ]
-                    },
-                    "recognition_flag": {
-                        "expected": [
-                            "中止派遣"
-                        ],
-                        "inverse": false
-                    },
-                    "recognition_operate": {
-                        "post_delay": 1000,
-                        "action": "Click"
-                    }
-                }
-            }
-        },
-        "post_wait_freezes": 500,
-        "doc": "确定派遣角色",
-        "$__mpe_code": {
-            "position": {
-                "x": 3099,
-                "y": 2749
-            }
-        }
-    },
-    "DDA_ChooseRoleClose": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_RecognitionCustom",
-                "custom_recognition_param": {
-                    "recognition_action": {
-                        "recognition": "OCR",
-                        "roi": [
-                            1010,
-                            493,
-                            150,
-                            54
-                        ],
-                        "expected": [
-                            "中止派遣"
-                        ]
-                    },
-                    "recognition_flag": {},
-                    "recognition_operate": {
-                        "post_delay": 1000,
-                        "target": [
-                            722,
-                            134,
-                            89,
-                            88
-                        ],
-                        "action": "Click"
-                    }
-                }
-            }
-        },
-        "doc": "关闭单个派遣角色",
-        "$__mpe_code": {
-            "position": {
-                "x": 1692,
-                "y": 12
-            }
         }
     },
     "$__mpe_external_BL_ActionStart_DailyDispatch1": {
@@ -853,86 +22,275 @@
             }
         }
     },
-    "DD_OneDispatch": {
-        "recognition": {
-            "type": "Custom",
-            "param": {
-                "custom_recognition": "UF_Logger",
-                "custom_recognition_param": {
-                    "debug": "开始单次派遣"
-                }
-            }
-        },
-        "doc": "开始单次派遣",
+    "DDA_ChangeGetDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 338,
-                "y": 2364
-            }
-        },
-        "next": [
-            "[JumpBack]新建节点8",
-            "DD_FindFinishDispatch",
-            "DD_FindDispatch",
-            "[JumpBack]DD_NextOne"
-        ]
-    },
-    "DD_FindDispatch": {
-        "recognition": {
-            "type": "And",
-            "param": {
-                "all_of": [
-                    "DD_FindDispatchTarget2",
-                    "DD_FindDispatchTarget1"
-                ]
-            }
-        },
-        "doc": "找到符合要求派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 566,
-                "y": 2699
-            }
-        },
-        "next": [
-            "DD_FindFinishDispatch",
-            "[JumpBack]DD_FindDispatchTarget2",
-            "[JumpBack]DD_FindDispatchTarget1"
-        ]
-    },
-    "DD_FindDispatchTarget2": {
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "expected": [
-                    "推荐编成"
-                ],
-                "roi": [
-                    0,
-                    0,
-                    0,
-                    0
-                ]
+                "x": 1329,
+                "y": 2295
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": "##########_##########_##########"
+                }
+            },
+            "type": "Custom"
         },
-        "doc": "找到推荐编成按钮",
+        "doc": "运行中修改参数",
+        "next": [
+            "DDA_ChangeGetDispatchLogger"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_ChangePipeline",
+                "custom_recognition_param": {
+                    "change_str": {
+                        "expected": [
+                            "封结晶",
+                            "指南书",
+                            "华片",
+                            "灵点",
+                            "神结晶"
+                        ]
+                    },
+                    "target_pipeline": "DD_GetDispatch"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DDA_ChangeGetDispatchLogger": {
         "$__mpe_code": {
             "position": {
-                "x": 1117,
-                "y": 3168
+                "x": 1587,
+                "y": 2319
             }
         },
+        "doc": "打印日志",
         "next": [
-            "DD_ChooseDispatch"
+            "DD_GetInDaily"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Logger",
+                "custom_recognition_param": {
+                    "debug": "修改目标"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DDA_ChooseNew": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 1599
+            }
+        },
+        "doc": "开始新派遣",
+        "next": [
+            "DDA_ChooseNewCount",
+            "[JumpBack]DD_OneDispatch"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_CountClean",
+                "custom_recognition_param": {
+                    "clean_node_name": "DDA_ChooseNewCount",
+                    "target_number": 3
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DDA_ChooseNewCount": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 1553
+            }
+        },
+        "doc": "三次派遣后返回true",
+        "next": [
+            "DD_FinishLogger"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Count",
+                "custom_recognition_param": {
+                    "current_number": 0,
+                    "target_number": 3
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DDA_ChooseRole": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2667,
+                "y": 2764
+            }
+        },
+        "doc": "选择派遣角色",
+        "next": [
+            "DDA_ChooseRoleFinish"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RecognitionCustom",
+                "custom_recognition_param": {
+                    "recognition_action": {
+                        "expected": "推荐编成",
+                        "recognition": "OCR",
+                        "roi": [
+                            298,
+                            507,
+                            118,
+                            32
+                        ]
+                    },
+                    "recognition_flag": {
+                        "inverse": true,
+                        "recognition": "TemplateMatch",
+                        "roi": [
+                            1043,
+                            348,
+                            113,
+                            117
+                        ],
+                        "template": [
+                            "DD_image/添加角色.png"
+                        ]
+                    },
+                    "recognition_operate": {
+                        "action": "Click",
+                        "post_delay": 1000
+                    }
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DDA_ChooseRoleClose": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1692,
+                "y": 12
+            }
+        },
+        "doc": "关闭单个派遣角色",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RecognitionCustom",
+                "custom_recognition_param": {
+                    "recognition_action": {
+                        "expected": [
+                            "中止派遣"
+                        ],
+                        "recognition": "OCR",
+                        "roi": [
+                            1010,
+                            493,
+                            150,
+                            54
+                        ]
+                    },
+                    "recognition_flag": {},
+                    "recognition_operate": {
+                        "action": "Click",
+                        "post_delay": 1000,
+                        "target": [
+                            722,
+                            134,
+                            89,
+                            88
+                        ]
+                    }
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DDA_ChooseRoleFinish": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3099,
+                "y": 2749
+            }
+        },
+        "doc": "确定派遣角色",
+        "post_wait_freezes": 500,
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RecognitionCustom",
+                "custom_recognition_param": {
+                    "recognition_action": {
+                        "expected": [
+                            "决定"
+                        ],
+                        "recognition": "OCR",
+                        "roi": [
+                            1010,
+                            493,
+                            150,
+                            54
+                        ]
+                    },
+                    "recognition_flag": {
+                        "expected": [
+                            "中止派遣"
+                        ],
+                        "inverse": false
+                    },
+                    "recognition_operate": {
+                        "action": "Click",
+                        "post_delay": 1000
+                    }
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DD_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 1259
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始派遣"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "开始派遣",
+        "next": [
+            "DD_FinishDispatch",
+            "[JumpBack]DD_GetInDispatch"
         ]
     },
     "DD_ChooseDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1420,
+                "y": 3198
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
         "recognition": {
-            "type": "OCR",
             "param": {
                 "expected": [
                     "决定"
@@ -943,29 +301,683 @@
                     0,
                     0
                 ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_ChooseFirstClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2173,
+                "y": 2328
             }
         },
         "action": {
-            "type": "Click",
-            "param": {}
+            "param": {},
+            "type": "Click"
         },
+        "doc": "选择第一个",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "等级"
+                ],
+                "roi": [
+                    458,
+                    71,
+                    69,
+                    45
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_ChooseNewNext": {
         "$__mpe_code": {
             "position": {
-                "x": 1420,
-                "y": 3198
+                "x": 1577,
+                "y": 1879
             }
+        },
+        "doc": "开始单次执行任务",
+        "next": [
+            "DD_StartNewDispatch"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Logger",
+                "custom_recognition_param": {
+                    "debug": "开始单次选取"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DD_FindDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 566,
+                "y": 2699
+            }
+        },
+        "doc": "找到符合要求派遣",
+        "next": [
+            "DD_FindFinishDispatch",
+            "[JumpBack]DD_FindDispatchTarget2",
+            "[JumpBack]DD_FindDispatchTarget1"
+        ],
+        "recognition": {
+            "param": {
+                "all_of": [
+                    "DD_FindDispatchTarget2",
+                    "DD_FindDispatchTarget1"
+                ]
+            },
+            "type": "And"
+        }
+    },
+    "DD_FindDispatchTarget1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1091,
+                "y": 3445
+            }
+        },
+        "doc": "找到目标派遣",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "封结晶",
+                    "神结晶"
+                ],
+                "roi": [
+                    549,
+                    65,
+                    166,
+                    61
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FindDispatchTarget2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1117,
+                "y": 3168
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "找到推荐编成按钮",
+        "next": [
+            "DD_ChooseDispatch"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "推荐编成"
+                ],
+                "roi": [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FindFinishDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1092,
+                "y": 2747
+            }
+        },
+        "doc": "存在已有派遣，派遣次数减1",
+        "next": [
+            "DD_NextOne"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "中止派遣"
+                ],
+                "roi": [
+                    1004,
+                    499,
+                    154,
+                    44
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FinishDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 1220
+            }
+        },
+        "doc": "收获已完成派遣",
+        "next": [
+            "DD_FinishDispatchFlag",
+            "[JumpBack]DD_FinishDispatchOperate_0",
+            "[JumpBack]DD_FinishDispatchOperate_1",
+            "[JumpBack]DD_FinishDispatchOperate_2",
+            "[JumpBack]DD_FinishDispatchOperate_3"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "\\d"
+                ],
+                "roi": [
+                    49,
+                    575,
+                    152,
+                    76
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FinishDispatchFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1575
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    30,
+                    240,
+                    65,
+                    40
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "完成收获已完成派遣",
+        "next": [
+            "DD_FirstDispatchClick"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "0"
+                ],
+                "roi": [
+                    49,
+                    575,
+                    152,
+                    76
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FinishDispatchOperate_0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 600
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "收获已完成派遣操作_0",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "完成"
+                ],
+                "roi": [
+                    75,
+                    661,
+                    104,
+                    29
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FinishDispatchOperate_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 925
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "收获已完成派遣操作_1",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "关闭"
+                ],
+                "roi": [
+                    603,
+                    628,
+                    79,
+                    43
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FinishDispatchOperate_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1250
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "收获已完成派遣操作_2",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确认道具"
+                ],
+                "roi": [
+                    112,
+                    644,
+                    125,
+                    38
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FinishDispatchOperate_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 275
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "收获已完成派遣操作_3",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "点击画面"
+                ],
+                "roi": [
+                    563,
+                    549,
+                    151,
+                    64
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_FinishLogger": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1560
+            }
+        },
+        "doc": "派遣已完成",
+        "next": [
+            "BL_ActionStart"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Logger",
+                "custom_recognition_param": {
+                    "info": "派遣已完成"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DD_FirstDispatchClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1017,
+                "y": 1611
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    458,
+                    71,
+                    69,
+                    45
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "选择临时派遣",
+        "next": [
+            "DDA_ChooseNew"
+        ]
+    },
+    "DD_GetInDaily": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1884,
+                "y": 2341
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入每日",
+        "next": [
+            "DD_ChooseFirstClick"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "每日"
+                ],
+                "roi": [
+                    32,
+                    116,
+                    64,
+                    45
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_GetInDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 1529
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入派遣",
+        "post_wait_freezes": 500,
+        "recognition": {
+            "param": {
+                "roi": [
+                    1016,
+                    360,
+                    122,
+                    136
+                ],
+                "template": [
+                    "DD_image/派遣1.png",
+                    "DD_image/派遣2.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "DD_GetInTemporary": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1212,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    30,
+                    240,
+                    65,
+                    40
+                ]
+            },
+            "type": "DoNothing"
+        },
+        "doc": "进入临时"
+    },
+    "DD_Interval_0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DD_Interval_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DD_Interval_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DD_Interval_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 732,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DD_Interval_4": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "DD_LastOne": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1090,
+                "y": 2073
+            }
+        },
+        "doc": "最后一个",
+        "recognition": {
+            "param": {
+                "roi": [
+                    950,
+                    587,
+                    247,
+                    128
+                ],
+                "template": [
+                    "DD_image/最后一个.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "DD_MaxGetDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1452,
+                "y": 12
+            }
+        },
+        "doc": "派遣达上限",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "不能进行更多的派遣了"
+                ],
+                "roi": [
+                    501,
+                    332,
+                    278,
+                    51
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_NextOne": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1580,
+                "y": 2627
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "下一个",
+        "next": [
+            "DD_OneDispatchFinish"
+        ],
+        "post_wait_freezes": {
+            "target": [
+                255,
+                251,
+                945,
+                317
+            ],
+            "time": 500
+        },
+        "pre_wait_freezes": {
+            "target": [
+                255,
+                251,
+                945,
+                317
+            ],
+            "time": 500
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "等级"
+                ],
+                "roi": [
+                    453,
+                    596,
+                    116,
+                    44
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_NoTemporary": {
+        "$__mpe_code": {
+            "position": {
+                "x": 831,
+                "y": 2088
+            }
+        },
+        "doc": "无临时派遣",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "未发生临时派遣",
+                    "未发生"
+                ],
+                "roi": [
+                    605,
+                    309,
+                    250,
+                    56
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DD_OneDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 338,
+                "y": 2364
+            }
+        },
+        "doc": "开始单次派遣",
+        "next": [
+            "[JumpBack]新建节点8",
+            "DD_FindFinishDispatch",
+            "DD_FindDispatch",
+            "[JumpBack]DD_NextOne"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Logger",
+                "custom_recognition_param": {
+                    "debug": "开始单次派遣"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DD_OneDispatchFinish": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1976,
+                "y": 2663
+            }
+        },
+        "doc": "完成单次派遣",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Logger",
+                "custom_recognition_param": {
+                    "debug": "完成单次派遣"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "DD_StartNewDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1826,
+                "y": 1880
+            }
+        },
+        "doc": "开始找寻新派遣",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Logger",
+                "custom_recognition_param": {
+                    "debug": "DD_StartNewDispatch"
+                }
+            },
+            "type": "Custom"
         }
     },
     "新建节点8": {
-        "recognition": {
-            "type": "Or",
-            "param": {
-                "any_of": [
-                    "DD_NoTemporary",
-                    "DD_LastOne"
-                ]
-            }
-        },
         "$__mpe_code": {
             "position": {
                 "x": 986,
@@ -974,24 +986,15 @@
         },
         "next": [
             "DDA_ChangeGetDispatch"
-        ]
-    },
-    "DD_OneDispatchFinish": {
+        ],
         "recognition": {
-            "type": "Custom",
             "param": {
-                "custom_recognition": "UF_Logger",
-                "custom_recognition_param": {
-                    "debug": "完成单次派遣"
-                }
-            }
-        },
-        "doc": "完成单次派遣",
-        "$__mpe_code": {
-            "position": {
-                "x": 1976,
-                "y": 2663
-            }
+                "any_of": [
+                    "DD_NoTemporary",
+                    "DD_LastOne"
+                ]
+            },
+            "type": "Or"
         }
     }
 }

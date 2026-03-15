@@ -1,165 +1,494 @@
 {
-  "BE_Interval_0": {"doc": "#########################################################################################"},
-  "BE_Action": {
-    "doc": "开始交换所购物",
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {
-      "info": [
-        "##########_##########_##########",
-        "开始交换所购物"
-      ]
+    "$__mpe_config_新建Pipeline7": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\BuyExchange.json",
+            "filename": "新建Pipeline7",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545209918,
+            "prefix": "",
+            "savedViewport": {
+                "x": 240,
+                "y": 6,
+                "zoom": 0.38
+            },
+            "version": "v1.2.3"
+        }
     },
-    "next": ["BE_ActionFlag"],
-    "interrupt": ["BE_GetIn","BL_ReturnHome"]
-  },
-  "BE_GetIn": {
-    "doc": "进入交换所",
-    "recognition": "OCR",
-    "expected" : "交换所",
-    "roi" : [108,283,104,51],
-    "action": "Click"
-  },
-  "BE_ActionFlag": {
-    "doc": "确认进入交换所",
-    "recognition": "OCR",
-    "expected" : "交换所",
-    "roi" : [70,3,91,42],
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"debug": "进入交换所"},
-    "next": ["BE_GetInSplitToken"]
-  },
-
-
-  "BE_GetInSplitToken": {
-    "doc": "进入割符界面",
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"info": "进入割符交换"},
-    "next": ["BE_SplitToken"],
-    "interrupt":[
-      "BE_SplitTokenClick",
-      "BE_Swipe"
-    ]
-  },
-  "BE_Swipe" :
-  {
-    "doc": "向右滑行",
-    "action": "Swipe",
-    "begin" : [300,640,1,1],
-    "end" : [150,640,1,1],
-    "duration" : 1000
-  },
-  "BE_SplitTokenClick": {
-    "doc": "进入割符界面",
-    "recognition": "OCR",
-    "expected" : "割符交换",
-    "roi" : [427,613,514,65],
-    "action": "Click"
-  },
-  "BE_SplitToken": {
-    "doc": "进入割符界面",
-
-    "recognition": "TemplateMatch",
-    "template": "BE_image/割符.png",
-    "roi" : [719,49,43,40],
-
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"debug": "成功进入割符界面"},
-
-    "next": ["BE_SplitTokenStart"]
-  },
-  "BE_SplitTokenStart": {
-    "doc": "购买并切换下一个",
-    "recognition": "Custom",
-    "custom_recognition": "UF_RunPipeline",
-    "custom_recognition_param": {
-      "pipeline_name": ["BE_BuyAction"]
+    "$__mpe_external_BL_ReturnHome_新建Pipeline7": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2892,
+                "y": 1459
+            }
+        }
     },
-    "next": ["BE_GetInInsertCoins"]
-  },
-
-  "BE_GetInInsertCoins": {
-    "doc": "进入赛钱界面",
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"info": "进入赛钱交换"},
-    "next": ["BE_InsertCoins"],
-    "interrupt":[
-      "BE_InsertCoinsClick",
-      "BE_Swipe"
-    ]
-  },
-  "BE_InsertCoinsClick": {
-    "doc": "进入割符界面",
-    "recognition": "OCR",
-    "expected" : "赛钱交换",
-    "roi" : [427,613,514,65],
-    "action": "Click"
-  },
-  "BE_InsertCoins": {
-    "doc": "进入赛钱界面",
-
-    "recognition": "TemplateMatch",
-    "template": "BE_image/赛钱.png",
-    "roi" : [719,49,43,40],
-
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"debug": "成功进入赛钱界面"},
-    "next": ["BE_InsertCoinsStart"]
-  },
-  "BE_InsertCoinsStart": {
-    "doc": "购买并切换下一个",
-    "recognition": "Custom",
-    "custom_recognition": "UF_RunPipeline",
-    "custom_recognition_param": {
-      "pipeline_name": ["BE_BuyAction"]
+    "BE_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 1674
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始交换所购物"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "开始交换所购物",
+        "next": [
+            "BE_ActionFlag",
+            "[JumpBack]BE_GetIn",
+            "[JumpBack]BL_ReturnHome"
+        ]
     },
-    "next": ["BE_FinishAll"]
-  },
-
-  "BE_FinishAll": {
-    "doc": "完成商店购买",
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"info": ["完成商店购买"]},
-    "next": ["BL_ReturnHome"]
-  },
-
-  "BE_Interval_1": {"doc": "#########################################################################################"},
-  "BE_BuyAction": {
-    "doc": "开始购买材料",
-    "next": ["BE_BuyActionFinish"],
-    "interrupt": [
-      "BE_BuyAction1",
-      "BE_BuyAction0"
-    ]
-  },
-  "BE_BuyAction0": {
-    "doc": "开始购买材料",
-    "recognition": "OCR",
-    "expected" : ["人之替身","封结晶"],
-    "roi" : [78,100,142,56],
-    "action": "Click",
-    "post_delay": 500
-  },
-  "BE_BuyAction1": {
-    "doc": "开始购买材料",
-    "recognition": "OCR",
-    "expected" : ["交换确认"],
-    "roi" : [576,83,125,46],
-    "action": "Click",
-    "target":[739,579,85,38],
-    "post_delay": 500
-  },
-  "BE_BuyActionFinish": {
-    "doc": "开始购买材料",
-    "recognition": "OCR",
-    "expected" : ["厚爱","承","蒙","绘卷祝词","指南书","卷轴"],
-    "roi" : [77,112,157,212],
-    "post_delay": 500
-  }
+    "BE_ActionFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 1643
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": "进入交换所"
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "确认进入交换所",
+        "next": [
+            "BE_GetInSplitToken"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "交换所",
+                "roi": [
+                    70,
+                    3,
+                    91,
+                    42
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "BE_BuyAction": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 416
+            }
+        },
+        "doc": "开始购买材料",
+        "next": [
+            "BE_BuyActionFinish",
+            "[JumpBack]BE_BuyAction1",
+            "[JumpBack]BE_BuyAction0"
+        ]
+    },
+    "BE_BuyAction0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 812,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "开始购买材料",
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "人之替身",
+                    "封结晶"
+                ],
+                "roi": [
+                    78,
+                    100,
+                    142,
+                    56
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "BE_BuyAction1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 812,
+                "y": 351
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    739,
+                    579,
+                    85,
+                    38
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "开始购买材料",
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "交换确认"
+                ],
+                "roi": [
+                    576,
+                    83,
+                    125,
+                    46
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "BE_BuyActionFinish": {
+        "$__mpe_code": {
+            "position": {
+                "x": 812,
+                "y": 722
+            }
+        },
+        "doc": "开始购买材料",
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "厚爱",
+                    "承",
+                    "蒙",
+                    "绘卷祝词",
+                    "指南书",
+                    "卷轴"
+                ],
+                "roi": [
+                    77,
+                    112,
+                    157,
+                    212
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "BE_FinishAll": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2572,
+                "y": 1366
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "完成商店购买"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "完成商店购买",
+        "next": [
+            "BL_ReturnHome"
+        ]
+    },
+    "BE_GetIn": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 1336
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入交换所",
+        "recognition": {
+            "param": {
+                "expected": "交换所",
+                "roi": [
+                    108,
+                    283,
+                    104,
+                    51
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "BE_GetInInsertCoins": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 1366
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": "进入赛钱交换"
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "进入赛钱界面",
+        "next": [
+            "BE_InsertCoins",
+            "[JumpBack]BE_InsertCoinsClick",
+            "[JumpBack]BE_Swipe"
+        ]
+    },
+    "BE_GetInSplitToken": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1310
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": "进入割符交换"
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "进入割符界面",
+        "next": [
+            "BE_SplitToken",
+            "[JumpBack]BE_SplitTokenClick",
+            "[JumpBack]BE_Swipe"
+        ]
+    },
+    "BE_InsertCoins": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1334
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": "成功进入赛钱界面"
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "进入赛钱界面",
+        "next": [
+            "BE_InsertCoinsStart"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    719,
+                    49,
+                    43,
+                    40
+                ],
+                "template": "BE_image/赛钱.png"
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "BE_InsertCoinsClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1704
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入割符界面",
+        "recognition": {
+            "param": {
+                "expected": "赛钱交换",
+                "roi": [
+                    427,
+                    613,
+                    514,
+                    65
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "BE_InsertCoinsStart": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 1366
+            }
+        },
+        "doc": "购买并切换下一个",
+        "next": [
+            "BE_FinishAll"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RunPipeline",
+                "custom_recognition_param": {
+                    "pipeline_name": [
+                        "BE_BuyAction"
+                    ]
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "BE_Interval_0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "BE_Interval_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "BE_SplitToken": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1334
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": "成功进入割符界面"
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "进入割符界面",
+        "next": [
+            "BE_SplitTokenStart"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    719,
+                    49,
+                    43,
+                    40
+                ],
+                "template": "BE_image/割符.png"
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "BE_SplitTokenClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1086
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入割符界面",
+        "recognition": {
+            "param": {
+                "expected": "割符交换",
+                "roi": [
+                    427,
+                    613,
+                    514,
+                    65
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "BE_SplitTokenStart": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 1366
+            }
+        },
+        "doc": "购买并切换下一个",
+        "next": [
+            "BE_GetInInsertCoins"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RunPipeline",
+                "custom_recognition_param": {
+                    "pipeline_name": [
+                        "BE_BuyAction"
+                    ]
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "BE_Swipe": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 998
+            }
+        },
+        "action": {
+            "param": {
+                "begin": [
+                    300,
+                    640,
+                    1,
+                    1
+                ],
+                "duration": 1000,
+                "end": [
+                    [
+                        150,
+                        640,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "doc": "向右滑行"
+    }
 }

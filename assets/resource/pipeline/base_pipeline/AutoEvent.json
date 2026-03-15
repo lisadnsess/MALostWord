@@ -1,290 +1,944 @@
 {
-  "AE_Action": {
-    "doc": "开始自动活动推图",
-    "recognition": "Custom",
-    "custom_recognition": "AE_Action",
-    "custom_recognition_param": {
-      "position": ["普通","困难","月狂"]
+    "$__mpe_config_新建Pipeline6": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\AutoEvent.json",
+            "filename": "新建Pipeline6",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545203245,
+            "prefix": "",
+            "savedViewport": {
+                "x": 116,
+                "y": -57,
+                "zoom": 0.38
+            },
+            "version": "v1.2.3"
         }
-  },
-
-  "AE_CurrentDifficulty": {},
-
-  "AE_ActionNormal": {
-    "doc": "开始普通活动速通",
-    "recognition": "OCR",
-    "roi" : [441,140,92,44],
-    "expected" : ["活动","活","动"],
-    "next": ["AE_ActionNormalFlag"],
-    "interrupt": ["AE_ActionNormalOne"]
-  },
-  "AE_ActionNormalFlag": {
-    "doc": "完成普通活动速通",
-    "recognition": "TemplateMatch",
-    "template": "AE_image/已完成.png",
-    "roi" : [610,103,104,53],
-    "threshold" : 0.85
-  },
-  "AE_ActionNormalOne":{
-    "doc": "选择普通最新关卡",
-    "recognition": "TemplateMatch",
-    "template": "AE_image/新开启.png",
-    "next": ["AE_NormalOneSkip","AE_NormalOneFight"]
-  },
-  "AE_Interval_1": {"doc": "#########################################################################################"},
-  "AE_NormalOneSkip": {
-    "doc": "纯剧情关卡",
-    "recognition": "TemplateMatch",
-    "template": "AE_image/无战斗.png",
-    "roi" : [1029,106,162,52],
-    "next": ["AE_NormalOneSkipClick"]
-  },
-  "AE_NormalOneSkipClick": {
-    "doc": "进入剧情关卡",
-    "recognition": "TemplateMatch",
-    "template": "AE_image/无战斗.png",
-    "roi" : [1029,106,162,52],
-    "action": "Click",
-    "next": ["AE_SkipAction"]
-  },
-  "AE_SkipAction": {
-    "doc": "选择跳过剧情",
-    "recognition": "OCR",
-    "expected" : "快进",
-    "roi" : [1157,17,98,55],
-    "next": ["AE_SkipActionConfirm"],
-    "interrupt": ["AE_SkipActionClick"]
-  },
-  "AE_SkipActionClick": {
-    "doc": "选择跳过剧情",
-    "recognition": "OCR",
-    "expected" : "快进",
-    "roi" : [1157,17,98,55],
-    "action": "Click",
-    "post_delay": 1000
-  },
-  "AE_SkipActionConfirm": {
-    "doc": "跳过剧情确认",
-    "recognition": "OCR",
-    "expected" : "决定",
-    "roi" : [740,485,85,38],
-    "action": "Click",
-    "post_delay": 2000
-  },
-  "AE_Interval_2": {"doc": "#########################################################################################"},
-  "AE_NormalOneFight": {
-    "doc": "战斗关卡",
-    "recognition": "OCR",
-    "expected" : "推荐等级",
-    "roi" : [1029,106,162,52],
-    "next": ["AE_OneFightClick"]
-  },
-  "AE_OneFightClick": {
-    "doc": "进入关卡",
-    "recognition": "OCR",
-    "expected" : "推荐等级",
-    "roi" : [1029,106,162,52],
-    "action": "Click",
-    "next": ["AE_NormalOneFightStart"]
-  },
-
-
-  "AE_NormalOneFightStart": {
-    "doc": "战斗关卡",
-    "next": ["AE_NormalOneFightFlag"],
-    "timeout": 2000000,
-    "post_wait_freezes": {
-            "time": 2000,
-            "target":[242,197,795,327]
+    },
+    "AE_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1212,
+                "y": 12
+            }
         },
-    "interrupt": [
-      "AE_SkipFightHelp",
-      "AE_OneFightStart",
-      "AE_SkipAction",
-      "AE_AutoFightOpen",
-      "AE_FightFinish"
-    ]
-  },
-  "AE_NormalOneFightFlag": {
-    "doc": "战斗关卡战斗部分结束",
-    "recognition": "OCR",
-    "expected" : ["下一步","下步"],
-    "roi" : [1095,629,100,42],
-    "next": ["AE_NormalOneFightNext"]
-  },
-
-
-  "AE_SkipFightHelp": {
-    "doc": "选择助战",
-    "recognition": "OCR",
-    "expected" : "没有助战角色",
-    "next": ["AE_SkipFightHelpFlag"],
-    "interrupt": ["AE_SkipFightHelpClick"]
-  },
-  "AE_SkipFightHelpClick" : {
-    "doc": "不选择助战",
-    "recognition": "OCR",
-    "expected" : "没有助战角色",
-    "roi" : [475,199,288,91],
-    "action": "Click"
-  },
-  "AE_SkipFightHelpFlag": {
-    "doc": "完成选择助战",
-    "recognition": "OCR",
-    "expected" : "舞台信息",
-    "roi" : [877,150,171,41]
-  },
-
-
-
-
-  "AE_OneFightStart": {
-    "doc": "进入战斗",
-    "recognition": "OCR",
-    "expected" : "出发",
-    "roi" : [1026,607,87,51],
-    "action": "Click"
-  },
-
-  "AE_AutoFightOpen": {
-    "doc": "打开自动战斗",
-    "recognition": "ColorMatch",
-    "method" : 4,
-    "upper" : [162,179,178],
-    "lower" : [152,157,166],
-    "roi" : [553,11,71,34],
-    "count": 200,
-    "next" : ["AE_AutoFightOpenFlag"],
-    "interrupt": ["AE_AutoFightOpenClick"]
-  },
-  "AE_AutoFightOpenClick": {
-    "doc": "打开自动战斗",
-    "recognition": "ColorMatch",
-    "method" : 4,
-    "upper" : [162,179,178],
-    "lower" : [152,157,166],
-    "roi" : [553,11,71,34],
-    "count": 200,
-    "action": "Click"
-  },
-  "AE_AutoFightOpenFlag": {
-    "doc": "确认打开自动战斗",
-    "recognition": "ColorMatch",
-    "method" : 4,
-    "upper" : [255,213,111],
-    "lower" : [250,139,79],
-    "roi" : [553,11,71,34],
-    "count": 200
-  },
-
-  "AE_FightFinish": {
-    "doc": "战斗结束",
-    "recognition": "OCR",
-    "expected" : ["获得报酬"],
-    "roi" : [544,94,198,69],
-    "next": ["AE_FightFinishFlag"],
-    "interrupt": ["AE_FightFinishClick"]
-  },
-  "AE_FightFinishClick": {
-    "doc": "战斗结束点击",
-    "recognition": "OCR",
-    "expected" : ["获得报酬"],
-    "roi" : [544,94,198,69],
-    "action": "Click"
-  },
-  "AE_FightFinishFlag": {
-    "doc": "确认战斗结束",
-    "recognition": "OCR",
-    "expected" : ["下一步","下步"],
-    "roi" : [1095,629,100,42]
-  },
-
-  "AE_NormalOneFightNext": {
-    "doc": "战斗结束后选择下一步操作",
-    "next": ["AE_NormalOneFightNext1","AE_OneFightFinish"]
-  },
-
-  "AE_NormalOneFightNext1": {
-    "doc": "继续下一关战斗",
-    "recognition": "OCR",
-    "expected" : ["下个探索"],
-    "roi" : [335,624,134,51],
-    "timeout": 2000000,
-    "next": ["AE_NormalOneFightNext1Flag"],
-    "interrupt": [
-      "AE_SkipAction",
-      "AE_FightFinishClick",
-      "AE_NormalOneFightNext1Click"
-    ]
-  },
-  "AE_NormalOneFightNext1Click": {
-    "doc": "点击继续探索",
-    "recognition": "OCR",
-    "expected" : ["下个探索"],
-    "target" : [338,629,130,40],
-    "action": "Click"
-  },
-  "AE_NormalOneFightNext1Flag": {
-    "doc": "无可继续探索选项",
-    "recognition": "OCR",
-    "expected" : ["没有战斗","下个探索","已没有下一个探索","现在的编队中设有剧情角色","编队中设有"],
-    "roi" : [463,304,354,113],
-    "next": ["AE_OneFightFinish"]
-  },
-
-
-
-
-  "AE_OneFightFinish": {
-    "doc": "单轮结束返回活动界面",
-    "recognition": "OCR",
-    "expected" : ["下一步","下步"],
-    "roi" : [1095,629,100,42],
-    "action": "Click",
-    "next": ["AE_OneFightFinishFlag"],
-    "interrupt": ["AE_SkipAction"]
-  },
-  "AE_OneFightFinishFlag": {
-    "doc": "确认单轮结束返回活动界面",
-    "recognition": "OCR",
-    "roi" : [411,629,94,36],
-    "expected" : ["普通","困难","月狂"]
-  },
-
-  "AE_Interval_3": {"doc": "#########################################################################################"},
-  "AE_ActionHard": {
-    "doc": "开始困难活动速通",
-    "recognition": "OCR",
-    "roi" : [411,629,94,36],
-    "expected" : ["困难","月狂"],
-    "next": ["AE_ActionHardFlag","AE_ActionHardDownSwipe"]
-  },
-  "AE_ActionHardFlag": {
-    "doc": "完成困难活动速通",
-    "recognition": "TemplateMatch",
-    "template": "AE_image/已完成.png",
-    "roi" : [610,103,104,53],
-    "threshold" : 0.85
-  },
-  "AE_ActionHardDownSwipe": {
-    "doc": "活动关卡到底下滑",
-    "recognition": "OCR",
-    "expected" : ["困难", "月狂"],
-    "roi" : [1113,52,75,42],
-    "action": "Swipe",
-    "begin" : [1211,125,1,1],
-    "end" : [1212,594,1,1],
-    "duration" : 1000,
-    "next": ["AE_ActionHardOne"]
-  },
-  "AE_ActionHardOne": {
-    "doc": "选择第一个关卡",
-    "recognition": "OCR",
-    "expected" : ["推荐等级"],
-    "roi" : [1015,453,175,71],
-    "action": "Click",
-    "next": ["AE_NormalOneFightStart"]
-  },
-
-  "AE_ActionLunatic": {}
+        "doc": "开始自动活动推图",
+        "recognition": {
+            "param": {
+                "custom_recognition": "AE_Action",
+                "custom_recognition_param": {
+                    "position": [
+                        "普通",
+                        "困难",
+                        "月狂"
+                    ]
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "AE_ActionHard": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 1272
+            }
+        },
+        "doc": "开始困难活动速通",
+        "next": [
+            "AE_ActionHardFlag",
+            "AE_ActionHardDownSwipe"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "困难",
+                    "月狂"
+                ],
+                "roi": [
+                    411,
+                    629,
+                    94,
+                    36
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_ActionHardDownSwipe": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1254
+            }
+        },
+        "action": {
+            "param": {
+                "begin": [
+                    1211,
+                    125,
+                    1,
+                    1
+                ],
+                "duration": 1000,
+                "end": [
+                    [
+                        1212,
+                        594,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "doc": "活动关卡到底下滑",
+        "next": [
+            "AE_ActionHardOne"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "困难",
+                    "月狂"
+                ],
+                "roi": [
+                    1113,
+                    52,
+                    75,
+                    42
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_ActionHardFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 916
+            }
+        },
+        "doc": "完成困难活动速通",
+        "recognition": {
+            "param": {
+                "roi": [
+                    610,
+                    103,
+                    104,
+                    53
+                ],
+                "template": "AE_image/已完成.png",
+                "threshold": 0.85
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "AE_ActionHardOne": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1307
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "选择第一个关卡",
+        "next": [
+            "AE_NormalOneFightStart"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "推荐等级"
+                ],
+                "roi": [
+                    1015,
+                    453,
+                    175,
+                    71
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_ActionLunatic": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        }
+    },
+    "AE_ActionNormal": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 311
+            }
+        },
+        "doc": "开始普通活动速通",
+        "next": [
+            "AE_ActionNormalFlag",
+            "[JumpBack]AE_ActionNormalOne"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "活动",
+                    "活",
+                    "动"
+                ],
+                "roi": [
+                    441,
+                    140,
+                    92,
+                    44
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_ActionNormalFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 257
+            }
+        },
+        "doc": "完成普通活动速通",
+        "recognition": {
+            "param": {
+                "roi": [
+                    610,
+                    103,
+                    104,
+                    53
+                ],
+                "template": "AE_image/已完成.png",
+                "threshold": 0.85
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "AE_ActionNormalOne": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 595
+            }
+        },
+        "doc": "选择普通最新关卡",
+        "next": [
+            "AE_NormalOneSkip",
+            "AE_NormalOneFight"
+        ],
+        "recognition": {
+            "param": {
+                "template": "AE_image/新开启.png"
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "AE_AutoFightOpen": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 1287
+            }
+        },
+        "doc": "打开自动战斗",
+        "next": [
+            "AE_AutoFightOpenFlag",
+            "[JumpBack]AE_AutoFightOpenClick"
+        ],
+        "recognition": {
+            "param": {
+                "count": 200,
+                "lower": [
+                    152,
+                    157,
+                    166
+                ],
+                "method": 4,
+                "roi": [
+                    553,
+                    11,
+                    71,
+                    34
+                ],
+                "upper": [
+                    162,
+                    179,
+                    178
+                ]
+            },
+            "type": "ColorMatch"
+        }
+    },
+    "AE_AutoFightOpenClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1395
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "打开自动战斗",
+        "recognition": {
+            "param": {
+                "count": 200,
+                "lower": [
+                    152,
+                    157,
+                    166
+                ],
+                "method": 4,
+                "roi": [
+                    553,
+                    11,
+                    71,
+                    34
+                ],
+                "upper": [
+                    162,
+                    179,
+                    178
+                ]
+            },
+            "type": "ColorMatch"
+        }
+    },
+    "AE_AutoFightOpenFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 980
+            }
+        },
+        "doc": "确认打开自动战斗",
+        "recognition": {
+            "param": {
+                "count": 200,
+                "lower": [
+                    250,
+                    139,
+                    79
+                ],
+                "method": 4,
+                "roi": [
+                    553,
+                    11,
+                    71,
+                    34
+                ],
+                "upper": [
+                    255,
+                    213,
+                    111
+                ]
+            },
+            "type": "ColorMatch"
+        }
+    },
+    "AE_CurrentDifficulty": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        }
+    },
+    "AE_FightFinish": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 2006
+            }
+        },
+        "doc": "战斗结束",
+        "next": [
+            "AE_FightFinishFlag",
+            "[JumpBack]AE_FightFinishClick"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "获得报酬"
+                ],
+                "roi": [
+                    544,
+                    94,
+                    198,
+                    69
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_FightFinishClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2572,
+                "y": 1693
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "战斗结束点击",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "获得报酬"
+                ],
+                "roi": [
+                    544,
+                    94,
+                    198,
+                    69
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_FightFinishFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 2043
+            }
+        },
+        "doc": "确认战斗结束",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "下一步",
+                    "下步"
+                ],
+                "roi": [
+                    1095,
+                    629,
+                    100,
+                    42
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_Interval_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "AE_Interval_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 732,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "AE_Interval_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "AE_NormalOneFight": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 612
+            }
+        },
+        "doc": "战斗关卡",
+        "next": [
+            "AE_OneFightClick"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "推荐等级",
+                "roi": [
+                    1029,
+                    106,
+                    162,
+                    52
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_NormalOneFightFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 1687
+            }
+        },
+        "doc": "战斗关卡战斗部分结束",
+        "next": [
+            "AE_NormalOneFightNext"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "下一步",
+                    "下步"
+                ],
+                "roi": [
+                    1095,
+                    629,
+                    100,
+                    42
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_NormalOneFightNext": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1813
+            }
+        },
+        "doc": "战斗结束后选择下一步操作",
+        "next": [
+            "AE_NormalOneFightNext1",
+            "AE_OneFightFinish"
+        ]
+    },
+    "AE_NormalOneFightNext1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 1255
+            }
+        },
+        "doc": "继续下一关战斗",
+        "next": [
+            "AE_NormalOneFightNext1Flag",
+            "[JumpBack]AE_SkipAction",
+            "[JumpBack]AE_FightFinishClick",
+            "[JumpBack]AE_NormalOneFightNext1Click"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "下个探索"
+                ],
+                "roi": [
+                    335,
+                    624,
+                    134,
+                    51
+                ]
+            },
+            "type": "OCR"
+        },
+        "timeout": 2000000
+    },
+    "AE_NormalOneFightNext1Click": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2572,
+                "y": 1111
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    338,
+                    629,
+                    130,
+                    40
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "点击继续探索",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "下个探索"
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_NormalOneFightNext1Flag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2572,
+                "y": 1374
+            }
+        },
+        "doc": "无可继续探索选项",
+        "next": [
+            "AE_OneFightFinish"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "没有战斗",
+                    "下个探索",
+                    "已没有下一个探索",
+                    "现在的编队中设有剧情角色",
+                    "编队中设有"
+                ],
+                "roi": [
+                    463,
+                    304,
+                    354,
+                    113
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_NormalOneFightStart": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 992
+            }
+        },
+        "doc": "战斗关卡",
+        "next": [
+            "AE_NormalOneFightFlag",
+            "[JumpBack]AE_SkipFightHelp",
+            "[JumpBack]AE_OneFightStart",
+            "[JumpBack]AE_SkipAction",
+            "[JumpBack]AE_AutoFightOpen",
+            "[JumpBack]AE_FightFinish"
+        ],
+        "post_wait_freezes": {
+            "target": [
+                242,
+                197,
+                795,
+                327
+            ],
+            "time": 2000
+        },
+        "timeout": 2000000
+    },
+    "AE_NormalOneSkip": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 304
+            }
+        },
+        "doc": "纯剧情关卡",
+        "next": [
+            "AE_NormalOneSkipClick"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    1029,
+                    106,
+                    162,
+                    52
+                ],
+                "template": "AE_image/无战斗.png"
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "AE_NormalOneSkipClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 295
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入剧情关卡",
+        "next": [
+            "AE_SkipAction"
+        ],
+        "recognition": {
+            "param": {
+                "roi": [
+                    1029,
+                    106,
+                    162,
+                    52
+                ],
+                "template": "AE_image/无战斗.png"
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "AE_OneFightClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 610
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入关卡",
+        "next": [
+            "AE_NormalOneFightStart"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "推荐等级",
+                "roi": [
+                    1029,
+                    106,
+                    162,
+                    52
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_OneFightFinish": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2892,
+                "y": 1418
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "单轮结束返回活动界面",
+        "next": [
+            "AE_OneFightFinishFlag",
+            "[JumpBack]AE_SkipAction"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "下一步",
+                    "下步"
+                ],
+                "roi": [
+                    1095,
+                    629,
+                    100,
+                    42
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_OneFightFinishFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3212,
+                "y": 1449
+            }
+        },
+        "doc": "确认单轮结束返回活动界面",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "普通",
+                    "困难",
+                    "月狂"
+                ],
+                "roi": [
+                    411,
+                    629,
+                    94,
+                    36
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_OneFightStart": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 980
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "进入战斗",
+        "recognition": {
+            "param": {
+                "expected": "出发",
+                "roi": [
+                    1026,
+                    607,
+                    87,
+                    51
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_SkipAction": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3212,
+                "y": 879
+            }
+        },
+        "doc": "选择跳过剧情",
+        "next": [
+            "AE_SkipActionConfirm",
+            "[JumpBack]AE_SkipActionClick"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "快进",
+                "roi": [
+                    1157,
+                    17,
+                    98,
+                    55
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_SkipActionClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3532,
+                "y": 1163
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "选择跳过剧情",
+        "post_delay": 1000,
+        "recognition": {
+            "param": {
+                "expected": "快进",
+                "roi": [
+                    1157,
+                    17,
+                    98,
+                    55
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_SkipActionConfirm": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3532,
+                "y": 824
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "跳过剧情确认",
+        "post_delay": 2000,
+        "recognition": {
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    740,
+                    485,
+                    85,
+                    38
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_SkipFightHelp": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 719
+            }
+        },
+        "doc": "选择助战",
+        "next": [
+            "AE_SkipFightHelpFlag",
+            "[JumpBack]AE_SkipFightHelpClick"
+        ],
+        "recognition": {
+            "param": {
+                "expected": "没有助战角色"
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_SkipFightHelpClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 428
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "不选择助战",
+        "recognition": {
+            "param": {
+                "expected": "没有助战角色",
+                "roi": [
+                    475,
+                    199,
+                    288,
+                    91
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "AE_SkipFightHelpFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 735
+            }
+        },
+        "doc": "完成选择助战",
+        "recognition": {
+            "param": {
+                "expected": "舞台信息",
+                "roi": [
+                    877,
+                    150,
+                    171,
+                    41
+                ]
+            },
+            "type": "OCR"
+        }
+    }
 }

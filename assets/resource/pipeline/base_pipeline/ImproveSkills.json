@@ -1,159 +1,466 @@
 {
-  "IS_ActionImproveSkill": {
-    "doc": "选择几号位进行升级技能",
-    "recognition": "Custom",
-    "custom_recognition": "IS_ActionImproveSkill",
-    "custom_recognition_param": {
-      "position": 1
+    "$__mpe_config_新建Pipeline11": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\ImproveSkills.json",
+            "filename": "新建Pipeline11",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545226665,
+            "prefix": "",
+            "savedViewport": {
+                "x": 344,
+                "y": 124,
+                "zoom": 0.38
+            },
+            "version": "v1.2.3"
         }
-  },
-  "ISA_ChangeROI": {
-    "doc": "选择几号位进行升级技能",
-    "recognition": "Custom",
-    "custom_recognition": "IS_ActionImproveSkill",
-    "custom_recognition_param": {
-      "position": 1
-        }
-  },
-  "IS_Skill3SwipeDown":
-  {
-    "doc": "下滑到第三位置",
-    "recognition": "OCR",
-    "expected" : "今日剩余次数",
-    "action":"Swipe",
-    "begin" : [1246,646,1,1],
-    "end" : [1246,646,1,1],
-    "duration" : 1000
-  },
-
-
-  "IS_Action" : {
-    "doc": "开始升级技能",
-    "post_wait_freezes": 200,
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {
-      "info": [
-        "##########_##########_##########",
-        "开始升级技能"
-      ]
     },
-
-
-    "next": ["IS_FinishAllFlag"],
-    "interrupt":[
-      "IS_StartStep1"]
-  },
-  "IS_FinishAllFlag": {
-    "doc": "完成技能升级",
-    "recognition": "OCR",
-    "expected" : "增加伙伴",
-    "roi" : [728,213,157,48],
-    "post_wait_freezes": 200
-  },
-
-  "IS_StartStep1" : {
-    "doc": "点击缩短",
-    "recognition": "OCR",
-    "expected" : "缩短",
-    "roi" : [968,259,60,25],
-    "action": "Click",
-    "post_wait_freezes": 200,
-    "next": ["IS_Step1_1Flag"],
-    "interrupt":["IS_Step1_1"]
-  },
-
-  "IS_Step1_1" : {
-    "doc": "自动选择",
-    "recognition": "OCR",
-    "expected" : "自动选择",
-    "roi" : [1012,476,122,38],
-    "action": "Click",
-    "post_wait_freezes": 200
-  },
-  "IS_Step1_1Flag" : {
-    "doc": "确认选择消耗技能书",
-    "recognition": "ColorMatch",
-    "method" : 4,
-    "upper" : [0,204,255],
-    "lower" : [0,204,255],
-    "roi" : [302,127,73,52],
-    "count": 200,
-    "post_wait_freezes": 200,
-    "next": ["IS_StartStep2Flag","IS_FinishFlag"],
-    "interrupt":["IS_Step1_2"]
-  },
-  "IS_FinishFlag": {
-    "doc": "完成技能升级",
-    "recognition": "OCR",
-    "expected" : "确定",
-    "roi" : [601,486,77,35],
-    "action": "Click",
-    "post_wait_freezes": 200,
-    "next": ["IS_FinishImprove"]
-  },
-  "IS_FinishImprove": {
-    "doc": "完成技能升级",
-    "action": "Custom",
-    "custom_action": "UF_ActionLogger",
-    "custom_action_param": {"info": ["技能升级已完成"]}
-  },
-
-  "IS_Step1_2":{
-    "doc": "点击决定",
-    "recognition": "OCR",
-    "expected" : "决定",
-    "roi" : [662,449,244,205],
-    "action": "Click",
-    "post_wait_freezes": 200
-  },
-
-  "IS_StartStep2Flag" : {
-    "doc": "到达新的选书阶段",
-    "recognition": "OCR",
-    "expected" : "必要时间",
-    "roi" : [830,311,194,92],
-    "post_wait_freezes": 200,
-    "next": ["IS_Step2_1Flag"],
-    "interrupt":["IS_Step2_1"]
-  },
-  "IS_Step2_1" : {
-    "doc": "选择技能书",
-    "recognition": "OCR",
-    "expected" : "1.5倍经验",
-    "roi" : [450,255,147,133],
-    "action": "Click",
-    "target_offset": [0,20,0,0],
-    "post_wait_freezes": 200
-  },
-  "IS_Step2_1Flag" : {
-    "doc": "确认选择消耗技能书",
-    "recognition": "OCR",
-    "expected" : ["800","1200"],
-    "roi" : [1040,321,92,35],
-    "post_wait_freezes": 200,
-    "next": ["IS_Step2_3Flag"],
-    "interrupt":["IS_Step2_3","IS_Step2_2"]
-  },
-  "IS_Step2_2":{
-    "doc": "点击决定",
-    "recognition": "OCR",
-    "expected" : "决定",
-    "roi" : [1022,584,75,46],
-    "action": "Click",
-    "post_wait_freezes": 200
-  },
-  "IS_Step2_3":{
-    "doc": "点击决定",
-    "recognition": "OCR",
-    "expected" : "决定",
-    "roi" : [741,483,79,38],
-    "action": "Click"
-  },
-  "IS_Step2_3Flag" : {
-    "doc": "点击缩短",
-    "recognition": "OCR",
-    "expected" : "必要时间",
-    "roi" : [607,257,143,36]
-  }
+    "ISA_ChangeROI": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "选择几号位进行升级技能",
+        "recognition": {
+            "param": {
+                "custom_recognition": "IS_ActionImproveSkill",
+                "custom_recognition_param": {
+                    "position": 1
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "IS_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 732,
+                "y": 54
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始升级技能"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "开始升级技能",
+        "next": [
+            "IS_FinishAllFlag",
+            "[JumpBack]IS_StartStep1"
+        ],
+        "post_wait_freezes": 200
+    },
+    "IS_ActionImproveSkill": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        },
+        "doc": "选择几号位进行升级技能",
+        "recognition": {
+            "param": {
+                "custom_recognition": "IS_ActionImproveSkill",
+                "custom_recognition_param": {
+                    "position": 1
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "IS_FinishAllFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1052,
+                "y": 12
+            }
+        },
+        "doc": "完成技能升级",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "增加伙伴",
+                "roi": [
+                    728,
+                    213,
+                    157,
+                    48
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_FinishFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1692,
+                "y": 1053
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "完成技能升级",
+        "next": [
+            "IS_FinishImprove"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "确定",
+                "roi": [
+                    601,
+                    486,
+                    77,
+                    35
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_FinishImprove": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2012,
+                "y": 1070
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "技能升级已完成"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "完成技能升级"
+    },
+    "IS_Skill3SwipeDown": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {
+                "begin": [
+                    1246,
+                    646,
+                    1,
+                    1
+                ],
+                "duration": 1000,
+                "end": [
+                    [
+                        1246,
+                        646,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "doc": "下滑到第三位置",
+        "recognition": {
+            "param": {
+                "expected": "今日剩余次数"
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_StartStep1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1052,
+                "y": 348
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击缩短",
+        "next": [
+            "IS_Step1_1Flag",
+            "[JumpBack]IS_Step1_1"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "缩短",
+                "roi": [
+                    968,
+                    259,
+                    60,
+                    25
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_StartStep2Flag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1692,
+                "y": 691
+            }
+        },
+        "doc": "到达新的选书阶段",
+        "next": [
+            "IS_Step2_1Flag",
+            "[JumpBack]IS_Step2_1"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "必要时间",
+                "roi": [
+                    830,
+                    311,
+                    194,
+                    92
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Step1_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1372,
+                "y": 304
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "自动选择",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "自动选择",
+                "roi": [
+                    1012,
+                    476,
+                    122,
+                    38
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Step1_1Flag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1372,
+                "y": 643
+            }
+        },
+        "doc": "确认选择消耗技能书",
+        "next": [
+            "IS_StartStep2Flag",
+            "IS_FinishFlag",
+            "[JumpBack]IS_Step1_2"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "count": 200,
+                "lower": [
+                    0,
+                    204,
+                    255
+                ],
+                "method": 4,
+                "roi": [
+                    302,
+                    127,
+                    73,
+                    52
+                ],
+                "upper": [
+                    0,
+                    204,
+                    255
+                ]
+            },
+            "type": "ColorMatch"
+        }
+    },
+    "IS_Step1_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1692,
+                "y": 352
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击决定",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    662,
+                    449,
+                    244,
+                    205
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Step2_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2012,
+                "y": 363
+            }
+        },
+        "action": {
+            "param": {
+                "target_offset": [
+                    0,
+                    20,
+                    0,
+                    0
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "选择技能书",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "1.5倍经验",
+                "roi": [
+                    450,
+                    255,
+                    147,
+                    133
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Step2_1Flag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2012,
+                "y": 734
+            }
+        },
+        "doc": "确认选择消耗技能书",
+        "next": [
+            "IS_Step2_3Flag",
+            "[JumpBack]IS_Step2_3",
+            "[JumpBack]IS_Step2_2"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "800",
+                    "1200"
+                ],
+                "roi": [
+                    1040,
+                    321,
+                    92,
+                    35
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Step2_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2332,
+                "y": 411
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击决定",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    1022,
+                    584,
+                    75,
+                    46
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Step2_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2332,
+                "y": 1054
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击决定",
+        "recognition": {
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    741,
+                    483,
+                    79,
+                    38
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Step2_3Flag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2332,
+                "y": 750
+            }
+        },
+        "doc": "点击缩短",
+        "recognition": {
+            "param": {
+                "expected": "必要时间",
+                "roi": [
+                    607,
+                    257,
+                    143,
+                    36
+                ]
+            },
+            "type": "OCR"
+        }
+    }
 }

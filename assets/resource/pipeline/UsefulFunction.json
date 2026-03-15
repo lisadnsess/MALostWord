@@ -1,0 +1,383 @@
+{
+    "$__mpe_config_新建Pipeline5": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\UsefulFunction.json",
+            "filename": "新建Pipeline5",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773545195689,
+            "prefix": "",
+            "savedViewport": {
+                "x": 510,
+                "y": 4,
+                "zoom": 0.38
+            },
+            "version": "v1.2.3"
+        }
+    },
+    "UF_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 812,
+                "y": 295
+            }
+        },
+        "doc": "开始节点",
+        "next": [
+            "UF_ActionFlag",
+            "[JumpBack]UF_ActionOperate"
+        ],
+        "post_delay": 300,
+        "timeout": 10000
+    },
+    "UF_ActionFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1132,
+                "y": 257
+            }
+        },
+        "doc": "标志",
+        "inverse": true,
+        "recognition": {
+            "param": {
+                "threshold": 0.85
+            },
+            "type": "DirectHit"
+        }
+    },
+    "UF_ActionLogger": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1212,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": "开始任务"
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "打印日志"
+    },
+    "UF_ActionOperate": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1132,
+                "y": 562
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "操作"
+    },
+    "UF_ActionRunPipeline": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 1720
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionRunPipeline",
+                "custom_action_param": {
+                    "pipeline_name": [
+                        "UF_Logger",
+                        "UF_ActionLogger"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "在单个程序中运行指定流程",
+        "next": [
+            "UF_Logger"
+        ]
+    },
+    "UF_ChangePipeline": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 1415
+            }
+        },
+        "doc": "运行中修改参数",
+        "next": [
+            "UF_Logger"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_ChangePipeline",
+                "custom_recognition_param": {
+                    "change_str": {
+                        "custom_recognition_param": {
+                            "info": "111"
+                        }
+                    },
+                    "target_pipeline": "UF_Logger"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "UF_Count": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1452,
+                "y": 12
+            }
+        },
+        "doc": "通用计数模版",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Count",
+                "custom_recognition_param": {
+                    "current_number": 0,
+                    "target_number": "set_in_code"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "UF_CountClean": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 257
+            }
+        },
+        "doc": "通用计数清除模版",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_CountClean",
+                "custom_recognition_param": {
+                    "clean_node_name": "UF_Count",
+                    "target_number": "set_in_code"
+                }
+            },
+            "type": "Custom"
+        },
+        "timeout": 86400000
+    },
+    "UF_CountCleanTest": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 773
+            }
+        },
+        "doc": "通用计数清除模版",
+        "next": [
+            "UF_CountTest",
+            "[JumpBack]UF_Logger"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_CountClean",
+                "custom_recognition_param": {
+                    "clean_node_name": "UF_CountTest",
+                    "target_number": 5
+                }
+            },
+            "type": "Custom"
+        },
+        "timeout": 86400000
+    },
+    "UF_CountTest": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 746
+            }
+        },
+        "doc": "通用计数模版",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Count",
+                "custom_recognition_param": {
+                    "current_number": 0,
+                    "target_number": 3
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "UF_Interval_0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "UF_Interval_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "UF_Interval_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "UF_Interval_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 732,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "UF_Interval_4": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 12
+            }
+        },
+        "doc": "#########################################################################################"
+    },
+    "UF_Logger": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 1133
+            }
+        },
+        "doc": "打印日志",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_Logger",
+                "custom_recognition_param": {
+                    "info": "开始任务"
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "UF_RecognitionCustomModel": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 257
+            }
+        },
+        "doc": "通用模版",
+        "next": [
+            "UF_RecognitionCustomModelTest"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RecognitionCustom",
+                "custom_recognition_param": {
+                    "recognition_action": {
+                        "expected": [
+                            "探索"
+                        ],
+                        "recognition": "OCR",
+                        "roi": [
+                            1117,
+                            545,
+                            82,
+                            54
+                        ]
+                    },
+                    "recognition_flag": {
+                        "inverse": true
+                    },
+                    "recognition_operate": {
+                        "action": "Click",
+                        "target": [
+                            1117,
+                            545,
+                            82,
+                            54
+                        ]
+                    }
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "UF_RecognitionCustomModelTest": {
+        "$__mpe_code": {
+            "position": {
+                "x": 572,
+                "y": 257
+            }
+        },
+        "doc": "通用模版",
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RecognitionCustom",
+                "custom_recognition_param": {
+                    "recognition_action": {
+                        "expected": [
+                            "永远战线"
+                        ],
+                        "recognition": "OCR",
+                        "roi": [
+                            679,
+                            99,
+                            187,
+                            72
+                        ]
+                    },
+                    "recognition_flag": {
+                        "inverse": true
+                    },
+                    "recognition_operate": {
+                        "action": "Click",
+                        "target": [
+                            679,
+                            99,
+                            187,
+                            72
+                        ]
+                    }
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "UF_RunPipeline": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 1110
+            }
+        },
+        "doc": "在单个程序中运行指定流程",
+        "next": [
+            "UF_Logger"
+        ],
+        "recognition": {
+            "param": {
+                "custom_recognition": "UF_RunPipeline",
+                "custom_recognition_param": {
+                    "pipeline_name": [
+                        "UF_Logger",
+                        "UF_ActionLogger"
+                    ]
+                }
+            },
+            "type": "Custom"
+        }
+    }
+}

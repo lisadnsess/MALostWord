@@ -1,17 +1,10 @@
 # python -m pip install maafw
 import os
 import time
-import sys
-
-from maa.tasker import Tasker
-from maa.toolkit import Toolkit
 from maa.context import Context
-from maa.resource import Resource
-from maa.controller import AdbController
-from maa.custom_action import CustomAction
 from maa.custom_recognition import CustomRecognition
-# from maa.agent.agent_server import AgentServer
-from maa.notification_handler import NotificationHandler, NotificationType
+
+
 import json
 
 from utils.logger import logger
