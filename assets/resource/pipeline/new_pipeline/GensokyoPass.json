@@ -1,0 +1,324 @@
+{
+    "$__mpe_config_DailyDispatch1": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\GensokyoPass.json",
+            "filename": "DailyDispatch1",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1773756205147,
+            "prefix": "",
+            "savedViewport": {
+                "x": -1815,
+                "y": -295,
+                "zoom": 0.76
+            },
+            "version": "v1.3.0"
+        }
+    },
+    "$__mpe_external_BL_ActionStart_DailyDispatch1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3653,
+                "y": 1077
+            }
+        }
+    },
+    "GP_Claim": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2218,
+                "y": 454
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    56,
+                    199,
+                    121,
+                    43
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]GS_Step1",
+            "[JumpBack]GS_CloseJump",
+            "GS_Step3"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "幻想乡通行证"
+                ],
+                "roi": [
+                    65,
+                    1,
+                    184,
+                    49
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "GP_GetIn": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1884,
+                "y": 444
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "next": [
+            "GP_Claim"
+        ],
+        "recognition": {
+            "param": {
+                "template": [
+                    "GP_image/幻想乡通行证.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "GP_OutTime_Logger": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1883,
+                "y": 650
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "未开启幻想乡通行证"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "幻想乡通行证",
+        "post_delay": 1000
+    },
+    "GS_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1204,
+                "y": 470
+            }
+        },
+        "next": [
+            "GS_Action_Logger"
+        ]
+    },
+    "GS_Action_Logger": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1482,
+                "y": 428
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始领取幻想乡通行证"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "幻想乡通行证",
+        "next": [
+            "GP_GetIn",
+            "GP_OutTime_Logger"
+        ],
+        "post_delay": 1000
+    },
+    "GS_Action_Logger_副本14": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3272,
+                "y": 1027
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "完成领取幻想乡通行证"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "幻想乡通行证",
+        "next": [
+            "BL_ActionStart"
+        ],
+        "post_delay": 1000
+    },
+    "GS_CloseJump": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2641,
+                "y": 631
+            }
+        },
+        "next": [
+            "GS_Step2_1",
+            "[JumpBack]GS_Step2_2"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "前往领奖"
+                ],
+                "roi": [
+                    757,
+                    503,
+                    124,
+                    48
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "GS_FinishClaim": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2930,
+                "y": 1050
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    547,
+                    535,
+                    187,
+                    36
+                ]
+            },
+            "type": "Click"
+        },
+        "next": [
+            "GS_Action_Logger_副本14"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "获得奖励"
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "GS_Step1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2640,
+                "y": 440
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "收取"
+                ],
+                "roi": [
+                    1126,
+                    178,
+                    87,
+                    89
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "GS_Step2_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3029,
+                "y": 598
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    1195,
+                    139,
+                    16,
+                    19
+                ]
+            },
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "template": [
+                    "GP_image/今日不再显示.png"
+                ]
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "GS_Step2_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3019,
+                "y": 843
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    72,
+                    519,
+                    22,
+                    25
+                ]
+            },
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "GS_Step3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2619,
+                "y": 1033
+            }
+        },
+        "next": [
+            "GS_FinishClaim"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "挑战"
+                ],
+                "roi": [
+                    1122,
+                    178,
+                    92,
+                    90
+                ]
+            },
+            "type": "OCR"
+        }
+    }
+}

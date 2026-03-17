@@ -1,24 +1,24 @@
 {
-    "$__mpe_config_新建Pipeline9": {
+    "$__mpe_config_DailyShopping": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\DailyShopping.json",
-            "filename": "新建Pipeline9",
+            "filename": "DailyShopping",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773545218790,
+            "lastSyncTime": 1773553714139,
             "prefix": "",
             "savedViewport": {
-                "x": 391,
-                "y": 117,
-                "zoom": 0.38
+                "x": -80,
+                "y": -224,
+                "zoom": 0.76
             },
             "version": "v1.2.3"
         }
     },
-    "$__mpe_external_BL_ReturnHome_新建Pipeline9": {
+    "$__mpe_external_BL_ReturnHome_DailyShopping": {
         "$__mpe_code": {
             "position": {
-                "x": 2092,
-                "y": 1287
+                "x": 2140,
+                "y": 1449
             }
         }
     },
@@ -43,16 +43,16 @@
         },
         "doc": "开始商店购物",
         "next": [
-            "DS_ActionFlag",
             "[JumpBack]DS_GetIn",
+            "DS_ActionFlag",
             "[JumpBack]BL_ReturnHome"
         ]
     },
     "DS_ActionFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 812,
-                "y": 666
+                "x": 844,
+                "y": 667
             }
         },
         "action": {
@@ -81,11 +81,81 @@
             "type": "OCR"
         }
     },
-    "DS_BuyOne": {
+    "DS_BuyOneAction0": {
         "$__mpe_code": {
             "position": {
-                "x": 1772,
-                "y": 351
+                "x": 2200,
+                "y": 79
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    738,
+                    589,
+                    81,
+                    44
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "确认购买",
+        "pre_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "购入确认"
+                ],
+                "roi": [
+                    571,
+                    72,
+                    130,
+                    40
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_BuyOneAction1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2200,
+                "y": 368
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    741,
+                    548,
+                    76,
+                    44
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "确认购买",
+        "pre_wait_freezes": 400,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "确认"
+                ],
+                "roi": [
+                    576,
+                    108,
+                    125,
+                    49
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "DS_BuyOne_0": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1422,
+                "y": 324
             }
         },
         "action": {
@@ -107,53 +177,32 @@
             "type": "OCR"
         }
     },
-    "DS_BuyOneAction0": {
+    "DS_BuyOne_1": {
         "$__mpe_code": {
             "position": {
-                "x": 1772,
-                "y": 12
+                "x": 1784,
+                "y": 447
             }
         },
         "action": {
             "param": {},
             "type": "Click"
         },
-        "doc": "确认购买",
+        "doc": "购买免费",
+        "next": [
+            "[JumpBack]DS_BuyOneAction0",
+            "[JumpBack]DS_BuyOneAction1",
+            "新建节点2"
+        ],
         "pre_wait_freezes": 400,
         "recognition": {
             "param": {
-                "expected": "点击画面",
+                "expected": "每日1次免费",
                 "roi": [
-                    565,
-                    556,
-                    152,
-                    51
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DS_BuyOneAction1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1772,
-                "y": 1058
-            }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "doc": "确认购买",
-        "pre_wait_freezes": 400,
-        "recognition": {
-            "param": {
-                "expected": "购入",
-                "roi": [
-                    696,
-                    546,
-                    166,
-                    91
+                    203,
+                    418,
+                    170,
+                    63
                 ]
             },
             "type": "OCR"
@@ -162,8 +211,8 @@
     "DS_FinishBuy": {
         "$__mpe_code": {
             "position": {
-                "x": 1772,
-                "y": 690
+                "x": 1777,
+                "y": 970
             }
         },
         "action": {
@@ -222,8 +271,8 @@
     "DS_GetInPartnerCultivation": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 689
+                "x": 1437,
+                "y": 755
             }
         },
         "action": {
@@ -232,14 +281,15 @@
         },
         "doc": "进入伙伴育成",
         "next": [
-            "DS_FinishBuy",
-            "[JumpBack]DS_BuyOneAction0",
-            "[JumpBack]DS_BuyOneAction1",
-            "[JumpBack]DS_BuyOne"
+            "[JumpBack]DS_BuyOne_1",
+            "DS_FinishBuy"
         ],
+        "post_wait_freezes": 500,
         "recognition": {
             "param": {
-                "expected": "伙伴育成",
+                "expected": [
+                    "伙伴育成"
+                ],
                 "roi": [
                     194,
                     609,
@@ -263,11 +313,14 @@
         },
         "doc": "进入期间限定",
         "next": [
+            "[JumpBack]DS_BuyOne_0",
             "DS_GetInPartnerCultivation"
         ],
         "recognition": {
             "param": {
-                "expected": "期间限定",
+                "expected": [
+                    "期间限定"
+                ],
                 "roi": [
                     15,
                     92,
@@ -295,5 +348,25 @@
             }
         },
         "doc": "#########################################################################################"
+    },
+    "新建节点2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2193,
+                "y": 666
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "recognition": {
+            "param": {
+                "expected": [
+                    "获得报酬"
+                ]
+            },
+            "type": "OCR"
+        }
     }
 }

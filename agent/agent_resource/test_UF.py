@@ -45,7 +45,7 @@ class UF_RecognitionCustom(CustomRecognition):
         del new_ctx
         # # return None
         logger.debug(f'节点{argv.node_name}已完成运行')
-        return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
+        return CustomRecognition.AnalyzeResult(box=(0, 0, 100, 100), detail="Finish")
 
 
 # @resource.custom_recognition("UF_CountClean")
@@ -64,7 +64,7 @@ class UF_CountClean(CustomRecognition):
             target_number = 5
         if not clean_node_name or clean_node_name == "UF_Count":
             logger.warning(f'{argv.node_name}节点无清除对象，暂不进行清除操作')
-            return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
+            return CustomRecognition.AnalyzeResult(box=(0, 0, 100, 100), detail="Finish")
 
         context.override_pipeline({
             clean_node_name: {
@@ -75,7 +75,7 @@ class UF_CountClean(CustomRecognition):
                 }}})
         logger.debug(f'已将节点{clean_node_name}计数清零，循环次数设置为{target_number}')
         logger.debug(f'节点{argv.node_name}已完成运行')
-        return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
+        return CustomRecognition.AnalyzeResult(box=(0, 0, 100, 100), detail="Finish")
 
 
 # @resource.custom_recognition("UF_Count")
@@ -117,7 +117,7 @@ class UF_Count(CustomRecognition):
         else:
             logger.debug(f'已达到循环上限，循环终止，目标循环次数为{str(current_number)}')
             logger.debug(f'节点{argv.node_name}已完成运行')
-            return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
+            return CustomRecognition.AnalyzeResult(box=(0, 0, 100, 100), detail="Finish")
 
 
 # @resource.custom_recognition("UF_Logger")
@@ -140,7 +140,7 @@ class UF_Logger(CustomRecognition):
                 debug_logger = [debug_logger]
             for debug_one in debug_logger:
                 logger.debug(f'{debug_one}')
-        return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
+        return CustomRecognition.AnalyzeResult(box=(0, 0, 100, 100), detail="Finish")
 
 
 # @resource.custom_recognition("UF_ChangePipeline")
@@ -153,7 +153,7 @@ class UF_ChangePipeline(CustomRecognition):
         target_pipeline = json.loads(argv.custom_recognition_param).get("target_pipeline")
         change_str = json.loads(argv.custom_recognition_param).get("change_str")
         context.override_pipeline({target_pipeline: change_str})
-        return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
+        return CustomRecognition.AnalyzeResult(box=(0, 0, 100, 100), detail="Finish")
 
 
 # @resource.custom_recognition("UF_RunPipeline")
@@ -170,4 +170,4 @@ class UF_RunPipeline(CustomRecognition):
             for pipeline_name_one in pipeline_name:
                 logger.debug(f'正在运行：{pipeline_name_one}')
                 run_task_param(context, pipeline_name_one)
-        return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
+        return CustomRecognition.AnalyzeResult(box=(0, 0, 100, 100), detail="Finish")

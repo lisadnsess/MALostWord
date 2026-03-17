@@ -2,14 +2,14 @@
     "$__mpe_config_新建Pipeline13": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\MirrorRebirth.json",
-            "filename": "新建Pipeline13",
+            "filename": "新建Pipeline9",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773545238497,
+            "lastSyncTime": 1773552994591,
             "prefix": "",
             "savedViewport": {
-                "x": 330,
-                "y": 116,
-                "zoom": 0.38
+                "x": 467,
+                "y": -1320,
+                "zoom": 0.5
             },
             "version": "v1.2.3"
         }
@@ -51,8 +51,8 @@
     "MR_All": {
         "$__mpe_code": {
             "position": {
-                "x": 1132,
-                "y": 771
+                "x": 1102,
+                "y": 763
             }
         },
         "doc": "总扫荡流程",
@@ -66,8 +66,8 @@
     "MR_AllStep1": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 1093
+                "x": 1472,
+                "y": -142
             }
         },
         "action": {
@@ -92,8 +92,8 @@
     "MR_AllStep2": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 383
+                "x": 1455,
+                "y": 131
             }
         },
         "action": {
@@ -118,8 +118,8 @@
     "MR_AllStep3": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 12
+                "x": 1461,
+                "y": 394
             }
         },
         "action": {

@@ -4,12 +4,12 @@
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\DailyDispatch.json",
             "filename": "DailyDispatch1",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773545267923,
+            "lastSyncTime": 1773672080957,
             "prefix": "",
             "savedViewport": {
-                "x": -620,
-                "y": -1234,
-                "zoom": 0.87
+                "x": -246,
+                "y": -1915,
+                "zoom": 0.76
             },
             "version": "v1.2.3"
         }
@@ -25,8 +25,8 @@
     "DDA_ChangeGetDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 1329,
-                "y": 2295
+                "x": 1241,
+                "y": 2314
             }
         },
         "action": {
@@ -55,7 +55,7 @@
                             "神结晶"
                         ]
                     },
-                    "target_pipeline": "DD_GetDispatch"
+                    "target_pipeline": "DD_FindDispatchTarget1"
                 }
             },
             "type": "Custom"
@@ -282,24 +282,28 @@
     "DD_ChooseDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 1420,
-                "y": 3198
+                "x": 827,
+                "y": 3108
             }
         },
         "action": {
             "param": {},
             "type": "Click"
         },
+        "next": [
+            "DD_OneDispatchFinish"
+        ],
+        "post_wait_freezes": 300,
         "recognition": {
             "param": {
                 "expected": [
                     "决定"
                 ],
                 "roi": [
-                    0,
-                    0,
-                    0,
-                    0
+                    1041,
+                    502,
+                    78,
+                    41
                 ]
             },
             "type": "OCR"
@@ -308,8 +312,8 @@
     "DD_ChooseFirstClick": {
         "$__mpe_code": {
             "position": {
-                "x": 2173,
-                "y": 2328
+                "x": 2226,
+                "y": 2356
             }
         },
         "action": {
@@ -356,21 +360,20 @@
     "DD_FindDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 566,
-                "y": 2699
+                "x": 239,
+                "y": 3017
             }
         },
         "doc": "找到符合要求派遣",
         "next": [
-            "DD_FindFinishDispatch",
-            "[JumpBack]DD_FindDispatchTarget2",
-            "[JumpBack]DD_FindDispatchTarget1"
+            "DD_FindDispatchTarget2"
         ],
         "recognition": {
             "param": {
                 "all_of": [
                     "DD_FindDispatchTarget2",
-                    "DD_FindDispatchTarget1"
+                    "DD_FindDispatchTarget1",
+                    "DD_ChooseDispatch"
                 ]
             },
             "type": "And"
@@ -379,8 +382,8 @@
     "DD_FindDispatchTarget1": {
         "$__mpe_code": {
             "position": {
-                "x": 1091,
-                "y": 3445
+                "x": 231,
+                "y": 3247
             }
         },
         "doc": "找到目标派遣",
@@ -403,8 +406,8 @@
     "DD_FindDispatchTarget2": {
         "$__mpe_code": {
             "position": {
-                "x": 1117,
-                "y": 3168
+                "x": 521,
+                "y": 3057
             }
         },
         "action": {
@@ -413,18 +416,21 @@
         },
         "doc": "找到推荐编成按钮",
         "next": [
-            "DD_ChooseDispatch"
+            "[JumpBack]DD_ChooseDispatch",
+            "DD_FindFinishDispatch",
+            "新建节点1"
         ],
+        "post_wait_freezes": 300,
         "recognition": {
             "param": {
                 "expected": [
                     "推荐编成"
                 ],
                 "roi": [
-                    0,
-                    0,
-                    0,
-                    0
+                    268,
+                    499,
+                    176,
+                    49
                 ]
             },
             "type": "OCR"
@@ -433,13 +439,14 @@
     "DD_FindFinishDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 1092,
-                "y": 2747
+                "x": 833,
+                "y": 2827
             }
         },
         "doc": "存在已有派遣，派遣次数减1",
         "next": [
-            "DD_NextOne"
+            "DD_NextOne_1",
+            "DD_NextOne_2"
         ],
         "recognition": {
             "param": {
@@ -678,8 +685,8 @@
     "DD_GetInDaily": {
         "$__mpe_code": {
             "position": {
-                "x": 1884,
-                "y": 2341
+                "x": 1901,
+                "y": 2357
             }
         },
         "action": {
@@ -693,7 +700,8 @@
         "recognition": {
             "param": {
                 "expected": [
-                    "每日"
+                    "每日",
+                    "毎日"
                 ],
                 "roi": [
                     32,
@@ -802,8 +810,8 @@
     "DD_LastOne": {
         "$__mpe_code": {
             "position": {
-                "x": 1090,
-                "y": 2073
+                "x": 1209,
+                "y": 1996
             }
         },
         "doc": "最后一个",
@@ -845,11 +853,11 @@
             "type": "OCR"
         }
     },
-    "DD_NextOne": {
+    "DD_NextOne_1": {
         "$__mpe_code": {
             "position": {
-                "x": 1580,
-                "y": 2627
+                "x": 1251,
+                "y": 2649
             }
         },
         "action": {
@@ -857,9 +865,6 @@
             "type": "Click"
         },
         "doc": "下一个",
-        "next": [
-            "DD_OneDispatchFinish"
-        ],
         "post_wait_freezes": {
             "target": [
                 255,
@@ -893,11 +898,53 @@
             "type": "OCR"
         }
     },
+    "DD_NextOne_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1252,
+                "y": 2877
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "下一个",
+        "post_wait_freezes": {
+            "target": [
+                255,
+                251,
+                945,
+                317
+            ],
+            "time": 500
+        },
+        "pre_wait_freezes": {
+            "target": [
+                255,
+                251,
+                945,
+                317
+            ],
+            "time": 500
+        },
+        "recognition": {
+            "param": {
+                "roi": [
+                    453,
+                    596,
+                    116,
+                    44
+                ]
+            },
+            "type": "DirectHit"
+        }
+    },
     "DD_NoTemporary": {
         "$__mpe_code": {
             "position": {
-                "x": 831,
-                "y": 2088
+                "x": 930,
+                "y": 2061
             }
         },
         "doc": "无临时派遣",
@@ -926,10 +973,10 @@
         },
         "doc": "开始单次派遣",
         "next": [
-            "[JumpBack]新建节点8",
-            "DD_FindFinishDispatch",
             "DD_FindDispatch",
-            "[JumpBack]DD_NextOne"
+            "[JumpBack]DD_无每日或每日到底",
+            "[JumpBack]DD_NextOne_1",
+            "新建节点1"
         ],
         "recognition": {
             "param": {
@@ -944,11 +991,12 @@
     "DD_OneDispatchFinish": {
         "$__mpe_code": {
             "position": {
-                "x": 1976,
-                "y": 2663
+                "x": 1379,
+                "y": 3095
             }
         },
         "doc": "完成单次派遣",
+        "post_wait_freezes": 300,
         "recognition": {
             "param": {
                 "custom_recognition": "UF_Logger",
@@ -977,11 +1025,11 @@
             "type": "Custom"
         }
     },
-    "新建节点8": {
+    "DD_无每日或每日到底": {
         "$__mpe_code": {
             "position": {
-                "x": 986,
-                "y": 2359
+                "x": 913,
+                "y": 2335
             }
         },
         "next": [
@@ -995,6 +1043,35 @@
                 ]
             },
             "type": "Or"
+        }
+    },
+    "新建节点1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1707,
+                "y": 2707
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "StopTask"
+        },
+        "next": [
+            "DD_FinishLogger"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "不能进行更多的派遣了"
+                ],
+                "roi": [
+                    454,
+                    329,
+                    362,
+                    60
+                ]
+            },
+            "type": "OCR"
         }
     }
 }

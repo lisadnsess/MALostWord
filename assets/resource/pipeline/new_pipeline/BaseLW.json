@@ -1,15 +1,15 @@
 {
-    "$__mpe_config_BaseLW": {
+    "$__mpe_config_DailyDispatch1": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\BaseLW.json",
-            "filename": "BaseLW",
+            "filename": "DailyDispatch1",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773545264338,
+            "lastSyncTime": 1773555531374,
             "prefix": "",
             "savedViewport": {
-                "x": 581,
-                "y": -448,
-                "zoom": 0.87
+                "x": 701,
+                "y": -164,
+                "zoom": 0.3
             },
             "version": "v1.2.3"
         }
@@ -32,8 +32,8 @@
     "BL_HomeFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 333,
-                "y": 516
+                "x": 408,
+                "y": 447
             }
         },
         "post_wait_freezes": 500,
@@ -53,8 +53,8 @@
     "BL_ReturnHome": {
         "$__mpe_code": {
             "position": {
-                "x": 338,
-                "y": 1049
+                "x": 563,
+                "y": 1105
             }
         },
         "action": {
@@ -67,10 +67,10 @@
         "recognition": {
             "param": {
                 "roi": [
+                    1212,
                     0,
-                    0,
-                    0,
-                    0
+                    68,
+                    63
                 ],
                 "template": "BL_image/back_home.png",
                 "threshold": [
@@ -83,8 +83,8 @@
     "BL_ReturnOne": {
         "$__mpe_code": {
             "position": {
-                "x": 333,
-                "y": 747
+                "x": 580,
+                "y": 727
             }
         },
         "action": {
@@ -99,8 +99,8 @@
                 "roi": [
                     0,
                     0,
-                    0,
-                    0
+                    71,
+                    68
                 ],
                 "template": "BL_image/back_one.png"
             },

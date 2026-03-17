@@ -2,23 +2,18 @@
     "$__mpe_config_新建Pipeline11": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\ImproveSkills.json",
-            "filename": "新建Pipeline11",
+            "filename": "DailyDispatch1",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773545226665,
+            "lastSyncTime": 1773559398132,
             "prefix": "",
-            "savedViewport": {
-                "x": 344,
-                "y": 124,
-                "zoom": 0.38
-            },
             "version": "v1.2.3"
         }
     },
     "ISA_ChangeROI": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
-                "y": 12
+                "x": -275,
+                "y": -22
             }
         },
         "doc": "选择几号位进行升级技能",
@@ -35,8 +30,40 @@
     "IS_Action": {
         "$__mpe_code": {
             "position": {
-                "x": 732,
-                "y": 54
+                "x": 675,
+                "y": 75
+            }
+        },
+        "doc": "开始升级技能",
+        "next": [
+            "IS_FinishAllFlag",
+            "[JumpBack]IS_StartStep1"
+        ],
+        "post_wait_freezes": 200
+    },
+    "IS_ActionImproveSkill": {
+        "$__mpe_code": {
+            "position": {
+                "x": 64,
+                "y": -99
+            }
+        },
+        "doc": "选择几号位进行升级技能",
+        "recognition": {
+            "param": {
+                "custom_recognition": "IS_ActionImproveSkill",
+                "custom_recognition_param": {
+                    "position": 1
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "IS_Action_Logger": {
+        "$__mpe_code": {
+            "position": {
+                "x": 369,
+                "y": 73
             }
         },
         "action": {
@@ -53,28 +80,9 @@
         },
         "doc": "开始升级技能",
         "next": [
-            "IS_FinishAllFlag",
-            "[JumpBack]IS_StartStep1"
+            "IS_Action"
         ],
         "post_wait_freezes": 200
-    },
-    "IS_ActionImproveSkill": {
-        "$__mpe_code": {
-            "position": {
-                "x": 252,
-                "y": 12
-            }
-        },
-        "doc": "选择几号位进行升级技能",
-        "recognition": {
-            "param": {
-                "custom_recognition": "IS_ActionImproveSkill",
-                "custom_recognition_param": {
-                    "position": 1
-                }
-            },
-            "type": "Custom"
-        }
     },
     "IS_FinishAllFlag": {
         "$__mpe_code": {
@@ -150,8 +158,8 @@
     "IS_Skill3SwipeDown": {
         "$__mpe_code": {
             "position": {
-                "x": 492,
-                "y": 12
+                "x": 1,
+                "y": 206
             }
         },
         "action": {
