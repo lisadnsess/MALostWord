@@ -18,9 +18,7 @@ class MCR_UseShield(CustomRecognition):
 
         logger.debug("##########_##########_##########")
         logger.debug(f'正在运行节点{argv.node_name}')
-
         use_shield = json.loads(argv.custom_recognition_param).get("shield_number")
-        use_shield = 3
         logger.debug(f'use_shield:{use_shield}')
         if not use_shield or use_shield <= 0:
             logger.debug(f'use zero shield')

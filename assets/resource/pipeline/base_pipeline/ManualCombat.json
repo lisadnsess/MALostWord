@@ -4,12 +4,12 @@
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\ManualCombat.json",
             "filename": "ManualCombat",
             "isModifiedExternally": false,
-            "lastSyncTime": 1775394152999,
+            "lastSyncTime": 1775394352320,
             "prefix": "",
             "savedViewport": {
-                "x": -3823,
-                "y": -1590,
-                "zoom": 0.7
+                "x": -6812,
+                "y": -2686,
+                "zoom": 1.06
             },
             "version": "v1.3.1"
         }
@@ -761,8 +761,23 @@
     "MC_CardLine_1": {
         "$__mpe_code": {
             "position": {
-                "x": 7029,
-                "y": 2735
+                "x": 7012,
+                "y": 2940
+            }
+        },
+        "action": {
+            "param": {
+                "target": "set in code"
+            },
+            "type": "Click"
+        },
+        "doc": "点击符卡"
+    },
+    "MC_CardLine_1_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 7031,
+                "y": 2703
             }
         },
         "action": {

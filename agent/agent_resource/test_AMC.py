@@ -55,14 +55,14 @@ class MCA_Round(CustomAction):
         # print(round_param)
 
         round_param = {'auto_fight': False,
-                       'use_skill_1': [],
+                       'use_skill_1': [1,2,3,4,5,6],
                        'change_role': False,
                        'change_role_param': [],
                        'use_skill_2': [],
                        'role_action': {
-                           '1': {'boost_number': 3, 'change_target': [False,2], 'change_target_param': 2, 'shield_number': 3, 'use_card': 4, 'use_card_param': 1},
-                           '2': {'boost_number': 2, 'change_target': False, 'change_target_param': 2, 'shield_number': 0, 'use_card': 4, 'use_card_param': 1},
-                           '3': {'boost_number': 2, 'change_target': False, 'change_target_param': 2, 'shield_number': 0, 'use_card': 4, 'use_card_param': 1}},
+                           '1': {'boost_number': 3, 'change_target': [False,2], 'shield_number': 3, 'use_card': 1, },
+                           '2': {'boost_number': 3, 'change_target': [False,2], 'shield_number': 0, 'use_card': 2, },
+                           },
                        }
 
 
@@ -92,7 +92,7 @@ class MCA_Round(CustomAction):
 
             # 使用擦弹强化
             MCR_UseShield_param = {
-                "MCR_UseShield": {"custom_action_param": {"shield_number": role_one["shield_number"]}}
+                "MCR_UseShield": {"custom_recognition_param": {"shield_number": role_one["shield_number"]}}
             }
             context.override_pipeline(MCR_UseShield_param)
             context.run_task("MC_UseShield")
@@ -106,7 +106,7 @@ class MCA_Round(CustomAction):
 
 
 
-            break
+            # break
 
         # # 第一位角色
         # role_action
@@ -225,7 +225,7 @@ class MCA_UseCard(CustomAction):
 
             context.run_task("MC_OpenSpellCardList")
 
-            prover = {"MC_CardLine_1": {"roi": roi},}
+            prover = {"MC_CardLine_1": {"target": roi},}
             context.override_pipeline(prover)
             context.run_task("MC_CardLine")
 
