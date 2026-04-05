@@ -1,8 +1,8 @@
 {
-    "$__mpe_config_新建Pipeline13": {
+    "$__mpe_config_MirrorRebirth": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\MirrorRebirth.json",
-            "filename": "新建Pipeline9",
+            "filename": "MirrorRebirth",
             "isModifiedExternally": false,
             "lastSyncTime": 1773552994591,
             "prefix": "",
@@ -14,7 +14,7 @@
             "version": "v1.2.3"
         }
     },
-    "$__mpe_external_BL_ActionStart_新建Pipeline13": {
+    "$__mpe_external_MirrorRebirth": {
         "$__mpe_code": {
             "position": {
                 "x": 2412,

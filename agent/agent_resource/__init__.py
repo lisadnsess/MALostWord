@@ -4,9 +4,12 @@ from .test_DM import DMA_Print, DMA_Logger, DMA_GetDate, DMA_DailyMaterialAll
 from .test_UF import UF_Logger, UF_Count, UF_CountClean, UF_RecognitionCustom, UF_ChangePipeline, UF_RunPipeline
 from .test_AUF import UF_ActionLogger, UF_ActionRunPipeline
 from .test_MC import MCA_ActionOneScreen, MCA_ActionSkillOpen, MCA_ActionChangeCharacter, MCA_ActionBoost, \
-    MCA_ActionChooseTarget,MCA_ActionShield,MCA_ActionSpellCardUse
+    MCA_ActionChooseTarget, MCA_ActionShield, MCA_ActionSpellCardUse
 from .test_EF import EFA_ActionAll
 from .test_SR import SRA_ActionSpiritRevival
+
+from .test_AMC import MCA_LoadFightStrategy, MCA_UseSkill, MCA_Round, MCA_UseBoost,MCA_UseShield
+from .test_RMC import MCR_UseShield
 
 # 显式列出需要处理的函数
 FUNCTIONS_RECOGNITION = [
@@ -36,14 +39,24 @@ FUNCTIONS_RECOGNITION = [
     MCA_ActionBoost,
     MCA_ActionChooseTarget,
     MCA_ActionShield,
-    MCA_ActionSpellCardUse
+    MCA_ActionSpellCardUse,
+
+    # 来自 test_RMC 的函数
+    MCR_UseShield,
 
 ]
 
 FUNCTIONS_ACTION = [
     # 来自 test_AUF 的函数
     UF_ActionLogger,
-    UF_ActionRunPipeline
+    UF_ActionRunPipeline,
+
+    # 来自 test_AMC 的函数
+    MCA_LoadFightStrategy,
+    MCA_Round,
+    MCA_UseSkill,
+    MCA_UseBoost,
+MCA_UseShield
 ]
 
 flag = getattr(sys.modules["__main__"], "Agent_FLAG", True)

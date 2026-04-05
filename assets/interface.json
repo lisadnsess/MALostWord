@@ -42,13 +42,6 @@
             "path": [
                 "./resource"
             ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "./resource",
-                "./resource_bilibili"
-            ]
         }
     ],
     // 可选的 agent 示例

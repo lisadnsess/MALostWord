@@ -1,24 +1,19 @@
 {
     "$__mpe_config_DailyShopping": {
         "$__mpe_code": {
-            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\DailyShopping.json",
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\DailyShopping.json",
             "filename": "DailyShopping",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773553714139,
+            "lastSyncTime": 1774107687332,
             "prefix": "",
-            "savedViewport": {
-                "x": -80,
-                "y": -224,
-                "zoom": 0.76
-            },
-            "version": "v1.2.3"
+            "version": "v1.3.0"
         }
     },
-    "$__mpe_external_BL_ReturnHome_DailyShopping": {
+    "$__mpe_external_DailyShopping": {
         "$__mpe_code": {
             "position": {
-                "x": 2140,
-                "y": 1449
+                "x": 2134,
+                "y": 1332
             }
         }
     },
@@ -126,10 +121,10 @@
         "action": {
             "param": {
                 "target": [
-                    741,
-                    548,
-                    76,
-                    44
+                    744,
+                    557,
+                    73,
+                    19
                 ]
             },
             "type": "Click"
@@ -154,8 +149,8 @@
     "DS_BuyOne_0": {
         "$__mpe_code": {
             "position": {
-                "x": 1422,
-                "y": 324
+                "x": 1384,
+                "y": 288
             }
         },
         "action": {
@@ -180,8 +175,8 @@
     "DS_BuyOne_1": {
         "$__mpe_code": {
             "position": {
-                "x": 1784,
-                "y": 447
+                "x": 1873,
+                "y": 683
             }
         },
         "action": {
@@ -246,8 +241,8 @@
     "DS_GetIn": {
         "$__mpe_code": {
             "position": {
-                "x": 812,
-                "y": 359
+                "x": 874,
+                "y": 374
             }
         },
         "action": {
@@ -271,8 +266,8 @@
     "DS_GetInPartnerCultivation": {
         "$__mpe_code": {
             "position": {
-                "x": 1437,
-                "y": 755
+                "x": 1446,
+                "y": 781
             }
         },
         "action": {
@@ -314,6 +309,8 @@
         "doc": "进入期间限定",
         "next": [
             "[JumpBack]DS_BuyOne_0",
+            "[JumpBack]DS_BuyOneAction0",
+            "[JumpBack]DS_BuyOneAction1",
             "DS_GetInPartnerCultivation"
         ],
         "recognition": {
@@ -334,8 +331,8 @@
     "DS_Interval_0": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
-                "y": 12
+                "x": 649,
+                "y": 24
             }
         },
         "doc": "#########################################################################################"

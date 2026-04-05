@@ -11,6 +11,10 @@ from utils.run_task import run_task_param,SuppressOutput
 # resource.use_cpu()
 
 
+
+
+
+
 # @resource.custom_recognition("MCA_ActionOneScreen")
 class MCA_ActionOneScreen(CustomRecognition):
     def analyze(

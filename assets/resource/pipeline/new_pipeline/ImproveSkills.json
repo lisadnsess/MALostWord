@@ -1,0 +1,588 @@
+{
+    "$__mpe_config_ImproveSkills": {
+        "$__mpe_code": {
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\ImproveSkills.json",
+            "filename": "ImproveSkills",
+            "isModifiedExternally": false,
+            "lastSyncTime": 1775314995904,
+            "prefix": "",
+            "savedViewport": {
+                "x": 337,
+                "y": -63,
+                "zoom": 0.8
+            },
+            "version": "v1.3.1"
+        }
+    },
+    "ISA_ChangeROI": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
+            }
+        },
+        "doc": "选择几号位进行升级技能",
+        "recognition": {
+            "param": {
+                "custom_recognition": "IS_ActionImproveSkill",
+                "custom_recognition_param": {
+                    "position": 1
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "IS_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 633
+            }
+        },
+        "doc": "开始升级技能",
+        "next": [
+            "IS_FinishAllFlag",
+            "[JumpBack]IS_ReduceTime_1"
+        ],
+        "post_wait_freezes": 200
+    },
+    "IS_ActionImproveSkill": {
+        "$__mpe_code": {
+            "position": {
+                "x": 252,
+                "y": 12
+            }
+        },
+        "doc": "选择几号位进行升级技能",
+        "recognition": {
+            "param": {
+                "custom_recognition": "IS_ActionImproveSkill",
+                "custom_recognition_param": {
+                    "position": 1
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "IS_Action_Logger": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 601
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始升级技能"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "开始升级技能",
+        "next": [
+            "IS_Action"
+        ],
+        "post_wait_freezes": 200
+    },
+    "IS_Choose_book_1_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1596
+            }
+        },
+        "doc": "确认选择消耗技能书",
+        "next": [
+            "[JumpBack]IS_Choose_book_2_1",
+            "[JumpBack]IS_Choose_book_2_2",
+            "IS_Choose_book_2_3"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "800",
+                    "1200"
+                ],
+                "roi": [
+                    1040,
+                    321,
+                    92,
+                    35
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Choose_book_1_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1225
+            }
+        },
+        "action": {
+            "param": {
+                "target_offset": [
+                    40,
+                    60,
+                    -80,
+                    0
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "选择技能书",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "1.5倍经验",
+                "roi": [
+                    450,
+                    255,
+                    147,
+                    133
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Choose_book_2_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 1610
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击决定",
+        "recognition": {
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    741,
+                    483,
+                    79,
+                    38
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Choose_book_2_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 1917
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击决定",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    1022,
+                    584,
+                    75,
+                    46
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Choose_book_2_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 1306
+            }
+        },
+        "doc": "点击缩短",
+        "recognition": {
+            "param": {
+                "expected": "必要时间",
+                "roi": [
+                    607,
+                    257,
+                    143,
+                    36
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_FindCharacter": {
+        "$__mpe_code": {
+            "position": {
+                "x": 732,
+                "y": 76
+            }
+        },
+        "next": [
+            "IS_FindCharacter_1_2",
+            "[JumpBack]IS_FindCharacter_1_1"
+        ]
+    },
+    "IS_FindCharacter_1_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1052,
+                "y": 290
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    792,
+                    161,
+                    35,
+                    32
+                ]
+            },
+            "type": "Click"
+        },
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "增加伙伴",
+                "roi": [
+                    728,
+                    213,
+                    157,
+                    48
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_FindCharacter_1_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1052,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始升级技能"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "IS_FindCharacter_1_3"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "从高到低"
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_FindCharacter_1_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1372,
+                "y": 42
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    1068,
+                    15,
+                    127,
+                    25
+                ]
+            },
+            "type": "Click"
+        }
+    },
+    "IS_FinishAllFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 569
+            }
+        },
+        "doc": "完成技能升级",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "增加伙伴",
+                "roi": [
+                    728,
+                    213,
+                    157,
+                    48
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_FinishFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 875
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "完成技能升级",
+        "next": [
+            "IS_FinishImprove"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "确定",
+                "roi": [
+                    601,
+                    486,
+                    77,
+                    35
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_FinishImprove": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 892
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "技能升级已完成"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "doc": "完成技能升级"
+    },
+    "IS_ReduceTime_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 905
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击缩短",
+        "next": [
+            "IS_ReduceTime_2"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "缩短",
+                "roi": [
+                    968,
+                    259,
+                    60,
+                    25
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_ReduceTime_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 950
+            }
+        },
+        "next": [
+            "IS_ReduceTime_3_1",
+            "[JumpBack]IS_ReduceTime_3_2"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "必要时间"
+                ],
+                "roi": [
+                    349,
+                    100,
+                    98,
+                    29
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_ReduceTime_3_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 1216
+            }
+        },
+        "doc": "确认选择消耗技能书",
+        "next": [
+            "[JumpBack]IS_ReduceTime_4",
+            "IS_ReduceTime_End",
+            "IS_FinishFlag"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "00"
+                ],
+                "roi": [
+                    785,
+                    86,
+                    108,
+                    46
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_ReduceTime_3_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1322,
+                "y": 791
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "自动选择",
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "自动选择",
+                "roi": [
+                    1012,
+                    476,
+                    122,
+                    38
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_ReduceTime_4": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 1214
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击决定",
+        "recognition": {
+            "param": {
+                "expected": "决定",
+                "roi": [
+                    662,
+                    449,
+                    244,
+                    205
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_ReduceTime_End": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1593,
+                "y": 1559
+            }
+        },
+        "doc": "到达新的选书阶段",
+        "next": [
+            "IS_Choose_book_1_1",
+            "[JumpBack]IS_Choose_book_1_2"
+        ],
+        "post_wait_freezes": 200,
+        "recognition": {
+            "param": {
+                "expected": "必要时间",
+                "roi": [
+                    830,
+                    311,
+                    194,
+                    92
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "IS_Skill3SwipeDown": {
+        "$__mpe_code": {
+            "position": {
+                "x": 492,
+                "y": 12
+            }
+        },
+        "action": {
+            "param": {
+                "begin": [
+                    1246,
+                    646,
+                    1,
+                    1
+                ],
+                "duration": 1000,
+                "end": [
+                    [
+                        1246,
+                        646,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "type": "Swipe"
+        },
+        "doc": "下滑到第三位置",
+        "recognition": {
+            "param": {
+                "expected": "今日剩余次数"
+            },
+            "type": "OCR"
+        }
+    }
+}

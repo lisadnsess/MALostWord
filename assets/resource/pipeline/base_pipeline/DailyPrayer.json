@@ -1,24 +1,32 @@
 {
-    "$__mpe_config_新建Pipeline2": {
+    "$__mpe_config_新建Pipeline4": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\DailyPrayer.json",
             "filename": "DailyDispatch1",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773667803278,
+            "lastSyncTime": 1775311204572,
             "prefix": "",
             "savedViewport": {
-                "x": 318,
-                "y": -5,
-                "zoom": 0.44
+                "x": -484,
+                "y": -127,
+                "zoom": 0.57
             },
-            "version": "v1.2.3"
+            "version": "v1.3.1"
         }
     },
-    "$__mpe_external_BL_ActionStart_新建Pipeline2": {
+    "$__mpe_external_BL_ActionSt_新建Pipeline4": {
         "$__mpe_code": {
             "position": {
                 "x": 2335,
                 "y": -77
+            }
+        }
+    },
+    "$__mpe_external_BL_ActionStart_新建Pipeline4": {
+        "$__mpe_code": {
+            "position": {
+                "x": 0,
+                "y": 0
             }
         }
     },
@@ -118,8 +126,8 @@
     "DP_ClickNextPrayer": {
         "$__mpe_code": {
             "position": {
-                "x": 641,
-                "y": 187
+                "x": 929,
+                "y": 193
             }
         },
         "action": {
@@ -253,8 +261,8 @@
     "DP_EPICFisnish": {
         "$__mpe_code": {
             "position": {
-                "x": 813,
-                "y": 828
+                "x": 749,
+                "y": 863
             }
         },
         "action": {
@@ -283,7 +291,7 @@
                     "DP_image/EPIC抽取完成.png"
                 ],
                 "threshold": [
-                    0.9
+                    0.7
                 ]
             },
             "type": "TemplateMatch"
@@ -331,10 +339,10 @@
                     ]
                 ],
                 "roi": [
-                    789,
-                    184,
-                    414,
-                    281
+                    617,
+                    186,
+                    628,
+                    293
                 ]
             },
             "type": "OCR"

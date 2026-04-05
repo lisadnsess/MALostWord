@@ -1,8 +1,8 @@
 {
-    "$__mpe_config_DailyDispatch1": {
+    "$__mpe_config_BaseLW": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\BaseLW.json",
-            "filename": "DailyDispatch1",
+            "filename": "BaseLW",
             "isModifiedExternally": false,
             "lastSyncTime": 1773555531374,
             "prefix": "",

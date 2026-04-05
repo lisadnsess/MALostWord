@@ -1,17 +1,17 @@
 {
-    "$__mpe_config_新建Pipeline12": {
+    "$__mpe_config_ManualCombat": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\ManualCombat.json",
-            "filename": "新建Pipeline12",
+            "filename": "ManualCombat",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773545232076,
+            "lastSyncTime": 1775390233417,
             "prefix": "",
             "savedViewport": {
-                "x": 192,
-                "y": -111,
-                "zoom": 0.38
+                "x": -3141,
+                "y": -1047,
+                "zoom": 0.66
             },
-            "version": "v1.2.3"
+            "version": "v1.3.1"
         }
     },
     "MCA_ActionBoost": {
@@ -92,7 +92,7 @@
     "MCA_ActionShield": {
         "$__mpe_code": {
             "position": {
-                "x": 2172,
+                "x": 2412,
                 "y": 12
             }
         },
@@ -116,7 +116,7 @@
     "MCA_ActionSkillOpen": {
         "$__mpe_code": {
             "position": {
-                "x": 2412,
+                "x": 2652,
                 "y": 12
             }
         },
@@ -140,7 +140,7 @@
     "MCA_ActionSpellCardUse": {
         "$__mpe_code": {
             "position": {
-                "x": 2652,
+                "x": 2892,
                 "y": 12
             }
         },
@@ -181,96 +181,10 @@
             "type": "OCR"
         }
     },
-    "MCA_CurrentBoostClick": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2332,
-                "y": 1461
-            }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "doc": "单次点击",
-        "post_delay": 300,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "\\d"
-                ],
-                "roi": [
-                    1003,
-                    547,
-                    133,
-                    50
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "MCA_CurrentBoostFinalFlag": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2332,
-                "y": 1815
-            }
-        },
-        "doc": "目标灵力值检测",
-        "recognition": {
-            "param": {
-                "expected": "set in code",
-                "roi": [
-                    1003,
-                    547,
-                    133,
-                    50
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "MCA_CurrentBoostFinalFlag1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2332,
-                "y": 1077
-            }
-        },
-        "doc": "目标灵力值检测",
-        "recognition": {
-            "param": {
-                "green_mask": true,
-                "roi": [
-                    1003,
-                    484,
-                    126,
-                    71
-                ],
-                "template": "MC_image/灵力强化满.png",
-                "threshold": 0.8
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "MCA_CurrentBoostFinish": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2012,
-                "y": 1510
-            }
-        },
-        "doc": "点击灵力值",
-        "next": [
-            "MCA_CurrentBoostFinalFlag",
-            "MCA_CurrentBoostFinalFlag1",
-            "[JumpBack]MCA_CurrentBoostClick"
-        ]
-    },
     "MCA_CurrentBoostFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
+                "x": 2172,
                 "y": 12
             }
         },
@@ -293,7 +207,7 @@
     "MCA_CurrentCharacter": {
         "$__mpe_code": {
             "position": {
-                "x": 1692,
+                "x": 1452,
                 "y": 12
             }
         },
@@ -316,8 +230,8 @@
     "MCA_GetShieldClick": {
         "$__mpe_code": {
             "position": {
-                "x": 2892,
-                "y": 1077
+                "x": 4883,
+                "y": 3198
             }
         },
         "action": {
@@ -334,37 +248,11 @@
         "doc": "已擦弹数量位置",
         "post_delay": 500
     },
-    "MCA_GetShieldFinishFlag": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2892,
-                "y": 1801
-            }
-        },
-        "doc": "已擦弹数量位置",
-        "post_delay": 500,
-        "recognition": {
-            "param": {
-                "index": 0,
-                "roi": [
-                    1073,
-                    340,
-                    158,
-                    119
-                ],
-                "template": [
-                    "MC_image/擦弹.png"
-                ],
-                "threshold": 0.55
-            },
-            "type": "TemplateMatch"
-        }
-    },
     "MCA_GetShieldFinishFlag1": {
         "$__mpe_code": {
             "position": {
-                "x": 2892,
-                "y": 1385
+                "x": 4886,
+                "y": 2763
             }
         },
         "doc": "已擦弹数量位置",
@@ -386,36 +274,10 @@
             "type": "TemplateMatch"
         }
     },
-    "MCA_GetShieldFinishFlag2": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2892,
-                "y": 2217
-            }
-        },
-        "doc": "已擦弹数量位置",
-        "post_delay": 500,
-        "recognition": {
-            "param": {
-                "index": 3,
-                "roi": [
-                    1073,
-                    340,
-                    158,
-                    119
-                ],
-                "template": [
-                    "MC_image/擦弹.png"
-                ],
-                "threshold": 0.55
-            },
-            "type": "TemplateMatch"
-        }
-    },
     "MCA_GetShieldNumber": {
         "$__mpe_code": {
             "position": {
-                "x": 2892,
+                "x": 3612,
                 "y": 12
             }
         },
@@ -439,7 +301,7 @@
     "MCA_GetSpellCardLocation": {
         "$__mpe_code": {
             "position": {
-                "x": 1932,
+                "x": 1692,
                 "y": 12
             }
         },
@@ -459,11 +321,33 @@
             "type": "OCR"
         }
     },
+    "MCA_LoadFightStrategy": {
+        "$__mpe_code": {
+            "position": {
+                "x": 332,
+                "y": 2491
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "MCA_LoadFightStrategy",
+                "custom_action_param": {
+                    "fight_dir": "fight1.json"
+                }
+            },
+            "type": "Custom"
+        },
+        "on_error": [
+            "[JumpBack]MC_Round"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
     "MCA_ReturnOneCharacter": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
-                "y": 384
+                "x": 3852,
+                "y": 77
             }
         },
         "next": [
@@ -474,8 +358,8 @@
     "MCA_ReturnOneCharacterClick": {
         "$__mpe_code": {
             "position": {
-                "x": 332,
-                "y": 623
+                "x": 4172,
+                "y": 12
             }
         },
         "action": {
@@ -494,8 +378,8 @@
     "MCA_ReturnOneCharacterFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 332,
-                "y": 304
+                "x": 4172,
+                "y": 302
             }
         },
         "doc": "返回第一人位置",
@@ -514,26 +398,31 @@
             "type": "OCR"
         }
     },
-    "MCA_ShieldLine": {
+    "MCA_Round": {
         "$__mpe_code": {
             "position": {
-                "x": 2572,
-                "y": 1489
+                "x": 972,
+                "y": 2498
             }
         },
-        "doc": "擦弹点击流程",
-        "next": [
-            "MCA_GetShieldFinishFlag",
-            "MCA_GetShieldFinishFlag1",
-            "MCA_GetShieldFinishFlag2",
-            "[JumpBack]MCA_GetShieldClick"
-        ]
+        "action": {
+            "param": {
+                "custom_action": "MCA_Round",
+                "custom_action_param": {}
+            },
+            "type": "Custom"
+        },
+        "on_error": [
+            "[JumpBack]MC_UseSkill"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
     },
-    "MCA_SkillOpenClick": {
+    "MCA_SkillOpenClick_副本1": {
         "$__mpe_code": {
             "position": {
-                "x": 892,
-                "y": 1337
+                "x": 3132,
+                "y": 12
             }
         },
         "action": {
@@ -541,24 +430,22 @@
             "type": "Click"
         },
         "doc": "点击技能",
-        "next": [
-            "MCA_SkillOpenConfirm"
-        ],
         "post_delay": 300,
         "recognition": {
             "param": {
                 "expected": [
                     "等级"
-                ]
+                ],
+                "roi": "set in code"
             },
             "type": "OCR"
         }
     },
-    "MCA_SkillOpenConfirm": {
+    "MCA_SkillOpenConfirm_副本2": {
         "$__mpe_code": {
             "position": {
-                "x": 1212,
-                "y": 1224
+                "x": 3372,
+                "y": 12
             }
         },
         "action": {
@@ -589,11 +476,11 @@
             "type": "OCR"
         }
     },
-    "MCA_SkillOpenFinishFlag": {
+    "MCA_SkillOpenFinishFlag_副本3": {
         "$__mpe_code": {
             "position": {
-                "x": 892,
-                "y": 1077
+                "x": 1932,
+                "y": 12
             }
         },
         "doc": "使用技能标记",
@@ -606,19 +493,6 @@
             },
             "type": "OCR"
         }
-    },
-    "MCA_SkillOpenOne": {
-        "$__mpe_code": {
-            "position": {
-                "x": 572,
-                "y": 1273
-            }
-        },
-        "next": [
-            "MCA_SkillOpenFinishFlag",
-            "[JumpBack]MCA_SkillOpenConfirm",
-            "[JumpBack]MCA_SkillOpenClick"
-        ]
     },
     "MCA_SkillOpen_OCR": {
         "$__mpe_code": {
@@ -645,8 +519,8 @@
     "MCA_SpellCardClick": {
         "$__mpe_code": {
             "position": {
-                "x": 1772,
-                "y": 1715
+                "x": 2012,
+                "y": 1287
             }
         },
         "action": {
@@ -667,8 +541,8 @@
     "MCA_SpellCardClickOne": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 1451
+                "x": 1692,
+                "y": 1023
             }
         },
         "doc": "使用符卡",
@@ -682,8 +556,8 @@
     "MCA_SpellCardClickOneFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 1164
+                "x": 1692,
+                "y": 736
             }
         },
         "doc": "使用符卡",
@@ -696,8 +570,8 @@
     "MCA_SpellCardFinishFlag1": {
         "$__mpe_code": {
             "position": {
-                "x": 1772,
-                "y": 1396
+                "x": 2012,
+                "y": 968
             }
         },
         "doc": "完成使用符卡",
@@ -719,8 +593,8 @@
     "MCA_SpellCardFinishFlag2": {
         "$__mpe_code": {
             "position": {
-                "x": 1772,
-                "y": 1077
+                "x": 2012,
+                "y": 649
             }
         },
         "doc": "完成使用符卡",
@@ -739,11 +613,120 @@
             "type": "OCR"
         }
     },
+    "MCA_UseBoost": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3212,
+                "y": 2506
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "MCA_UseBoost",
+                "custom_action_param": {
+                    "boost_number": 0
+                }
+            },
+            "type": "Custom"
+        },
+        "on_error": [
+            "[JumpBack]MC_CurrentBoost",
+            "[JumpBack]MC_BoostLine"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "MCA_UseSkill": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 2498
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "MCA_UseSkill",
+                "custom_action_param": {
+                    "use_skill": [
+                        1
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "on_error": [
+            "[JumpBack]MC_UseSkill_1"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "MCR_UseShield": {
+        "$__mpe_code": {
+            "position": {
+                "x": 4172,
+                "y": 2548
+            }
+        },
+        "on_error": [
+            "[JumpBack]MC_CurrentShield",
+            "[JumpBack]MC_ShieldLine"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0,
+        "recognition": {
+            "param": {
+                "custom_recognition": "MCR_UseShield",
+                "custom_recognition_param": {
+                    "shield_number": 0
+                }
+            },
+            "type": "Custom"
+        }
+    },
+    "MC_Action": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 2498
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "##########_##########_##########",
+                        "开始单场战斗"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "MCA_LoadFightStrategy"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
+    "MC_BoostLine": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3532,
+                "y": 1941
+            }
+        },
+        "doc": "点击灵力值",
+        "next": [
+            "MC_CurrentBoostFinalFlag",
+            "MC_CurrentBoostFinalFlag1",
+            "[JumpBack]MC_CurrentBoostClick"
+        ]
+    },
     "MC_CloseSkillList": {
         "$__mpe_code": {
             "position": {
-                "x": 1692,
-                "y": 381
+                "x": 5532,
+                "y": 70
             }
         },
         "doc": "关闭技能列表",
@@ -755,8 +738,8 @@
     "MC_CloseSpellCardList": {
         "$__mpe_code": {
             "position": {
-                "x": 572,
-                "y": 366
+                "x": 4412,
+                "y": 74
             }
         },
         "doc": "关闭符卡列表",
@@ -765,11 +748,133 @@
             "[JumpBack]MC_SpellCardListClose"
         ]
     },
+    "MC_CurrentBoost": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3532,
+                "y": 2565
+            }
+        },
+        "doc": "当前灵力值",
+        "on_error": [
+            "[JumpBack]MC_UseShield"
+        ],
+        "recognition": {
+            "param": {
+                "expected": [
+                    "\\d"
+                ],
+                "roi": [
+                    1003,
+                    547,
+                    133,
+                    50
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "MC_CurrentBoostClick": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3852,
+                "y": 2285
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "单次点击",
+        "post_delay": 300,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "\\d"
+                ],
+                "roi": [
+                    1003,
+                    547,
+                    133,
+                    50
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "MC_CurrentBoostFinalFlag": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3852,
+                "y": 1534
+            }
+        },
+        "doc": "目标灵力值检测",
+        "recognition": {
+            "param": {
+                "expected": "set in code",
+                "roi": [
+                    1003,
+                    547,
+                    133,
+                    50
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "MC_CurrentBoostFinalFlag1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3852,
+                "y": 1853
+            }
+        },
+        "doc": "目标灵力值检测",
+        "recognition": {
+            "param": {
+                "green_mask": true,
+                "roi": [
+                    1003,
+                    484,
+                    126,
+                    71
+                ],
+                "template": "MC_image/灵力强化满.png",
+                "threshold": 0.8
+            },
+            "type": "TemplateMatch"
+        }
+    },
+    "MC_CurrentShield": {
+        "$__mpe_code": {
+            "position": {
+                "x": 4492,
+                "y": 2479
+            }
+        },
+        "doc": "已擦弹数量位置",
+        "recognition": {
+            "param": {
+                "roi": [
+                    1073,
+                    340,
+                    158,
+                    119
+                ],
+                "template": [
+                    "MC_image/擦弹.png"
+                ],
+                "threshold": 0.55
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "MC_FightAutoClose": {
         "$__mpe_code": {
             "position": {
-                "x": 2812,
-                "y": 418
+                "x": 572,
+                "y": 763
             }
         },
         "doc": "关闭自动战斗",
@@ -781,8 +886,8 @@
     "MC_FightAutoCloseClick": {
         "$__mpe_code": {
             "position": {
-                "x": 3132,
-                "y": 719
+                "x": 892,
+                "y": 1064
             }
         },
         "action": {
@@ -817,8 +922,8 @@
     "MC_FightAutoCloseFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 3132,
-                "y": 304
+                "x": 892,
+                "y": 649
             }
         },
         "doc": "确认关闭自动战斗",
@@ -849,8 +954,8 @@
     "MC_FightAutoOpen": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
-                "y": 1191
+                "x": 1132,
+                "y": 763
             }
         },
         "doc": "打开自动战斗",
@@ -862,8 +967,8 @@
     "MC_FightAutoOpenClick": {
         "$__mpe_code": {
             "position": {
-                "x": 332,
-                "y": 1492
+                "x": 1452,
+                "y": 1064
             }
         },
         "action": {
@@ -898,8 +1003,8 @@
     "MC_FightAutoOpenFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 332,
-                "y": 1077
+                "x": 1452,
+                "y": 649
             }
         },
         "doc": "确认自动战斗",
@@ -927,11 +1032,37 @@
             "type": "ColorMatch"
         }
     },
+    "MC_GetShieldFinishFlag_副本14": {
+        "$__mpe_code": {
+            "position": {
+                "x": 5220,
+                "y": 2968
+            }
+        },
+        "doc": "已擦弹数量位置",
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "index": 0,
+                "roi": [
+                    1073,
+                    340,
+                    158,
+                    119
+                ],
+                "template": [
+                    "MC_image/擦弹.png"
+                ],
+                "threshold": 0.55
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "MC_OpenSkillList": {
         "$__mpe_code": {
             "position": {
-                "x": 2252,
-                "y": 370
+                "x": 12,
+                "y": 724
             }
         },
         "doc": "打开技能列表",
@@ -944,8 +1075,8 @@
     "MC_OpenSpellCardList": {
         "$__mpe_code": {
             "position": {
-                "x": 1132,
-                "y": 366
+                "x": 4972,
+                "y": 75
             }
         },
         "doc": "打开符卡列表",
@@ -954,11 +1085,73 @@
             "[JumpBack]MC_SpellCardListOpen"
         ]
     },
+    "MC_Round": {
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 2544
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "info": [
+                        "开始单面战斗"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "MCA_Round"
+        ]
+    },
+    "MC_ShieldLine": {
+        "$__mpe_code": {
+            "position": {
+                "x": 4492,
+                "y": 2869
+            }
+        },
+        "doc": "擦弹点击流程",
+        "next": [
+            "MC_ShieldLine_1",
+            "MCA_GetShieldFinishFlag1",
+            "[JumpBack]MCA_GetShieldClick"
+        ]
+    },
+    "MC_ShieldLine_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 4882,
+                "y": 2331
+            }
+        },
+        "doc": "已擦弹数量位置",
+        "post_delay": 500,
+        "recognition": {
+            "param": {
+                "index": 0,
+                "roi": [
+                    1073,
+                    340,
+                    158,
+                    119
+                ],
+                "template": [
+                    "MC_image/擦弹.png"
+                ],
+                "threshold": 0.55
+            },
+            "type": "TemplateMatch"
+        }
+    },
     "MC_SkillListClose": {
         "$__mpe_code": {
             "position": {
-                "x": 2012,
-                "y": 304
+                "x": 5852,
+                "y": 316
             }
         },
         "action": {
@@ -983,8 +1176,8 @@
     "MC_SkillListCloseFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 2012,
-                "y": 645
+                "x": 5852,
+                "y": 12
             }
         },
         "doc": "关闭技能列表标记",
@@ -1004,8 +1197,8 @@
     "MC_SkillListOpen": {
         "$__mpe_code": {
             "position": {
-                "x": 2572,
-                "y": 304
+                "x": 332,
+                "y": 1007
             }
         },
         "action": {
@@ -1030,8 +1223,8 @@
     "MC_SkillListOpenFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 2572,
-                "y": 643
+                "x": 332,
+                "y": 649
             }
         },
         "doc": "打开技能列表标记",
@@ -1051,8 +1244,8 @@
     "MC_SpellCardListClose": {
         "$__mpe_code": {
             "position": {
-                "x": 892,
-                "y": 623
+                "x": 4732,
+                "y": 331
             }
         },
         "action": {
@@ -1076,8 +1269,8 @@
     "MC_SpellCardListCloseFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 892,
-                "y": 304
+                "x": 4732,
+                "y": 12
             }
         },
         "doc": "关闭符卡列表",
@@ -1097,8 +1290,8 @@
     "MC_SpellCardListOpen": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 623
+                "x": 5292,
+                "y": 12
             }
         },
         "action": {
@@ -1122,8 +1315,8 @@
     "MC_SpellCardListOpenFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 304
+                "x": 5292,
+                "y": 334
             }
         },
         "doc": "打开符卡列表",
@@ -1136,6 +1329,145 @@
                     116,
                     108
                 ]
+            },
+            "type": "OCR"
+        }
+    },
+    "MC_UseBoost": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2892,
+                "y": 2582
+            }
+        },
+        "next": [
+            "MCA_UseBoost"
+        ]
+    },
+    "MC_UseShield": {
+        "$__mpe_code": {
+            "position": {
+                "x": 3852,
+                "y": 2624
+            }
+        },
+        "next": [
+            "MCR_UseShield"
+        ]
+    },
+    "MC_UseSkill": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 2574
+            }
+        },
+        "next": [
+            "MCA_UseSkill"
+        ]
+    },
+    "MC_UseSkill_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 2544
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": [
+                        "开始使用技能"
+                    ]
+                }
+            },
+            "type": "Custom"
+        },
+        "next": [
+            "MC_UseSkill_2_1",
+            "[JumpBack]MC_UseSkill_2_2",
+            "[JumpBack]MC_UseSkill_2_3"
+        ]
+    },
+    "MC_UseSkill_2_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 2597
+            }
+        },
+        "doc": "使用技能标记",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "剩余"
+                ],
+                "roi": "set in code"
+            },
+            "type": "OCR"
+        }
+    },
+    "MC_UseSkill_2_2": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2572,
+                "y": 2489
+            }
+        },
+        "action": {
+            "param": {
+                "target": [
+                    684,
+                    565,
+                    170,
+                    51
+                ]
+            },
+            "type": "Click"
+        },
+        "doc": "点击技能标记",
+        "on_error": [
+            "[JumpBack]MC_UseBoost"
+        ],
+        "post_delay": 300,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "决定"
+                ],
+                "roi": [
+                    684,
+                    565,
+                    170,
+                    51
+                ]
+            },
+            "type": "OCR"
+        }
+    },
+    "MC_UseSkill_2_3": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 2901
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击技能",
+        "next": [
+            "MC_UseSkill_2_2"
+        ],
+        "post_delay": 300,
+        "recognition": {
+            "param": {
+                "expected": [
+                    "等级"
+                ],
+                "roi": "set in code"
             },
             "type": "OCR"
         }

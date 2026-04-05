@@ -1,8 +1,8 @@
 {
-    "$__mpe_config_DailyDispatch1": {
+    "$__mpe_config_DailyDispatch": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\DailyDispatch.json",
-            "filename": "DailyDispatch1",
+            "filename": "DailyDispatch",
             "isModifiedExternally": false,
             "lastSyncTime": 1773672080957,
             "prefix": "",
@@ -14,7 +14,7 @@
             "version": "v1.2.3"
         }
     },
-    "$__mpe_external_BL_ActionStart_DailyDispatch1": {
+    "$__mpe_external_DailyDispatch": {
         "$__mpe_code": {
             "position": {
                 "x": 2228,

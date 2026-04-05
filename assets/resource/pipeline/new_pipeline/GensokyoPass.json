@@ -1,24 +1,24 @@
 {
-    "$__mpe_config_DailyDispatch1": {
+    "$__mpe_config_GensokyoPass": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\GensokyoPass.json",
-            "filename": "DailyDispatch1",
+            "filename": "GensokyoPass",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773756205147,
+            "lastSyncTime": 1774363490781,
             "prefix": "",
             "savedViewport": {
-                "x": -1815,
-                "y": -295,
-                "zoom": 0.76
+                "x": -1538,
+                "y": -488,
+                "zoom": 1
             },
             "version": "v1.3.0"
         }
     },
-    "$__mpe_external_BL_ActionStart_DailyDispatch1": {
+    "$__mpe_external_GensokyoPass": {
         "$__mpe_code": {
             "position": {
-                "x": 3653,
-                "y": 1077
+                "x": 3621,
+                "y": 1097
             }
         }
     },
@@ -108,8 +108,8 @@
     "GS_Action": {
         "$__mpe_code": {
             "position": {
-                "x": 1204,
-                "y": 470
+                "x": 904,
+                "y": 504
             }
         },
         "next": [
@@ -138,7 +138,8 @@
         "doc": "幻想乡通行证",
         "next": [
             "GP_GetIn",
-            "GP_OutTime_Logger"
+            "GP_OutTime_Logger",
+            "[JumpBack]BL_ActionStart"
         ],
         "post_delay": 1000
     },
@@ -234,6 +235,7 @@
             "param": {},
             "type": "Click"
         },
+        "post_wait_freezes": 1000,
         "recognition": {
             "param": {
                 "expected": [
