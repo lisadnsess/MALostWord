@@ -17,11 +17,11 @@ class MCR_UseShield(CustomRecognition):
     ) -> CustomRecognition.AnalyzeResult:
 
         logger.debug("##########_##########_##########")
-        logger.debug(f'正在运行节点{argv.node_name}')
+        logger.debug(f"正在运行节点{argv.node_name}")
         use_shield = json.loads(argv.custom_recognition_param).get("shield_number")
-        logger.debug(f'use_shield:{use_shield}')
+        logger.debug(f"use_shield:{use_shield}")
         if not use_shield or use_shield <= 0:
-            logger.debug(f'use zero shield')
+            logger.debug(f"use zero shield")
             return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
 
         reco_detail = context.run_recognition("MC_CurrentShield", argv.image)

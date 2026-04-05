@@ -17,17 +17,17 @@ class MCA_LoadFightStrategy(CustomAction):
             argv: CustomAction.RunArg,
     ) -> bool:
         logger.debug("##########_##########_##########")
-        logger.debug(f'正在运行节点{argv.node_name}')
+        logger.debug(f"正在运行节点{argv.node_name}")
         fight_dir_name = json.loads(argv.custom_action_param).get("fight_dir")
 
         # 当前工作路径
         fight_dir = Path.cwd() / "fight_strategy"/Path(fight_dir_name)
-        logger.debug(f'导入战斗策略: {fight_dir_name}')
+        logger.debug(f"导入战斗策略: {fight_dir_name}")
         with open(fight_dir, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         for round_index,round_one in data["fight"].items():
-            logger.info(f'正在运行:{round_index}')
+            logger.info(f"正在运行:{round_index}")
             print(round_one)
             round_param = {
                 "MCA_Round": {"custom_action_param": {"round_param":round_one}}
@@ -48,19 +48,19 @@ class MCA_Round(CustomAction):
             argv: CustomAction.RunArg,
     ) -> bool:
         logger.debug("##########_##########_##########")
-        logger.debug(f'正在运行节点{argv.node_name}')
+        logger.debug(f"正在运行节点{argv.node_name}")
         round_param = json.loads(argv.custom_action_param).get("round_param")
         # return True
         # print(round_param)
 
-        round_param = {'auto_fight': False,
-                       'use_skill_1': [1,2,3,4,5,6],
-                       'change_role': False,
-                       'change_role_param': [],
-                       'use_skill_2': [],
-                       'role_action': {
-                           '1': {'boost_number': 3, 'change_target': [False,2], 'shield_number': 3, 'use_card': 1, },
-                           '2': {'boost_number': 3, 'change_target': [False,2], 'shield_number': 0, 'use_card': 2, },
+        round_param = {"auto_fight": False,
+                       "use_skill_1": [1,2,3,4,5,6],
+                       "change_role": False,
+                       "change_role_param": [],
+                       "use_skill_2": [],
+                       "role_action": {
+                           "1": {"boost_number": 3, "change_target": [False,2], "shield_number": 0, "use_card": 5, },
+                           "2": {"boost_number": 3, "change_target": [False,2], "shield_number": 0, "use_card": 5, },
                            },
                        }
 
@@ -74,14 +74,22 @@ class MCA_Round(CustomAction):
         context.run_task("MC_FightAutoClose")
         ##########_##########_##########
         # 使用技能
-        MCA_UseSkill_param = {
-            "MCA_UseSkill": {"custom_action_param": {"use_skill": round_param["use_skill_1"]}}
-        }
-        context.override_pipeline(MCA_UseSkill_param)
-        context.run_task("MC_UseSkill")
+        if len(round_param["use_skill_1"]) !=0 :
+            MCA_UseSkill_param = {
+                "MCA_UseSkill": {"custom_action_param": {"use_skill": round_param["use_skill_1"]}}
+            }
+            context.override_pipeline(MCA_UseSkill_param)
+            context.run_task("MC_UseSkill")
+
+        if len(round_param["use_skill_2"]) !=0 :
+            MCA_UseSkill_param = {
+                "MCA_UseSkill": {"custom_action_param": {"use_skill": round_param["use_skill_2"]}}
+            }
+            context.override_pipeline(MCA_UseSkill_param)
+            context.run_task("MC_UseSkill")
 
         for role_index, role_one in round_param["role_action"].items():
-            logger.debug(f'进行第{role_index}位角色操作')
+            logger.debug(f"进行第{role_index}位角色操作")
             # 使用灵力强化
             MCA_UseBoost_param = {
                 "MCA_UseBoost": {"custom_action_param": {"boost_number": role_one["boost_number"]}}
@@ -103,6 +111,7 @@ class MCA_Round(CustomAction):
             context.override_pipeline(MCA_UseCard_param)
             context.run_task("MC_UseCard")
 
+            time.sleep(20)
 
 
             # break
@@ -129,7 +138,7 @@ class MCA_UseSkill(CustomAction):
             argv: CustomAction.RunArg,
     ) -> bool:
         logger.debug("##########_##########_##########")
-        logger.debug(f'正在运行节点{argv.node_name}')
+        logger.debug(f"正在运行节点{argv.node_name}")
         use_skill = json.loads(argv.custom_action_param).get("use_skill")
         skill_list_box = [
             {"box": [160, 520, 80, 130]},
@@ -143,9 +152,9 @@ class MCA_UseSkill(CustomAction):
             {"box": [1039, 520, 80, 130]},
         ]
         if len(use_skill) == 0:
-            logger.debug(f'无需使用技能')
+            logger.debug(f"无需使用技能")
             return True
-        logger.debug(f'use_skill:{use_skill}')
+        logger.debug(f"use_skill:{use_skill}")
         context.run_task("MC_OpenSkillList")
         for index in use_skill:
             target_box = skill_list_box[index - 1]["box"]
@@ -165,11 +174,11 @@ class MCA_UseBoost(CustomAction):
             argv: CustomAction.RunArg,
     ) -> bool:
         logger.debug("##########_##########_##########")
-        logger.debug(f'正在运行节点{argv.node_name}')
+        logger.debug(f"正在运行节点{argv.node_name}")
         use_boost = json.loads(argv.custom_action_param).get("boost_number")
-        logger.debug(f'use_boost:{use_boost}')
+        logger.debug(f"use_boost:{use_boost}")
         if use_boost is None or use_boost <= 0:
-            logger.debug(f'use zero boost')
+            logger.debug(f"use zero boost")
             return True
         use_boost = int(use_boost)
 
@@ -204,10 +213,10 @@ class MCA_UseCard(CustomAction):
             {"box": [741, 602, 220, 49]}
         ]
         logger.debug("##########_##########_##########")
-        logger.debug(f'正在运行节点{argv.node_name}')
+        logger.debug(f"正在运行节点{argv.node_name}")
         use_card = json.loads(argv.custom_action_param).get("use_card")
 
-        # logger.debug(f'use_card:{use_card}')
+        # logger.debug(f"use_card:{use_card}")
 
         roi = spell_card_list[use_card - 1]["box"]
         if use_card >5:
