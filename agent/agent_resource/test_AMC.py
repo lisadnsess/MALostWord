@@ -42,7 +42,6 @@ class MCA_LoadFightStrategy(CustomAction):
         return True
 
 class MCA_Round(CustomAction):
-
     def run(
             self,
             context: Context,
