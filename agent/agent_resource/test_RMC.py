@@ -20,33 +20,28 @@ class MCR_UseShield(CustomRecognition):
         logger.debug(f'正在运行节点{argv.node_name}')
 
         use_shield = json.loads(argv.custom_recognition_param).get("shield_number")
-        logger.debug(f'use_boost:{use_shield}')
-        # if not use_shield or use_shield <= 0:
-        #     logger.debug(f'use zero shield')
-        #     return True
-        use_shield = int(use_shield)
-
+        use_shield = 3
         logger.debug(f'use_shield:{use_shield}')
-
+        if not use_shield or use_shield <= 0:
+            logger.debug(f'use zero shield')
+            return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
 
         reco_detail = context.run_recognition("MC_CurrentShield", argv.image)
-        current_shield  =len(reco_detail.filtered_results)
-        print(current_shield)
         if not reco_detail:
             shield_number = 0
         else:
             shield_number = len(reco_detail.filtered_results)
 
-        bullet_target_number = shield_number + use_shield
-        if bullet_target_number >= 5:
-            bullet_target_number = 4
-        print(bullet_target_number)
-        context.run_task(
-            "MC_ShieldLine",
-            pipeline_override={
-                "MC_ShieldLine_1": {"index": int(bullet_target_number)}
-            },
-        )
+        use_shield_number = shield_number + use_shield
+        final_shield = 5-use_shield_number
+        logger.debug(f"final_shield :{final_shield}")
+        if use_shield_number >= 5:
+            use_shield_number = 4
+
+        prover = {"MC_ShieldLine_1": {"index": int(use_shield_number)-1}}
+        context.override_pipeline(prover)
+        context.run_task("MC_ShieldLine")
+
         return CustomRecognition.AnalyzeResult(box=[0, 0, 0, 0], detail="finish")
 
 
