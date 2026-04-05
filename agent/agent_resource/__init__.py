@@ -8,7 +8,7 @@ from .test_MC import MCA_ActionOneScreen, MCA_ActionSkillOpen, MCA_ActionChangeC
 from .test_EF import EFA_ActionAll
 from .test_SR import SRA_ActionSpiritRevival
 
-from .test_AMC import MCA_LoadFightStrategy, MCA_UseSkill, MCA_Round, MCA_UseBoost,MCA_UseShield
+from .test_AMC import MCA_LoadFightStrategy, MCA_UseSkill, MCA_Round, MCA_UseBoost
 from .test_RMC import MCR_UseShield
 
 # 显式列出需要处理的函数
@@ -56,7 +56,6 @@ FUNCTIONS_ACTION = [
     MCA_Round,
     MCA_UseSkill,
     MCA_UseBoost,
-MCA_UseShield
 ]
 
 flag = getattr(sys.modules["__main__"], "Agent_FLAG", True)
