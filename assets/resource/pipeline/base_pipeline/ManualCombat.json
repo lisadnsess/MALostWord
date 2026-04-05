@@ -4,11 +4,11 @@
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\ManualCombat.json",
             "filename": "ManualCombat",
             "isModifiedExternally": false,
-            "lastSyncTime": 1775391052947,
+            "lastSyncTime": 1775394152999,
             "prefix": "",
             "savedViewport": {
-                "x": -2211,
-                "y": -1569,
+                "x": -3823,
+                "y": -1590,
                 "zoom": 0.7
             },
             "version": "v1.3.1"
@@ -184,7 +184,7 @@
     "MCA_CurrentBoostFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 2172,
+                "x": 1452,
                 "y": 12
             }
         },
@@ -207,7 +207,7 @@
     "MCA_CurrentCharacter": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
+                "x": 1692,
                 "y": 12
             }
         },
@@ -230,8 +230,8 @@
     "MCA_GetShieldClick": {
         "$__mpe_code": {
             "position": {
-                "x": 4883,
-                "y": 3198
+                "x": 5372,
+                "y": 2457
             }
         },
         "action": {
@@ -251,8 +251,8 @@
     "MCA_GetShieldFinishFlag1": {
         "$__mpe_code": {
             "position": {
-                "x": 4886,
-                "y": 2763
+                "x": 5372,
+                "y": 1991
             }
         },
         "doc": "已擦弹数量位置",
@@ -301,7 +301,7 @@
     "MCA_GetSpellCardLocation": {
         "$__mpe_code": {
             "position": {
-                "x": 1692,
+                "x": 1932,
                 "y": 12
             }
         },
@@ -324,8 +324,8 @@
     "MCA_LoadFightStrategy": {
         "$__mpe_code": {
             "position": {
-                "x": 332,
-                "y": 2491
+                "x": 892,
+                "y": 1798
             }
         },
         "action": {
@@ -401,8 +401,8 @@
     "MCA_Round": {
         "$__mpe_code": {
             "position": {
-                "x": 972,
-                "y": 2498
+                "x": 1532,
+                "y": 1805
             }
         },
         "action": {
@@ -479,7 +479,7 @@
     "MCA_SkillOpenFinishFlag_副本3": {
         "$__mpe_code": {
             "position": {
-                "x": 1932,
+                "x": 2172,
                 "y": 12
             }
         },
@@ -519,8 +519,8 @@
     "MCA_SpellCardClick": {
         "$__mpe_code": {
             "position": {
-                "x": 2012,
-                "y": 1287
+                "x": 332,
+                "y": 1423
             }
         },
         "action": {
@@ -541,8 +541,8 @@
     "MCA_SpellCardClickOne": {
         "$__mpe_code": {
             "position": {
-                "x": 1692,
-                "y": 1023
+                "x": 12,
+                "y": 1159
             }
         },
         "doc": "使用符卡",
@@ -556,8 +556,8 @@
     "MCA_SpellCardClickOneFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 1692,
-                "y": 736
+                "x": 12,
+                "y": 872
             }
         },
         "doc": "使用符卡",
@@ -570,8 +570,8 @@
     "MCA_SpellCardFinishFlag1": {
         "$__mpe_code": {
             "position": {
-                "x": 2012,
-                "y": 968
+                "x": 332,
+                "y": 785
             }
         },
         "doc": "完成使用符卡",
@@ -593,8 +593,8 @@
     "MCA_SpellCardFinishFlag2": {
         "$__mpe_code": {
             "position": {
-                "x": 2012,
-                "y": 649
+                "x": 332,
+                "y": 1104
             }
         },
         "doc": "完成使用符卡",
@@ -616,8 +616,8 @@
     "MCA_UseBoost": {
         "$__mpe_code": {
             "position": {
-                "x": 3212,
-                "y": 2506
+                "x": 3772,
+                "y": 1757
             }
         },
         "action": {
@@ -636,11 +636,35 @@
         "post_delay": 0,
         "pre_delay": 0
     },
+    "MCA_UseCard": {
+        "$__mpe_code": {
+            "position": {
+                "x": 5692,
+                "y": 2689
+            }
+        },
+        "action": {
+            "param": {
+                "custom_action": "MCA_UseCard",
+                "custom_action_param": {
+                    "use_card": 1
+                }
+            },
+            "type": "Custom"
+        },
+        "on_error": [
+            "[JumpBack]MC_OpenSpellCardList",
+            "[JumpBack]MC_CloseSpellCardList",
+            "[JumpBack]MC_CardLine"
+        ],
+        "post_delay": 0,
+        "pre_delay": 0
+    },
     "MCA_UseSkill": {
         "$__mpe_code": {
             "position": {
-                "x": 1612,
-                "y": 2498
+                "x": 2172,
+                "y": 1805
             }
         },
         "action": {
@@ -663,8 +687,8 @@
     "MCR_UseShield": {
         "$__mpe_code": {
             "position": {
-                "x": 4172,
-                "y": 2548
+                "x": 4732,
+                "y": 1799
             }
         },
         "on_error": [
@@ -686,8 +710,8 @@
     "MC_Action": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
-                "y": 2498
+                "x": 572,
+                "y": 1805
             }
         },
         "action": {
@@ -711,8 +735,8 @@
     "MC_BoostLine": {
         "$__mpe_code": {
             "position": {
-                "x": 3532,
-                "y": 1941
+                "x": 4092,
+                "y": 1199
             }
         },
         "doc": "点击灵力值",
@@ -722,10 +746,44 @@
             "[JumpBack]MC_CurrentBoostClick"
         ]
     },
+    "MC_CardLine": {
+        "$__mpe_code": {
+            "position": {
+                "x": 6609,
+                "y": 2867
+            }
+        },
+        "doc": "擦弹点击流程",
+        "next": [
+            "MC_CardLine_1"
+        ]
+    },
+    "MC_CardLine_1": {
+        "$__mpe_code": {
+            "position": {
+                "x": 7029,
+                "y": 2735
+            }
+        },
+        "action": {
+            "param": {},
+            "type": "Click"
+        },
+        "doc": "点击符卡",
+        "recognition": {
+            "param": {
+                "expected": [
+                    "等级"
+                ],
+                "roi": "set in code"
+            },
+            "type": "OCR"
+        }
+    },
     "MC_CloseSkillList": {
         "$__mpe_code": {
             "position": {
-                "x": 5532,
+                "x": 4412,
                 "y": 70
             }
         },
@@ -738,8 +796,8 @@
     "MC_CloseSpellCardList": {
         "$__mpe_code": {
             "position": {
-                "x": 4412,
-                "y": 74
+                "x": 6012,
+                "y": 2687
             }
         },
         "doc": "关闭符卡列表",
@@ -751,8 +809,8 @@
     "MC_CurrentBoost": {
         "$__mpe_code": {
             "position": {
-                "x": 3532,
-                "y": 2565
+                "x": 4092,
+                "y": 1816
             }
         },
         "doc": "当前灵力值",
@@ -777,8 +835,8 @@
     "MC_CurrentBoostClick": {
         "$__mpe_code": {
             "position": {
-                "x": 3852,
-                "y": 2285
+                "x": 4412,
+                "y": 1536
             }
         },
         "action": {
@@ -805,8 +863,8 @@
     "MC_CurrentBoostFinalFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 3852,
-                "y": 1534
+                "x": 4412,
+                "y": 785
             }
         },
         "doc": "目标灵力值检测",
@@ -826,8 +884,8 @@
     "MC_CurrentBoostFinalFlag1": {
         "$__mpe_code": {
             "position": {
-                "x": 3852,
-                "y": 1853
+                "x": 4412,
+                "y": 1104
             }
         },
         "doc": "目标灵力值检测",
@@ -849,8 +907,8 @@
     "MC_CurrentShield": {
         "$__mpe_code": {
             "position": {
-                "x": 4492,
-                "y": 2479
+                "x": 5052,
+                "y": 1730
             }
         },
         "doc": "已擦弹数量位置",
@@ -873,8 +931,8 @@
     "MC_FightAutoClose": {
         "$__mpe_code": {
             "position": {
-                "x": 572,
-                "y": 763
+                "x": 5532,
+                "y": 126
             }
         },
         "doc": "关闭自动战斗",
@@ -886,8 +944,8 @@
     "MC_FightAutoCloseClick": {
         "$__mpe_code": {
             "position": {
-                "x": 892,
-                "y": 1064
+                "x": 5852,
+                "y": 427
             }
         },
         "action": {
@@ -922,8 +980,8 @@
     "MC_FightAutoCloseFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 892,
-                "y": 649
+                "x": 5852,
+                "y": 12
             }
         },
         "doc": "确认关闭自动战斗",
@@ -954,8 +1012,8 @@
     "MC_FightAutoOpen": {
         "$__mpe_code": {
             "position": {
-                "x": 1132,
-                "y": 763
+                "x": 6092,
+                "y": 126
             }
         },
         "doc": "打开自动战斗",
@@ -967,8 +1025,8 @@
     "MC_FightAutoOpenClick": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 1064
+                "x": 6412,
+                "y": 427
             }
         },
         "action": {
@@ -1003,8 +1061,8 @@
     "MC_FightAutoOpenFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
-                "y": 649
+                "x": 6412,
+                "y": 12
             }
         },
         "doc": "确认自动战斗",
@@ -1032,37 +1090,11 @@
             "type": "ColorMatch"
         }
     },
-    "MC_GetShieldFinishFlag_副本14": {
-        "$__mpe_code": {
-            "position": {
-                "x": 5220,
-                "y": 2968
-            }
-        },
-        "doc": "已擦弹数量位置",
-        "post_delay": 500,
-        "recognition": {
-            "param": {
-                "index": 0,
-                "roi": [
-                    1073,
-                    340,
-                    158,
-                    119
-                ],
-                "template": [
-                    "MC_image/擦弹.png"
-                ],
-                "threshold": 0.55
-            },
-            "type": "TemplateMatch"
-        }
-    },
     "MC_OpenSkillList": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
-                "y": 724
+                "x": 4972,
+                "y": 87
             }
         },
         "doc": "打开技能列表",
@@ -1075,8 +1107,8 @@
     "MC_OpenSpellCardList": {
         "$__mpe_code": {
             "position": {
-                "x": 4972,
-                "y": 75
+                "x": 6012,
+                "y": 3067
             }
         },
         "doc": "打开符卡列表",
@@ -1088,8 +1120,8 @@
     "MC_Round": {
         "$__mpe_code": {
             "position": {
-                "x": 652,
-                "y": 2544
+                "x": 1212,
+                "y": 1851
             }
         },
         "action": {
@@ -1110,8 +1142,8 @@
     "MC_ShieldLine": {
         "$__mpe_code": {
             "position": {
-                "x": 4492,
-                "y": 2869
+                "x": 5052,
+                "y": 2120
             }
         },
         "doc": "擦弹点击流程",
@@ -1119,13 +1151,16 @@
             "MC_ShieldLine_1",
             "MCA_GetShieldFinishFlag1",
             "[JumpBack]MCA_GetShieldClick"
+        ],
+        "on_error": [
+            "[JumpBack]MC_UseCard"
         ]
     },
     "MC_ShieldLine_1": {
         "$__mpe_code": {
             "position": {
-                "x": 4882,
-                "y": 2331
+                "x": 5372,
+                "y": 1537
             }
         },
         "doc": "已擦弹数量位置",
@@ -1150,7 +1185,7 @@
     "MC_SkillListClose": {
         "$__mpe_code": {
             "position": {
-                "x": 5852,
+                "x": 4732,
                 "y": 316
             }
         },
@@ -1176,7 +1211,7 @@
     "MC_SkillListCloseFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 5852,
+                "x": 4732,
                 "y": 12
             }
         },
@@ -1197,8 +1232,8 @@
     "MC_SkillListOpen": {
         "$__mpe_code": {
             "position": {
-                "x": 332,
-                "y": 1007
+                "x": 5292,
+                "y": 370
             }
         },
         "action": {
@@ -1223,8 +1258,8 @@
     "MC_SkillListOpenFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 332,
-                "y": 649
+                "x": 5292,
+                "y": 12
             }
         },
         "doc": "打开技能列表标记",
@@ -1244,8 +1279,8 @@
     "MC_SpellCardListClose": {
         "$__mpe_code": {
             "position": {
-                "x": 4732,
-                "y": 331
+                "x": 6332,
+                "y": 2683
             }
         },
         "action": {
@@ -1269,8 +1304,8 @@
     "MC_SpellCardListCloseFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 4732,
-                "y": 12
+                "x": 6332,
+                "y": 2364
             }
         },
         "doc": "关闭符卡列表",
@@ -1290,8 +1325,8 @@
     "MC_SpellCardListOpen": {
         "$__mpe_code": {
             "position": {
-                "x": 5292,
-                "y": 12
+                "x": 6332,
+                "y": 3324
             }
         },
         "action": {
@@ -1315,8 +1350,8 @@
     "MC_SpellCardListOpenFlag": {
         "$__mpe_code": {
             "position": {
-                "x": 5292,
-                "y": 334
+                "x": 6332,
+                "y": 3005
             }
         },
         "doc": "打开符卡列表",
@@ -1336,19 +1371,30 @@
     "MC_UseBoost": {
         "$__mpe_code": {
             "position": {
-                "x": 2892,
-                "y": 2582
+                "x": 3452,
+                "y": 1833
             }
         },
         "next": [
             "MCA_UseBoost"
         ]
     },
+    "MC_UseCard": {
+        "$__mpe_code": {
+            "position": {
+                "x": 5372,
+                "y": 2765
+            }
+        },
+        "next": [
+            "MCA_UseCard"
+        ]
+    },
     "MC_UseShield": {
         "$__mpe_code": {
             "position": {
-                "x": 3852,
-                "y": 2624
+                "x": 4412,
+                "y": 1875
             }
         },
         "next": [
@@ -1358,8 +1404,8 @@
     "MC_UseSkill": {
         "$__mpe_code": {
             "position": {
-                "x": 1292,
-                "y": 2574
+                "x": 1852,
+                "y": 1881
             }
         },
         "next": [
@@ -1369,8 +1415,8 @@
     "MC_UseSkill_1": {
         "$__mpe_code": {
             "position": {
-                "x": 1932,
-                "y": 2544
+                "x": 2492,
+                "y": 1851
             }
         },
         "action": {
@@ -1393,8 +1439,8 @@
     "MC_UseSkill_2_1": {
         "$__mpe_code": {
             "position": {
-                "x": 2252,
-                "y": 2597
+                "x": 2812,
+                "y": 1945
             }
         },
         "doc": "使用技能标记",
@@ -1411,8 +1457,8 @@
     "MC_UseSkill_2_2": {
         "$__mpe_code": {
             "position": {
-                "x": 2572,
-                "y": 2489
+                "x": 3132,
+                "y": 1740
             }
         },
         "action": {
@@ -1449,8 +1495,8 @@
     "MC_UseSkill_2_3": {
         "$__mpe_code": {
             "position": {
-                "x": 2252,
-                "y": 2901
+                "x": 2812,
+                "y": 1665
             }
         },
         "action": {

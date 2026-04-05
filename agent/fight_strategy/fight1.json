@@ -20,8 +20,8 @@
         "boost_number" : 2,
 
         "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
+        "use_card": 1
+
       },
       "2":{
         "change_target": false,
@@ -30,8 +30,7 @@
         "boost_number" : 2,
 
         "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
+        "use_card": 1
       },
       "3":{
         "change_target": false,
@@ -40,8 +39,7 @@
         "boost_number" : 2,
 
         "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
+        "use_card": 1
       }
     }
     },

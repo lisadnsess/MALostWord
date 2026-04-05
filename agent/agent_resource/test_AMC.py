@@ -60,9 +60,9 @@ class MCA_Round(CustomAction):
                        'change_role_param': [],
                        'use_skill_2': [],
                        'role_action': {
-                           '1': {'boost_number': 2, 'change_target': False, 'change_target_param': 2, 'shield_number': 0, 'use_card': True, 'use_card_param': 1},
-                           '2': {'boost_number': 2, 'change_target': False, 'change_target_param': 2, 'shield_number': 0, 'use_card': True, 'use_card_param': 1},
-                           '3': {'boost_number': 2, 'change_target': False, 'change_target_param': 2, 'shield_number': 0, 'use_card': True, 'use_card_param': 1}},
+                           '1': {'boost_number': 3, 'change_target': [False,2], 'change_target_param': 2, 'shield_number': 3, 'use_card': 4, 'use_card_param': 1},
+                           '2': {'boost_number': 2, 'change_target': False, 'change_target_param': 2, 'shield_number': 0, 'use_card': 4, 'use_card_param': 1},
+                           '3': {'boost_number': 2, 'change_target': False, 'change_target_param': 2, 'shield_number': 0, 'use_card': 4, 'use_card_param': 1}},
                        }
 
 
@@ -89,6 +89,23 @@ class MCA_Round(CustomAction):
             }
             context.override_pipeline(MCA_UseBoost_param)
             context.run_task("MC_UseBoost")
+
+            # 使用擦弹强化
+            MCR_UseShield_param = {
+                "MCR_UseShield": {"custom_action_param": {"shield_number": role_one["shield_number"]}}
+            }
+            context.override_pipeline(MCR_UseShield_param)
+            context.run_task("MC_UseShield")
+
+            # 攻击方式
+            MCA_UseCard_param = {
+                "MCA_UseCard": {"custom_action_param": {"use_card": role_one["use_card"]}}
+            }
+            context.override_pipeline(MCA_UseCard_param)
+            context.run_task("MC_UseCard")
+
+
+
             break
 
         # # 第一位角色
@@ -172,3 +189,59 @@ class MCA_UseBoost(CustomAction):
         return True
 
 
+class MCA_UseCard(CustomAction):
+    def run(
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
+    ) -> bool:
+        spell_card_list = [
+            {"box": [151, 423, 57, 33]},
+            {"box": [330, 318, 55, 27]},
+            {"box": [523, 250, 56, 26]},
+            {"box": [722, 208, 56, 27]},
+            {"box": [930, 185, 55, 32]},
+            {"box": [326, 604, 212, 45]},
+            {"box": [741, 602, 220, 49]}
+        ]
+        logger.debug("##########_##########_##########")
+        logger.debug(f'正在运行节点{argv.node_name}')
+        use_card = json.loads(argv.custom_action_param).get("use_card")
+
+        # logger.debug(f'use_card:{use_card}')
+
+        roi = spell_card_list[use_card - 1]["box"]
+        if use_card >5:
+            context.run_task("MC_CloseSpellCardList")
+            logger.debug(f"use attack {use_card - 5}")
+            context.tasker.controller.post_click(
+                int(roi[0] + roi[2] / 2), int(roi[1] + roi[3] / 2)
+            ).wait()
+
+
+        else:
+            context.run_task("MC_OpenSpellCardList")
+            logger.debug(f"use card {use_card}")
+
+            context.run_task("MC_OpenSpellCardList")
+
+            prover = {"MC_CardLine_1": {"roi": roi},}
+            context.override_pipeline(prover)
+            context.run_task("MC_CardLine")
+
+
+
+                # context.tasker.controller.post_click(
+                #     int(roi[0] + roi[2] / 2), int(roi[1] + roi[3] / 2)
+                # ).wait()
+
+
+        # reco_detail = context.run_task("MCA_GetSpellCardLocation")
+        # context.run_task(
+        #     "MCA_SpellCardClickOne",
+        #     pipeline_override={
+        #         "MCA_SpellCardClick": {
+        #             "roi": reco_detail.nodes[0].recognition.filterd_results[target_SpellCard - 1].box}
+        #     },
+        # )
+        return True
