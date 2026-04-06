@@ -18,79 +18,28 @@
            "2": {"boost_number": 3, "change_target": [false,2], "shield_number": 0, "use_card": 5 }
            }
        },
-    "round_2":{
+    "round_2": {
       "auto_fight": false,
-      "use_skill_1": [2,4,5,6,7],
-      "change_role": false,
-      "change_role_param": [],
-      "use_skill_2": [],
-      "role_1": {
-        "change_target": false,
-        "change_target_param": 2,
-
-        "boost_number" : 2,
-
-        "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
-      },
-      "role_2": {
-        "change_target": false,
-        "change_target_param": 2,
-
-        "boost_number" : 2,
-
-        "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
-      },
-      "role_3": {
-        "change_target": false,
-        "change_target_param": 2,
-
-        "boost_number" : 2,
-
-        "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
-      }
-    },
+       "use_skill_1": [1,2,3,4,5,6],
+       "change_role": false,
+       "change_role_param": [],
+       "use_skill_2": [],
+       "role_action": {
+           "1": {"boost_number": 3, "change_target": [false,2], "shield_number": 0, "use_card": 5 },
+           "2": {"boost_number": 3, "change_target": [false,2], "shield_number": 0, "use_card": 5 }
+           }
+       },
     "round_3": {
       "auto_fight": false,
-      "use_skill_1": [2,4,5,6,7],
+      "use_skill_1": [1,2,3,4,5,6],
       "change_role": false,
       "change_role_param": [],
       "use_skill_2": [],
-      "role_1": {
-        "change_target": false,
-        "change_target_param": 2,
+      "role_action": {
+         "1": {"boost_number": 3, "change_target": [false,2], "shield_number": 0, "use_card": 5 },
+         "2": {"boost_number": 3, "change_target": [false,2], "shield_number": 0, "use_card": 5 }
+         }
 
-        "boost_number" : 2,
-
-        "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
-      },
-      "role_2": {
-        "change_target": false,
-        "change_target_param": 2,
-
-        "boost_number" : 2,
-
-        "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
-      },
-      "role_3": {
-        "change_target": false,
-        "change_target_param": 2,
-
-        "boost_number" : 2,
-
-        "shield_number" : 0,
-        "use_card": true,
-        "use_card_param":1
-      }
     }
   }
 }

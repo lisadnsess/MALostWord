@@ -4,29 +4,37 @@
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\new_pipeline\\DailyDispatch.json",
             "filename": "DailyDispatch",
             "isModifiedExternally": false,
-            "lastSyncTime": 1773672080957,
+            "lastSyncTime": 1775408802893,
             "prefix": "",
             "savedViewport": {
-                "x": -246,
-                "y": -1915,
-                "zoom": 0.76
+                "x": -1209,
+                "y": -818,
+                "zoom": 0.66
             },
-            "version": "v1.2.3"
+            "version": "v1.4.0"
         }
     },
-    "$__mpe_external_DailyDispatch": {
+    "$__mpe_external_BL_ActionStart_DailyDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 2228,
-                "y": 1618
+                "x": 3212,
+                "y": 2394
+            }
+        }
+    },
+    "$__mpe_external__DailyDispatch": {
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 12
             }
         }
     },
     "DDA_ChangeGetDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 1241,
-                "y": 2314
+                "x": 2252,
+                "y": 904
             }
         },
         "action": {
@@ -64,8 +72,8 @@
     "DDA_ChangeGetDispatchLogger": {
         "$__mpe_code": {
             "position": {
-                "x": 1587,
-                "y": 2319
+                "x": 2572,
+                "y": 936
             }
         },
         "doc": "打印日志",
@@ -86,7 +94,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 1292,
-                "y": 1599
+                "y": 1294
             }
         },
         "doc": "开始新派遣",
@@ -109,7 +117,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 1612,
-                "y": 1553
+                "y": 2341
             }
         },
         "doc": "三次派遣后返回true",
@@ -130,8 +138,8 @@
     "DDA_ChooseRole": {
         "$__mpe_code": {
             "position": {
-                "x": 2667,
-                "y": 2764
+                "x": 3442,
+                "y": 35
             }
         },
         "doc": "选择派遣角色",
@@ -177,7 +185,7 @@
     "DDA_ChooseRoleClose": {
         "$__mpe_code": {
             "position": {
-                "x": 1692,
+                "x": 2162,
                 "y": 12
             }
         },
@@ -217,8 +225,8 @@
     "DDA_ChooseRoleFinish": {
         "$__mpe_code": {
             "position": {
-                "x": 3099,
-                "y": 2749
+                "x": 3762,
+                "y": 12
             }
         },
         "doc": "确定派遣角色",
@@ -258,7 +266,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 12,
-                "y": 1259
+                "y": 947
             }
         },
         "action": {
@@ -282,8 +290,8 @@
     "DD_ChooseDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 827,
-                "y": 3108
+                "x": 2586,
+                "y": 1638
             }
         },
         "action": {
@@ -312,8 +320,8 @@
     "DD_ChooseFirstClick": {
         "$__mpe_code": {
             "position": {
-                "x": 2226,
-                "y": 2356
+                "x": 3212,
+                "y": 942
             }
         },
         "action": {
@@ -339,8 +347,8 @@
     "DD_ChooseNewNext": {
         "$__mpe_code": {
             "position": {
-                "x": 1577,
-                "y": 1879
+                "x": 2882,
+                "y": 12
             }
         },
         "doc": "开始单次执行任务",
@@ -360,8 +368,8 @@
     "DD_FindDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 239,
-                "y": 3017
+                "x": 1905,
+                "y": 1347
             }
         },
         "doc": "找到符合要求派遣",
@@ -382,8 +390,8 @@
     "DD_FindDispatchTarget1": {
         "$__mpe_code": {
             "position": {
-                "x": 231,
-                "y": 3247
+                "x": 2402,
+                "y": 12
             }
         },
         "doc": "找到目标派遣",
@@ -406,8 +414,8 @@
     "DD_FindDispatchTarget2": {
         "$__mpe_code": {
             "position": {
-                "x": 521,
-                "y": 3057
+                "x": 2194,
+                "y": 1396
             }
         },
         "action": {
@@ -416,9 +424,9 @@
         },
         "doc": "找到推荐编成按钮",
         "next": [
-            "[JumpBack]DD_ChooseDispatch",
+            "新建节点1",
             "DD_FindFinishDispatch",
-            "新建节点1"
+            "[JumpBack]DD_ChooseDispatch"
         ],
         "post_wait_freezes": 300,
         "recognition": {
@@ -439,8 +447,8 @@
     "DD_FindFinishDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 833,
-                "y": 2827
+                "x": 2572,
+                "y": 1363
             }
         },
         "doc": "存在已有派遣，派遣次数减1",
@@ -467,7 +475,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 332,
-                "y": 1220
+                "y": 1258
             }
         },
         "doc": "收获已完成派遣",
@@ -497,7 +505,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 652,
-                "y": 1575
+                "y": 1270
             }
         },
         "action": {
@@ -534,7 +542,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 652,
-                "y": 600
+                "y": 626
             }
         },
         "action": {
@@ -561,7 +569,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 652,
-                "y": 925
+                "y": 948
             }
         },
         "action": {
@@ -588,7 +596,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 652,
-                "y": 1250
+                "y": 1624
             }
         },
         "action": {
@@ -615,7 +623,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 652,
-                "y": 275
+                "y": 304
             }
         },
         "action": {
@@ -641,8 +649,8 @@
     "DD_FinishLogger": {
         "$__mpe_code": {
             "position": {
-                "x": 1932,
-                "y": 1560
+                "x": 2892,
+                "y": 2311
             }
         },
         "doc": "派遣已完成",
@@ -662,8 +670,8 @@
     "DD_FirstDispatchClick": {
         "$__mpe_code": {
             "position": {
-                "x": 1017,
-                "y": 1611
+                "x": 972,
+                "y": 1309
             }
         },
         "action": {
@@ -685,8 +693,8 @@
     "DD_GetInDaily": {
         "$__mpe_code": {
             "position": {
-                "x": 1901,
-                "y": 2357
+                "x": 2892,
+                "y": 942
             }
         },
         "action": {
@@ -717,7 +725,7 @@
         "$__mpe_code": {
             "position": {
                 "x": 332,
-                "y": 1529
+                "y": 865
             }
         },
         "action": {
@@ -745,7 +753,7 @@
     "DD_GetInTemporary": {
         "$__mpe_code": {
             "position": {
-                "x": 1212,
+                "x": 1442,
                 "y": 12
             }
         },
@@ -765,7 +773,7 @@
     "DD_Interval_0": {
         "$__mpe_code": {
             "position": {
-                "x": 12,
+                "x": 242,
                 "y": 12
             }
         },
@@ -774,7 +782,7 @@
     "DD_Interval_1": {
         "$__mpe_code": {
             "position": {
-                "x": 252,
+                "x": 482,
                 "y": 12
             }
         },
@@ -783,7 +791,7 @@
     "DD_Interval_2": {
         "$__mpe_code": {
             "position": {
-                "x": 492,
+                "x": 722,
                 "y": 12
             }
         },
@@ -792,7 +800,7 @@
     "DD_Interval_3": {
         "$__mpe_code": {
             "position": {
-                "x": 732,
+                "x": 962,
                 "y": 12
             }
         },
@@ -801,7 +809,7 @@
     "DD_Interval_4": {
         "$__mpe_code": {
             "position": {
-                "x": 972,
+                "x": 1202,
                 "y": 12
             }
         },
@@ -810,8 +818,8 @@
     "DD_LastOne": {
         "$__mpe_code": {
             "position": {
-                "x": 1209,
-                "y": 1996
+                "x": 2642,
+                "y": 12
             }
         },
         "doc": "最后一个",
@@ -833,7 +841,7 @@
     "DD_MaxGetDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 1452,
+                "x": 1682,
                 "y": 12
             }
         },
@@ -856,8 +864,8 @@
     "DD_NextOne_1": {
         "$__mpe_code": {
             "position": {
-                "x": 1251,
-                "y": 2649
+                "x": 2892,
+                "y": 1249
             }
         },
         "action": {
@@ -901,8 +909,8 @@
     "DD_NextOne_2": {
         "$__mpe_code": {
             "position": {
-                "x": 1252,
-                "y": 2877
+                "x": 2892,
+                "y": 1620
             }
         },
         "action": {
@@ -943,8 +951,8 @@
     "DD_NoTemporary": {
         "$__mpe_code": {
             "position": {
-                "x": 930,
-                "y": 2061
+                "x": 1922,
+                "y": 12
             }
         },
         "doc": "无临时派遣",
@@ -967,8 +975,8 @@
     "DD_OneDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 338,
-                "y": 2364
+                "x": 1612,
+                "y": 1256
             }
         },
         "doc": "开始单次派遣",
@@ -991,8 +999,8 @@
     "DD_OneDispatchFinish": {
         "$__mpe_code": {
             "position": {
-                "x": 1379,
-                "y": 3095
+                "x": 2916,
+                "y": 1937
             }
         },
         "doc": "完成单次派遣",
@@ -1010,8 +1018,8 @@
     "DD_StartNewDispatch": {
         "$__mpe_code": {
             "position": {
-                "x": 1826,
-                "y": 1880
+                "x": 3202,
+                "y": 12
             }
         },
         "doc": "开始找寻新派遣",
@@ -1028,8 +1036,8 @@
     "DD_无每日或每日到底": {
         "$__mpe_code": {
             "position": {
-                "x": 913,
-                "y": 2335
+                "x": 1932,
+                "y": 987
             }
         },
         "next": [
@@ -1048,8 +1056,8 @@
     "新建节点1": {
         "$__mpe_code": {
             "position": {
-                "x": 1707,
-                "y": 2707
+                "x": 2516,
+                "y": 2075
             }
         },
         "action": {

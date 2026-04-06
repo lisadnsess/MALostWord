@@ -63,8 +63,6 @@ class MCA_Round(CustomAction):
                            "2": {"boost_number": 3, "change_target": [False,2], "shield_number": 0, "use_card": 5, },
                            },
                        }
-
-
         if round_param["auto_fight"] :
             context.run_task("MC_FightAutoOpen")
             time.sleep(2)
@@ -111,23 +109,9 @@ class MCA_Round(CustomAction):
             context.override_pipeline(MCA_UseCard_param)
             context.run_task("MC_UseCard")
 
-            time.sleep(20)
-
+            time.sleep(15)
 
             # break
-
-        # # 第一位角色
-        # role_action
-        # role_1_param = round_param.get("role_1")
-        #
-        # role_2_param = round_param.get("role_2")
-        # if role_2_param is not None:
-        #
-        #
-        # role_3_param = round_param.get("role_3")
-
-        ##########_##########_##########
-        # 使用技能
 
         return True
 
