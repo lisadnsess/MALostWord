@@ -1,8 +1,8 @@
 {
-    "$__mpe_config_新建Pipeline6": {
+    "$__mpe_config_AutoEvent": {
         "$__mpe_code": {
             "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\AutoEvent.json",
-            "filename": "新建Pipeline6",
+            "filename": "AutoEvent",
             "isModifiedExternally": false,
             "lastSyncTime": 1775488616527,
             "prefix": "",

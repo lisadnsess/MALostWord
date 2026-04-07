@@ -1,0 +1,42 @@
+{
+  "doc": "基于口乙烯514大佬作业，其中三面顺序为毛笔大人，红沙cz1，水沙，与视频不同，其余与视频相同",
+  "web_dir" : ["【【东方归言录】苑神启动！10c3t6动100层 水紫苑专武钓而不纲  C3比那名居天子复灵】 ",
+    "https://www.bilibili.com/video/BV1a2D8BcEwa/?share_source=copy_web&vd_source=7bb9bfa7f62039386b9eb03edf5da097"],
+  "ci_tiao": ["破坏","破坏","绝灭","密潜","止弹","溶衰"],
+  "fight": {
+    "round_1": {
+      "auto_fight": false,
+       "use_skill_1": [1,3,4,5],
+       "change_role": false,
+       "change_role_param": [],
+       "use_skill_2": [],
+       "role_action": {
+           "1": {"boost_number": 3, "change_target": [false,2], "shield_number": 2, "use_card": 2 },
+           "2": {"boost_number": 3, "change_target": [false,2], "shield_number": 2, "use_card": 2 }
+           }
+       },
+    "round_2": {
+      "auto_fight": false,
+       "use_skill_1": [2],
+       "change_role": false,
+       "change_role_param": [],
+       "use_skill_2": [],
+       "role_action": {
+           "1": {"boost_number": 3, "change_target": [false,2], "shield_number": 3, "use_card": 4 },
+           "2": {"boost_number": 3, "change_target": [false,2], "shield_number": 2, "use_card": 1 }
+           }
+       },
+    "round_3": {
+      "auto_fight": false,
+      "use_skill_1": [6],
+      "change_role": false,
+      "change_role_param": [],
+      "use_skill_2": [],
+      "role_action": {
+         "1": {"boost_number": 3, "change_target": [false,2], "shield_number": 3, "use_card": 5 },
+         "2": {"boost_number": 3, "change_target": [false,2], "shield_number": 2, "use_card": 4 }
+         }
+
+    }
+  }
+}

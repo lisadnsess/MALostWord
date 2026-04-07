@@ -34,7 +34,8 @@ class MCA_LoadFightStrategy(CustomAction):
             }
             context.override_pipeline(round_param)
             context.run_task("MC_Round")
-            break
+            logger.debug(f"完成运行运行:{round_index}")
+            # break
 
         # # 当前脚本所在文件夹
         # print(Path(__file__).parent)
@@ -51,18 +52,16 @@ class MCA_Round(CustomAction):
         logger.debug(f"正在运行节点{argv.node_name}")
         round_param = json.loads(argv.custom_action_param).get("round_param")
         # return True
-        # print(round_param)
-
-        round_param = {"auto_fight": False,
-                       "use_skill_1": [1,2,3,4,5,6],
-                       "change_role": False,
-                       "change_role_param": [],
-                       "use_skill_2": [],
-                       "role_action": {
-                           "1": {"boost_number": 3, "change_target": [False,2], "shield_number": 0, "use_card": 5, },
-                           "2": {"boost_number": 3, "change_target": [False,2], "shield_number": 0, "use_card": 5, },
-                           },
-                       }
+        # round_param = {"auto_fight": False,
+        #                "use_skill_1": [1,2,3,4,5,6],
+        #                "change_role": False,
+        #                "change_role_param": [],
+        #                "use_skill_2": [],
+        #                "role_action": {
+        #                    "1": {"boost_number": 3, "change_target": [False,2], "shield_number": 0, "use_card": 5, },
+        #                    "2": {"boost_number": 3, "change_target": [False,2], "shield_number": 0, "use_card": 5, },
+        #                    },
+        #                }
         if round_param["auto_fight"] :
             context.run_task("MC_FightAutoOpen")
             time.sleep(2)
@@ -109,7 +108,7 @@ class MCA_Round(CustomAction):
             context.override_pipeline(MCA_UseCard_param)
             context.run_task("MC_UseCard")
 
-            time.sleep(15)
+        time.sleep(15)
 
             # break
 
