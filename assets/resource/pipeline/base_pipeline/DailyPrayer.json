@@ -1,111 +1,89 @@
 {
-    "$__mpe_config_新建Pipeline4": {
+    "$__mpe_config_DailyPrayer": {
         "$__mpe_code": {
-            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\DailyPrayer.json",
-            "filename": "DailyDispatch1",
-            "isModifiedExternally": false,
-            "lastSyncTime": 1775311204572,
             "prefix": "",
+            "lastSyncTime": 1776865098149,
+            "isModifiedExternally": false,
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\base_pipeline\\DailyPrayer.json",
             "savedViewport": {
-                "x": -484,
-                "y": -127,
-                "zoom": 0.57
+                "x": -712,
+                "y": -152,
+                "zoom": 0.72
             },
-            "version": "v1.3.1"
-        }
-    },
-    "$__mpe_external_BL_ActionSt_新建Pipeline4": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2335,
-                "y": -77
-            }
-        }
-    },
-    "$__mpe_external_BL_ActionStart_新建Pipeline4": {
-        "$__mpe_code": {
-            "position": {
-                "x": 0,
-                "y": 0
-            }
+            "filename": "DailyPrayer",
+            "version": "v1.4.2"
         }
     },
     "DP_10Times": {
-        "$__mpe_code": {
-            "position": {
-                "x": 904,
-                "y": 1330
-            }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
         "doc": "十连",
-        "next": [
-            "DP_Times10Step1"
-        ],
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": "进行10次祈愿",
                 "roi": [
                     961,
                     522,
                     242,
                     83
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DP_1Times": {
-        "$__mpe_code": {
-            "position": {
-                "x": 969,
-                "y": 530
+                ],
+                "expected": "进行10次祈愿"
             }
         },
         "action": {
-            "param": {},
             "type": "Click"
         },
-        "doc": "单抽",
         "next": [
-            "DP_Times1Step1"
+            "DP_Times10Step1"
         ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 917
+            }
+        }
+    },
+    "DP_1Times": {
+        "doc": "单抽",
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": "进行1次祈愿",
                 "roi": [
                     687,
                     522,
                     242,
                     82
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DP_Action": {
-        "$__mpe_code": {
-            "position": {
-                "x": -550,
-                "y": 376
-            }
-        },
-        "doc": "每日资源本",
-        "next": [
-            "DP_Action_Logger"
-        ]
-    },
-    "DP_Action_Logger": {
-        "$__mpe_code": {
-            "position": {
-                "x": -184,
-                "y": 339
+                ],
+                "expected": "进行1次祈愿"
             }
         },
         "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DP_Times1Step1"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 1524
+            }
+        }
+    },
+    "DP_Action": {
+        "doc": "每日资源本",
+        "next": [
+            "DP_Action_Logger"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 12,
+                "y": 1274
+            }
+        }
+    },
+    "DP_Action_Logger": {
+        "doc": "每日资源本",
+        "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "UF_ActionLogger",
                 "custom_action_param": {
@@ -114,23 +92,23 @@
                         "开始每日祈愿"
                     ]
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "doc": "每日资源本",
         "next": [
             "[JumpBack]DP_JoinInPrayer",
             "DP_JoinInFlag"
-        ]
-    },
-    "DP_ClickNextPrayer": {
+        ],
         "$__mpe_code": {
             "position": {
-                "x": 929,
-                "y": 193
+                "x": 332,
+                "y": 1242
             }
-        },
+        }
+    },
+    "DP_ClickNextPrayer": {
+        "doc": "切换下一个卡池",
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     5,
@@ -138,20 +116,32 @@
                     158,
                     46
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "doc": "切换下一个卡池",
-        "post_wait_freezes": 500
-    },
-    "DP_DP_Times1FIinsh": {
+        "post_wait_freezes": 500,
         "$__mpe_code": {
             "position": {
-                "x": 1757,
-                "y": -171
+                "x": 1612,
+                "y": 450
+            }
+        }
+    },
+    "DP_Times1FIinsh": {
+        "doc": "完成祈愿",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    64,
+                    1,
+                    77,
+                    45
+                ],
+                "expected": "祈愿"
             }
         },
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "UF_ActionLogger",
                 "custom_action_param": {
@@ -159,60 +149,47 @@
                         "完成绘卷祈愿"
                     ]
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "doc": "完成祈愿",
         "next": [
             "DP_Finish_Logger"
         ],
-        "recognition": {
-            "param": {
-                "expected": "祈愿",
-                "roi": [
-                    64,
-                    1,
-                    77,
-                    45
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DP_DP_Times1Step2": {
         "$__mpe_code": {
             "position": {
-                "x": 1755,
-                "y": 330
+                "x": 1932,
+                "y": 1832
             }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
+        }
+    },
+    "DP_Times1Step2": {
         "doc": "点击画面",
-        "post_wait_freezes": 100,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": "快进",
                 "roi": [
                     1188,
                     8,
                     62,
                     33
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DP_DP_Times1Step3": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1750,
-                "y": 655
+                ],
+                "expected": "快进"
             }
         },
         "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 100,
+        "$__mpe_code": {
+            "position": {
+                "x": 1932,
+                "y": 1185
+            }
+        }
+    },
+    "DP_Times1Step3": {
+        "doc": "点击画面",
+        "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     346,
@@ -220,20 +197,28 @@
                     36,
                     59
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "doc": "点击画面",
-        "post_wait_freezes": 100
-    },
-    "DP_EPIC": {
+        "post_wait_freezes": 100,
         "$__mpe_code": {
             "position": {
-                "x": 361,
-                "y": 945
+                "x": 1932,
+                "y": 1524
+            }
+        }
+    },
+    "DP_EPIC": {
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "DP_EPICFlag1",
+                    "DP_EPICFlag2"
+                ]
             }
         },
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "UF_ActionLogger",
                 "custom_action_param": {
@@ -241,45 +226,22 @@
                         "开始EPIC特别祝词祈愿"
                     ]
                 }
-            },
-            "type": "Custom"
+            }
         },
         "next": [
             "DP_EPICFisnish",
             "[JumpBack]DP_10Times"
         ],
-        "recognition": {
-            "param": {
-                "all_of": [
-                    "DP_EPICFlag1",
-                    "DP_EPICFlag2"
-                ]
-            },
-            "type": "And"
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 899
+            }
         }
     },
     "DP_EPICFisnish": {
-        "$__mpe_code": {
-            "position": {
-                "x": 749,
-                "y": 863
-            }
-        },
-        "action": {
-            "param": {
-                "custom_action": "UF_ActionLogger",
-                "custom_action_param": {
-                    "debug": [
-                        "完成EPIC特别祝词祈愿"
-                    ]
-                }
-            },
-            "type": "Custom"
-        },
-        "next": [
-            "DP_ClickNextPrayer"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     957,
@@ -293,42 +255,62 @@
                 "threshold": [
                     0.7
                 ]
-            },
-            "type": "TemplateMatch"
+            }
+        },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": [
+                        "完成EPIC特别祝词祈愿"
+                    ]
+                }
+            }
+        },
+        "next": [
+            "DP_ClickNextPrayer"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1292,
+                "y": 537
+            }
         }
     },
     "DP_EPICFlag1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 13,
-                "y": 862
-            }
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": [
-                    "EP",
-                    "特別祝司"
-                ],
                 "roi": [
                     5,
                     102,
                     244,
                     79
+                ],
+                "expected": [
+                    "EP",
+                    "特別祝司"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 1202,
+                "y": 12
+            }
         }
     },
     "DP_EPICFlag2": {
-        "$__mpe_code": {
-            "position": {
-                "x": 18,
-                "y": 1061
-            }
-        },
         "recognition": {
+            "type": "OCR",
             "param": {
+                "roi": [
+                    617,
+                    186,
+                    628,
+                    293
+                ],
                 "expected": [
                     "特别祝词"
                 ],
@@ -337,25 +319,20 @@
                         "origin",
                         "target"
                     ]
-                ],
-                "roi": [
-                    617,
-                    186,
-                    628,
-                    293
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 1442,
+                "y": 12
+            }
         }
     },
     "DP_Finish_Logger": {
-        "$__mpe_code": {
-            "position": {
-                "x": 2057,
-                "y": -137
-            }
-        },
+        "doc": "每日资源本",
         "action": {
+            "type": "Custom",
             "param": {
                 "custom_action": "UF_ActionLogger",
                 "custom_action_param": {
@@ -364,46 +341,56 @@
                         "完成每日祈愿"
                     ]
                 }
-            },
-            "type": "Custom"
+            }
         },
-        "doc": "每日资源本",
         "next": [
             "BL_ActionStart"
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 2252,
+                "y": 1863
+            }
+        }
     },
     "DP_Interval_0": {
+        "doc": "#########################################################################################",
         "$__mpe_code": {
             "position": {
-                "x": 12,
+                "x": 242,
                 "y": 12
             }
-        },
-        "doc": "#########################################################################################"
+        }
     },
     "DP_Interval_1": {
+        "doc": "#########################################################################################",
         "$__mpe_code": {
             "position": {
-                "x": 252,
+                "x": 482,
                 "y": 12
             }
-        },
-        "doc": "#########################################################################################"
+        }
     },
     "DP_Interval_2": {
+        "doc": "#########################################################################################",
         "$__mpe_code": {
             "position": {
-                "x": 492,
+                "x": 722,
                 "y": 12
             }
-        },
-        "doc": "#########################################################################################"
+        }
     },
     "DP_JoinInFlag": {
-        "$__mpe_code": {
-            "position": {
-                "x": 127,
-                "y": 511
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    65,
+                    0,
+                    83,
+                    49
+                ],
+                "expected": "祈愿"
             }
         },
         "next": [
@@ -411,76 +398,50 @@
             "[JumpBack]DP_EPIC",
             "[JumpBack]DP_ClickNextPrayer"
         ],
-        "recognition": {
-            "param": {
-                "expected": "祈愿",
-                "roi": [
-                    65,
-                    0,
-                    83,
-                    49
-                ]
-            },
-            "type": "OCR"
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1510
+            }
         }
     },
     "DP_JoinInPrayer": {
-        "$__mpe_code": {
-            "position": {
-                "x": 357,
-                "y": 205
-            }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "post_wait_freezes": 1000,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": "祈愿",
                 "roi": [
                     912,
                     607,
                     147,
                     58
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DP_RelicPrayer": {
-        "$__mpe_code": {
-            "position": {
-                "x": 732,
-                "y": 12
-            }
-        },
-        "doc": "免费EPIC祈愿"
-    },
-    "DP_StandardPrayer": {
-        "$__mpe_code": {
-            "position": {
-                "x": 652,
-                "y": 501
+                ],
+                "expected": "祈愿"
             }
         },
         "action": {
-            "param": {
-                "custom_action": "UF_ActionLogger",
-                "custom_action_param": {
-                    "debug": [
-                        "开始绘卷祈愿"
-                    ]
-                }
-            },
-            "type": "Custom"
+            "type": "Click"
         },
+        "post_wait_freezes": 1000,
+        "$__mpe_code": {
+            "position": {
+                "x": 652,
+                "y": 1203
+            }
+        }
+    },
+    "DP_RelicPrayer": {
+        "doc": "免费EPIC祈愿",
+        "$__mpe_code": {
+            "position": {
+                "x": 962,
+                "y": 12
+            }
+        }
+    },
+    "DP_StandardPrayer": {
         "doc": "绘卷祈愿",
-        "next": [
-            "DP_1Times"
-        ],
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1,
@@ -490,39 +451,68 @@
                 ],
                 "template": "DP_image/绘卷祝词.png",
                 "threshold": 0.9
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "DP_Times10Finish": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1835,
-                "y": 934
             }
         },
+        "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "UF_ActionLogger",
+                "custom_action_param": {
+                    "debug": [
+                        "开始绘卷祈愿"
+                    ]
+                }
+            }
+        },
+        "next": [
+            "DP_1Times"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 1459
+            }
+        }
+    },
+    "DP_Times10Step_3_1": {
         "doc": "完成祈愿",
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": "祈愿",
                 "roi": [
                     64,
                     1,
                     77,
                     45
-                ]
-            },
-            "type": "OCR"
+                ],
+                "expected": "祈愿"
+            }
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 2247,
+                "y": 248
+            }
         }
     },
     "DP_Times10Step1": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1238,
-                "y": 1188
+        "doc": "点击决定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    578,
+                    129,
+                    124,
+                    49
+                ],
+                "expected": [
+                    "全部祈愿"
+                ]
             }
         },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     741,
@@ -530,65 +520,47 @@
                     76,
                     43
                 ]
-            },
-            "type": "Click"
-        },
-        "doc": "点击决定",
-        "next": [
-            "DP_Times10Finish",
-            "[JumpBack]DP_Times10Step2",
-            "[JumpBack]DP_Times10Step3"
-        ],
-        "post_wait_freezes": 1000,
-        "recognition": {
-            "param": {
-                "expected": [
-                    "全部祈愿"
-                ],
-                "roi": [
-                    578,
-                    129,
-                    124,
-                    49
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DP_Times10Step2": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1839,
-                "y": 1178
             }
         },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
+        "next": [
+            "DP_Times10Step2_1"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 758
+            }
+        }
+    },
+    "DP_Times10Step_3_2": {
         "doc": "点击画面",
-        "post_wait_freezes": 100,
         "recognition": {
+            "type": "OCR",
             "param": {
-                "expected": "快进",
                 "roi": [
                     1188,
                     8,
                     62,
                     33
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "DP_Times10Step3": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1836,
-                "y": 1480
+                ],
+                "expected": "快进"
             }
         },
         "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 100,
+        "$__mpe_code": {
+            "position": {
+                "x": 2262,
+                "y": 849
+            }
+        }
+    },
+    "DP_Times10Step_3_3": {
+        "doc": "点击画面",
+        "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     346,
@@ -596,20 +568,34 @@
                     36,
                     59
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "doc": "点击画面",
-        "post_wait_freezes": 100
-    },
-    "DP_Times1Step1": {
+        "post_wait_freezes": 100,
         "$__mpe_code": {
             "position": {
-                "x": 1288,
-                "y": 508
+                "x": 2266,
+                "y": 531
+            }
+        }
+    },
+    "DP_Times1Step1": {
+        "doc": "点击决定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    578,
+                    129,
+                    124,
+                    49
+                ],
+                "expected": [
+                    "祈愿"
+                ]
             }
         },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     741,
@@ -617,29 +603,51 @@
                     76,
                     43
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "doc": "点击决定",
-        "next": [
-            "DP_DP_Times1FIinsh",
-            "[JumpBack]DP_DP_Times1Step2",
-            "[JumpBack]DP_DP_Times1Step3"
-        ],
         "post_wait_freezes": 1000,
+        "next": [
+            "DP_Times1FIinsh",
+            "[JumpBack]DP_Times1Step2",
+            "[JumpBack]DP_Times1Step3"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1612,
+                "y": 1492
+            }
+        }
+    },
+    "DP_Times10Step2_1": {
         "recognition": {
+            "type": "OCR",
             "param": {
                 "expected": [
-                    "祈愿"
-                ],
-                "roi": [
-                    578,
-                    129,
-                    124,
-                    49
+                    "点击画面"
                 ]
-            },
-            "type": "OCR"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DP_Times10Step_3_1",
+            "[JumpBack]DP_Times10Step_3_2",
+            "[JumpBack]DP_Times10Step_3_3"
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1902,
+                "y": 796
+            }
+        }
+    },
+    "$__mpe_external_BL_ActionStart_DailyPrayer": {
+        "$__mpe_code": {
+            "position": {
+                "x": 2572,
+                "y": 1946
+            }
         }
     }
 }

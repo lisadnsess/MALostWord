@@ -1,26 +1,21 @@
 {
-    "$__mpe_config_新建Pipeline4": {
+    "$__mpe_config_StartLW": {
         "$__mpe_code": {
-            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\StartLW.json",
-            "filename": "新建Pipeline4",
-            "isModifiedExternally": false,
-            "lastSyncTime": 1773545179107,
             "prefix": "",
+            "lastSyncTime": 1775872190025,
+            "isModifiedExternally": false,
+            "filePath": "E:\\PyCharm\\Project\\GitMALostWord\\MALW\\MALostWord\\assets\\resource\\pipeline\\StartLW.json",
             "savedViewport": {
-                "x": 495,
-                "y": -25,
-                "zoom": 0.38
+                "x": 586,
+                "y": 126,
+                "zoom": 0.26
             },
-            "version": "v1.2.3"
+            "filename": "StartLW",
+            "version": "v1.4.1"
         }
     },
     "SL_Action": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1212,
-                "y": 804
-            }
-        },
+        "post_wait_freezes": 500,
         "next": [
             "SL_HomeFlag",
             "[JumpBack]SL_StartDownload",
@@ -29,21 +24,17 @@
             "[JumpBack]SL_CloseAll",
             "[JumpBack]SL_StartLostWordApp"
         ],
-        "post_wait_freezes": 500
-    },
-    "SL_Close0_test": {
         "$__mpe_code": {
             "position": {
-                "x": 732,
-                "y": 12
+                "x": 1212,
+                "y": 804
             }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
+        }
+    },
+    "SL_Close0_test": {
         "doc": "跳过每日签到",
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1048,
@@ -53,23 +44,23 @@
                 ],
                 "template": "SL_image/close.png",
                 "threshold": 0.5
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "SL_Close1_test": {
-        "$__mpe_code": {
-            "position": {
-                "x": 972,
-                "y": 12
             }
         },
         "action": {
-            "param": {},
-            "type": "Click"
+            "type": "Click",
+            "param": {}
         },
+        "$__mpe_code": {
+            "position": {
+                "x": 732,
+                "y": 12
+            }
+        }
+    },
+    "SL_Close1_test": {
         "doc": "跳过每日签到",
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1175,
@@ -79,24 +70,50 @@
                 ],
                 "template": "SL_image/close.png",
                 "threshold": 0.6
-            },
-            "type": "TemplateMatch"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "$__mpe_code": {
+            "position": {
+                "x": 972,
+                "y": 12
+            }
         }
     },
     "SL_CloseAll": {
+        "doc": "关闭界面",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "template": "SL_image/close.png",
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "post_wait_freezes": 500,
         "$__mpe_code": {
             "position": {
                 "x": 1532,
                 "y": 726
             }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "doc": "关闭界面",
-        "post_wait_freezes": 500,
+        }
+    },
+    "SL_CloseAll_test": {
+        "doc": "跳过每日签到",
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     0,
@@ -106,40 +123,27 @@
                 ],
                 "template": "SL_image/close.png",
                 "threshold": 0.6
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "SL_CloseAll_test": {
+            }
+        },
         "$__mpe_code": {
             "position": {
                 "x": 492,
                 "y": 12
             }
-        },
-        "doc": "跳过每日签到",
-        "recognition": {
-            "param": {
-                "roi": [
-                    0,
-                    0,
-                    0,
-                    0
-                ],
-                "template": "SL_image/close.png",
-                "threshold": 0.6
-            },
-            "type": "TemplateMatch"
         }
     },
     "SL_HomeFlag": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1532,
-                "y": 1403
+        "doc": "确认进入主界面",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "SL_image/home_flag.png",
+                "threshold": 0.95
             }
         },
+        "pre_wait_freezes": 500,
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     494,
@@ -147,40 +151,52 @@
                     213,
                     177
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "doc": "确认进入主界面",
         "post_wait_freezes": 500,
-        "pre_wait_freezes": 500,
-        "recognition": {
-            "param": {
-                "template": "SL_image/home_flag.png",
-                "threshold": 0.95
-            },
-            "type": "TemplateMatch"
-        },
         "recommended roi": [
             1100,
             519,
             106,
             105
-        ]
+        ],
+        "$__mpe_code": {
+            "position": {
+                "x": 1532,
+                "y": 1403
+            }
+        }
     },
     "SL_SkipDaily": {
+        "doc": "跳过每日签到",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1076,
+                    6,
+                    199,
+                    149
+                ],
+                "template": "SL_image/登录跳过.png"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
+        "post_wait_freezes": 500,
         "$__mpe_code": {
             "position": {
                 "x": 1532,
                 "y": 385
             }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
+        }
+    },
+    "SL_SkipDaily_test": {
         "doc": "跳过每日签到",
-        "post_wait_freezes": 500,
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     1076,
@@ -189,43 +205,35 @@
                     149
                 ],
                 "template": "SL_image/登录跳过.png"
-            },
-            "type": "TemplateMatch"
-        }
-    },
-    "SL_SkipDaily_test": {
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {}
+        },
         "$__mpe_code": {
             "position": {
                 "x": 252,
                 "y": 12
             }
-        },
-        "action": {
-            "param": {},
-            "type": "Click"
-        },
-        "doc": "跳过每日签到",
-        "recognition": {
-            "param": {
-                "roi": [
-                    1076,
-                    6,
-                    199,
-                    149
-                ],
-                "template": "SL_image/登录跳过.png"
-            },
-            "type": "TemplateMatch"
         }
     },
     "SL_StartDownload": {
-        "$__mpe_code": {
-            "position": {
-                "x": 1532,
-                "y": 1840
+        "doc": "确认游戏更新下载",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    482,
+                    309,
+                    311,
+                    87
+                ],
+                "expected": "是否要下载"
             }
         },
         "action": {
+            "type": "Click",
             "param": {
                 "target": [
                     695,
@@ -233,44 +241,19 @@
                     167,
                     41
                 ]
-            },
-            "type": "Click"
+            }
         },
-        "doc": "确认游戏更新下载",
-        "recognition": {
-            "param": {
-                "expected": "是否要下载",
-                "roi": [
-                    482,
-                    309,
-                    311,
-                    87
-                ]
-            },
-            "type": "OCR"
-        }
-    },
-    "SL_StartGame": {
         "$__mpe_code": {
             "position": {
                 "x": 1532,
-                "y": 12
+                "y": 1840
             }
-        },
-        "action": {
-            "param": {
-                "target": [
-                    471,
-                    524,
-                    339,
-                    71
-                ]
-            },
-            "type": "Click"
-        },
+        }
+    },
+    "SL_StartGame": {
         "doc": "点击开始游戏",
-        "post_wait_freezes": 500,
         "recognition": {
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
                     123,
@@ -279,40 +262,57 @@
                     417
                 ],
                 "template": "SL_image/start_game.png"
-            },
-            "type": "TemplateMatch"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    471,
+                    524,
+                    339,
+                    71
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "$__mpe_code": {
+            "position": {
+                "x": 1532,
+                "y": 12
+            }
         }
     },
     "SL_StartLostWordApp": {
+        "doc": "打开LWapp",
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.gg.touhoulw/com.gg.touhoulw.SplashActivity"
+            }
+        },
+        "post_wait_freezes": 500,
         "$__mpe_code": {
             "position": {
                 "x": 1532,
                 "y": 1099
             }
-        },
-        "action": {
-            "param": {
-                "package": "com.gg.touhoulw/com.gg.touhoulw.SplashActivity"
-            },
-            "type": "StartApp"
-        },
-        "doc": "打开LWapp",
-        "post_wait_freezes": 500
+        }
     },
     "SL_StopLostWordApp": {
+        "doc": "关闭LWapp",
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.gg.touhoulw/com.gg.touhoulw.SplashActivity"
+            }
+        },
+        "post_wait_freezes": 500,
         "$__mpe_code": {
             "position": {
                 "x": 12,
                 "y": 12
             }
-        },
-        "action": {
-            "param": {
-                "package": "com.gg.touhoulw/com.gg.touhoulw.SplashActivity"
-            },
-            "type": "StopApp"
-        },
-        "doc": "关闭LWapp",
-        "post_wait_freezes": 500
+        }
     }
 }
