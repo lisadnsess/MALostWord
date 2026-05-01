@@ -3,9 +3,8 @@
         {
             "name": "每日祈愿",
             "entry": "DP_Action",
-            "controller": [
-                "ADB"
-            ]
+            "description": "每日祈愿加免费EPIC"
+
         }
     ]
 }
