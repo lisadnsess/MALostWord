@@ -44,6 +44,7 @@
             ]
         }
     ],
+
      "agent": {
         "child_exec": "python",
         "child_args": [
@@ -51,6 +52,19 @@
             "./../agent/main.py"
         ]
     },
+    "group": [
+          {
+              "name": "daily",
+              "label": "$日常任务",
+              "description": "$日常任务说明",
+              "icon": "groups/daily.png",
+              "default_expand": true
+          },
+          {
+              "name": "battle",
+              "label": "$战斗任务"
+          }
+      ],
     "import": [
       "resource/tasks/DailyActivity.json"
     ]
