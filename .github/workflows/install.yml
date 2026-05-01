@@ -61,66 +61,6 @@ jobs:
 
   windows:
     needs: meta
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        arch: [x86_64]
-      fail-fast: false
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-
-      - name: Download MaaFramework
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: MaaXYZ/MaaFramework
-          fileName: "MAA-win-${{ matrix.arch }}*"
-          latest: true
-          preRelease: true
-          out-file-path: "deps"
-          extract: true
-
-      - name: Download MFAAvalonia
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-win-x64*"
-          latest: true
-          out-file-path: "MFA"
-          extract: true
-
-      - name: Remove MFAAvalonia archive
-        run: |
-          rm -f MFA/MFAAvalonia-*-win-x64*
-        shell: bash
-
-      - name: Setup Embed Python
-        shell: powershell
-        run: |
-          ./tools/ci/setup_embed_python.ps1
-
-      - name: Install
-        shell: bash
-        run: |
-          python ./tools/install.py ${{ needs.meta.outputs.tag }}
-
-          if [ -d "MFA" ]; then
-            echo "Copying MFA files to install directory..."
-            mkdir -p install
-            cp -rpvn MFA/. install/
-          else
-            echo "MFA directory not found, skipping copy."
-          fi
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: MALW-win-${{ matrix.arch }}
-          path: "install"
-
-  windows_new:
-    needs: meta
     strategy:
       matrix:
         include:
@@ -197,7 +137,7 @@ jobs:
           choco install imagemagick -y
 
           # 转换 PNG 到 ICO
-          magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 m9a.ico
+          magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 malw.ico
 
       - name: Modify MFAAvalonia exe icon
         if: matrix.arch == 'x86_64'
@@ -207,13 +147,13 @@ jobs:
           curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
 
           # 修改 exe 图标
-          ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "m9a.ico"
+          ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "malw.ico"
 
           echo "MFAAvalonia icon modified successfully"
 
           # 修改 MXU 图标
           if [ -f "MXU/mxu.exe" ]; then
-            ./rcedit.exe "MXU/mxu.exe" --set-icon "m9a.ico"
+            ./rcedit.exe "MXU/mxu.exe" --set-icon "malw.ico"
             echo "MXU icon modified successfully"
           fi
 
@@ -249,9 +189,9 @@ jobs:
           cp -rpvn install/python/. install-cli/python/
           rm -rf install-cli/deps 2>/dev/null || true
           if [ -f "install-cli/MaaPiCli.exe" ]; then
-            mv -f install-cli/MaaPiCli.exe install-cli/M9A.exe
+            mv -f install-cli/MaaPiCli.exe install-cli/MALW.exe
           elif [ -f "install-cli/MaaPiCli" ]; then
-            mv -f install-cli/MaaPiCli install-cli/M9A
+            mv -f install-cli/MaaPiCli install-cli/MALW
           fi
 
       - name: Create MXU version
@@ -272,9 +212,9 @@ jobs:
             mkdir -p install
             cp -rpvn MFA/. install/
             if [ -f "install/MFAAvalonia.exe" ]; then
-              mv -f install/MFAAvalonia.exe install/M9A.exe
+              mv -f install/MFAAvalonia.exe install/MALW.exe
             elif [ -f "install/MFAAvalonia" ]; then
-              mv -f install/MFAAvalonia install/M9A
+              mv -f install/MFAAvalonia install/MALW
             fi
           else
             echo "MFA directory not found, skipping copy."
@@ -287,9 +227,9 @@ jobs:
             echo "Copying MXU files to install-mxu directory..."
             mkdir -p install-mxu
             if [ -f "MXU/mxu.exe" ]; then
-              cp MXU/mxu.exe install-mxu/M9A.exe
+              cp MXU/mxu.exe install-mxu/MALW.exe
             elif [ -f "MXU/mxu" ]; then
-              cp MXU/mxu install-mxu/M9A
+              cp MXU/mxu install-mxu/MALW
             fi
           else
             echo "MXU directory not found, skipping copy."
@@ -305,29 +245,29 @@ jobs:
           fi
 
           # MFAA 版本的图标放根目录
-          if [ -f "m9a.ico" ]; then
-            cp m9a.ico install/logo.ico
+          if [ -f "malw.ico" ]; then
+            cp malw.ico install/logo.ico
             echo "Copied custom icon to install/logo.ico"
           fi
 
           # MXU 版本的图标
-          if [ -f "m9a.ico" ]; then
-            cp m9a.ico install-mxu/logo.ico
+          if [ -f "malw.ico" ]; then
+            cp malw.ico install-mxu/logo.ico
           fi
 
       - uses: actions/upload-artifact@v4
         with:
-          name: M9A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
+          name: MALW-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
           path: "install"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: M9A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-PiCLI
+          name: MALW-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-PiCLI
           path: "install-cli"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: M9A-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MXU
+          name: MALW-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MXU
           path: "install-mxu"
 
   linux:
@@ -405,7 +345,7 @@ jobs:
           sudo apt-get update && sudo apt-get install -y imagemagick
 
           # 转换 PNG 到 ICO
-          convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 m9a.ico
+          convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 malw.ico
 
       - name: Download Python dependencies
         shell: bash
@@ -436,9 +376,9 @@ jobs:
           fi
           rm -rf install-cli/deps 2>/dev/null || true
           if [ -f "install-cli/MaaPiCli" ]; then
-            mv -f install-cli/MaaPiCli install-cli/M9A
+            mv -f install-cli/MaaPiCli install-cli/MALW
           elif [ -f "install-cli/MaaPiCli.exe" ]; then
-            mv -f install-cli/MaaPiCli.exe install-cli/M9A.exe
+            mv -f install-cli/MaaPiCli.exe install-cli/MALW.exe
           fi
 
       - name: Create MXU version
@@ -462,9 +402,9 @@ jobs:
             mkdir -p install
             rsync -av --ignore-existing MFA/ install/
             if [ -f "install/MFAAvalonia" ]; then
-              mv -f install/MFAAvalonia install/M9A
+              mv -f install/MFAAvalonia install/MALW
             elif [ -f "install/MFAAvalonia.exe" ]; then
-              mv -f install/MFAAvalonia.exe install/M9A.exe
+              mv -f install/MFAAvalonia.exe install/MALW.exe
             fi
           else
             echo "MFA directory not found on Linux, skipping copy."
@@ -478,7 +418,7 @@ jobs:
             echo "Copying MXU files to install-mxu directory on Linux..."
             mkdir -p install-mxu
             if [ -f "MXU/mxu" ]; then
-              cp MXU/mxu install-mxu/M9A
+              cp MXU/mxu install-mxu/MALW
             fi
           else
             echo "MXU directory not found on Linux, skipping copy."
@@ -494,30 +434,30 @@ jobs:
           fi
 
           # MFAA 版本的图标放根目录
-          if [ -f "m9a.ico" ]; then
-            cp m9a.ico install/logo.ico
+          if [ -f "malw.ico" ]; then
+            cp malw.ico install/logo.ico
             echo "Copied custom icon to install/logo.ico"
           fi
 
           # MXU 版本的图标
-          if [ -d "install-mxu" ] && [ -f "m9a.ico" ]; then
-            cp m9a.ico install-mxu/logo.ico
+          if [ -d "install-mxu" ] && [ -f "malw.ico" ]; then
+            cp malw.ico install-mxu/logo.ico
           fi
 
       - uses: actions/upload-artifact@v4
         with:
-          name: M9A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
+          name: MALW-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MFAA
           path: "install"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: M9A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-PiCLI
+          name: MALW-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-PiCLI
           path: "install-cli"
 
       - uses: actions/upload-artifact@v4
         if: matrix.arch == 'x86_64'
         with:
-          name: M9A-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MXU
+          name: MALW-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}-MXU
           path: "install-mxu"
 
 
@@ -576,9 +516,9 @@ jobs:
               find "$f" -type f -name "MFAUpdater*" -exec chmod +x {} \; 2>/dev/null || true
               echo "Set execute permission for all MFAUpdater files"
 
-              if [[ -f "$f/M9A" ]]; then
-                chmod +x "$f/M9A"
-                echo "Set execute permission for $f/M9A"
+              if [[ -f "$f/MALW" ]]; then
+                chmod +x "$f/MALW"
+                echo "Set execute permission for $f/MALW"
               fi
 
               PYTHON_PATHS=(
@@ -616,129 +556,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-  unix:
-    needs: meta
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-        arch: [aarch64, x86_64]
-      fail-fast: false
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-
-      - name: Download MaaFramework
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: MaaXYZ/MaaFramework
-          fileName: "MAA-${{ matrix.os == 'ubuntu-latest' && 'linux' || 'macos' }}-${{ matrix.arch }}*"
-          latest: true
-          preRelease: true
-          out-file-path: "deps"
-          extract: true
-
-      - name: Download MFAAvalonia
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-${{ matrix.os == 'ubuntu-latest' && 'linux' || 'osx' }}-${{ matrix.arch == 'x86_64' && 'x64' || 'arm64' }}*"
-          latest: true
-          out-file-path: "MFA"
-          extract: true
-
-      - name: Install
-        shell: bash
-        run: |
-          python ./tools/install.py ${{ needs.meta.outputs.tag }}
-
-          if [[ "${{ matrix.os }}" != "android" ]]; then
-            if [ -d "MFA" ]; then
-              echo "Copying MFA files to install directory..."
-              mkdir -p install
-              rsync -av --ignore-existing MFA/ install/
-            else
-              echo "MFA directory not found, skipping copy."
-            fi
-          else
-            echo "Skipping copy MFA for Android."
-          fi
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: MALW-${{ matrix.os == 'ubuntu-latest' && 'linux' || 'macos' }}-${{ matrix.arch }}
-          path: "install"
-
-#  changelog:
-#    name: Generate changelog
-#    runs-on: ubuntu-latest
-#    outputs:
-#      release_body: ${{ steps.git-cliff.outputs.content }}
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#        with:
-#          fetch-depth: 0
-#
-#      - name: Generate a changelog
-#        uses: orhun/git-cliff-action@v4
-#        id: git-cliff
-#        with:
-#          config: .github/cliff.toml
-#          args: -vv --latest --strip header
-#        env:
-#          OUTPUT: CHANGES.md
-#          GITHUB_REPO: ${{ github.repository }}
-#
-#  release:
-#    if: ${{ needs.meta.outputs.is_release == 'true' }}
-#    needs: [meta, windows, unix, changelog]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/download-artifact@v4
-#        with:
-#          path: assets
-#
-#      - name: Check assets directory
-#        run: |
-#          ls -la assets
-#          if [ -z "$(ls -A assets)" ]; then
-#            echo "assets directory is empty"
-#            exit 1
-#          fi
-#
-#      - name: Compress and generate checksums
-#        run: |
-#          cd assets
-#          echo "Generating checksums for all zip files..."
-#          checksum_file="checksums.sha256"
-#          touch "$checksum_file"
-#
-#          for f in *; do
-#            if [ -d "$f" ]; then
-#              echo "Processing directory: $f"
-#              zip_file="$f-${{ needs.meta.outputs.tag }}.zip"
-#              (cd "$f" && zip -r "../$zip_file" .)
-#              if [ $? -eq 0 ]; then
-#                echo "ZIP file created: ../$zip_file"
-#                echo "Processing directory: $f"
-#                sha256sum "$zip_file" >> "$checksum_file"
-#                echo "" >> "$checksum_file"
-#              else
-#                echo "Failed to create ZIP file: ../$zip_file"
-#                exit 1
-#              fi
-#            else
-#              echo "Skipping non-directory: $f"
-#            fi
-#          done
-#
-#      - uses: softprops/action-gh-release@v2
-#        with:
-#          files: assets/*
-#          tag_name: ${{ needs.meta.outputs.tag }}
-#          body: ${{ needs.changelog.outputs.release_body }}
-#          draft: false
-#          prerelease: ${{ needs.meta.outputs.is_prerelease == 'true' }}
+  
