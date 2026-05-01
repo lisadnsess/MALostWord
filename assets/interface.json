@@ -5,6 +5,7 @@
     "description": "使用 MaaFramework 创建的针对东方归言录的新项目。",
     "contact": "CONTACT",
     "license": "MIT",
+    "icon": "logo.ico",
     "welcome": "首次使用！欢迎使用 MALW!",
     "github": "https://github.com/lisadnsess/MALostWord",
     "version": "1.0.0",
@@ -56,6 +57,7 @@
     "import": [
 
       "resource/tasks/preset/Daily.json",
-      "resource/tasks/DailyActivity.json"
+      "resource/tasks/DailyActivity.json",
+      "resource/tasks/UsefulFunction.json"
     ]
 }

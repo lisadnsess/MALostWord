@@ -1,12 +1,13 @@
 {
     "preset": [
         {
-            "name": "NeedChange",
-            "description": "NeedChange",
+            "name": "日常",
+            "description": "日常",
             "task": [
                 {
                     "name": "每日祈愿"
                 }
+
             ]
         }
     ]
