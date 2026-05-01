@@ -1,9 +1,7 @@
-name: install
-
 on:
   push:
     tags:
-      - "v*"
+      - "v[0-9]+.[0-9]+.[0-9]+*"
     branches:
       - "**"
     paths:
@@ -19,6 +17,11 @@ on:
       - "**.py"
   workflow_dispatch:
 
+env:
+  MAA_FRAMEWORK_VERSION: "v5.10.2"
+  MFAA_VERSION: "v2.12.0"
+  MXU_VERSION: "v2.1.2"
+
 permissions:
   contents: write
   actions: write
@@ -32,23 +35,33 @@ jobs:
           fetch-depth: 0
       - id: set_tag
         run: |
-          is_release=${{ startsWith(github.ref, 'refs/tags/v') }}
-          tag=$(git describe --tags --match "v*" ${{ github.ref }} || true)
-          if [[ $tag != v* ]]; then
+          # 检查标签格式
+          if [[ ${{ github.ref }} =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*)?$ ]]; then
+            is_release=true
+            tag=${GITHUB_REF#refs/tags/}
+            echo "Release tag format is valid: $tag"
+          else
+            is_release=false
+            # 获取最新的发布标签
             tag=$(curl -sX GET "https://api.github.com/repos/${{ github.repository }}/releases/latest" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | awk '/tag_name/{print $4}' FS='["]')
-            if [[ $tag != v* ]]; then
+            if [[ ! $tag =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9]+)?$ ]]; then
+              echo "No valid release tag found, using v0.0.0"
               tag="v0.0.0"
             fi
             tag=$(date "+$tag-%y%m%d-$(git rev-parse --short HEAD)")
           fi
-          if ! $($is_release) ; then
+
+          if [ "$is_release" != "true" ] ; then
             prefix=${tag%-*-*}
             suffix=${tag#$prefix-}
             tag="$prefix-ci.$suffix"
           fi
+
+          # 检查是否为预发布版本
           is_prerelease=false
           if [[ $tag =~ .*alpha.* || $tag =~ .*beta.* || $tag =~ .*rc.* || $tag =~ .*dev.* || $tag =~ .*-ci.* ]]; then
             is_prerelease=true
+            echo "This is a pre-release version"
           fi
 
           echo tag=$tag | tee -a $GITHUB_OUTPUT
@@ -139,22 +152,27 @@ jobs:
           # 转换 PNG 到 ICO
           magick convert assets/logo.png -define icon:auto-resize=256,128,64,48,32,24,16 malw.ico
 
-      - name: Modify MFAAvalonia exe icon
+      - name: Modify Windows exe icons
         if: matrix.arch == 'x86_64'
         shell: bash
         run: |
           # 下载 rcedit
           curl -L https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -o rcedit.exe
 
-          # 修改 exe 图标
-          ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "malw.ico"
+          # 修改 MFAAvalonia 图标（如果存在）
+          if [ -f "MFA/MFAAvalonia.exe" ]; then
+            ./rcedit.exe "MFA/MFAAvalonia.exe" --set-icon "malw.ico"
+            echo "MFAAvalonia icon modified successfully"
+          else
+            echo "MFAAvalonia exe not found, skipping icon update."
+          fi
 
-          echo "MFAAvalonia icon modified successfully"
-
-          # 修改 MXU 图标
+          # 修改 MXU 图标（如果存在）
           if [ -f "MXU/mxu.exe" ]; then
             ./rcedit.exe "MXU/mxu.exe" --set-icon "malw.ico"
             echo "MXU icon modified successfully"
+          else
+            echo "MXU exe not found, skipping icon update."
           fi
 
       - name: Setup Embed Python on Windows
@@ -275,7 +293,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [ aarch64, x86_64 ]
+        arch: [aarch64, x86_64]
       fail-fast: false
 
     steps:
@@ -554,6 +572,3 @@ jobs:
           gh workflow run --repo $GITHUB_REPOSITORY mirrorchyan_release_note.yml -f tag=${{ needs.meta.outputs.tag }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-  
