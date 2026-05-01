@@ -489,7 +489,7 @@ jobs:
 
   release:
     if: ${{ needs.meta.outputs.is_release == 'true' }}
-    needs: [ meta, windows, linux, macos, changelog ]
+    needs: [ meta, windows, linux, changelog ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
