@@ -11,9 +11,9 @@
 
     "controller": [
         {
-            "name": "安卓端",
-            "type": "Adb",
-            "display_short_side": 720
+            "name": "ADB",
+            "label": "模拟器",
+            "type": "Adb"
         },
         {
             "name": "桌面端",
@@ -26,6 +26,10 @@
                 "mouse": "PostMessageWithCursorPos",
                 "keyboard": "PostMessageWithCursorPos"
             }
+        },
+        {
+            "name": "PlayCover",
+            "type": "PlayCover"
         }
     ],
     "resource": [
