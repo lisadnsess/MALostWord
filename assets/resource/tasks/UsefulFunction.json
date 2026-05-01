@@ -2,7 +2,7 @@
     "task": [
         {
             "name": "升级技能",
-            "entry": "DP_Action",
+            "entry": "IS_Action",
             "description": "在一号位置放上需要升级的角色并进行一次技能升级，后续会自动跳过并选取技能书进行升级"
         }
     ]
