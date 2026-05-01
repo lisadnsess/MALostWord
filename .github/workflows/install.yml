@@ -217,6 +217,7 @@ jobs:
         run: |
           ./install/python/python.exe ./tools/ci/install_mxu.py ${{ needs.meta.outputs.tag }}
 #          cp -rpvn tools/registry/. install-mxu/
+
           cp -rpvn install/python/. install-mxu/python/
           if [ -d "install/deps" ]; then
             cp -rpvn install/deps/. install-mxu/deps/
