@@ -72,7 +72,7 @@ def install_resource():
         interface = json.load(f)
 
     interface["version"] = version
-    interface["title"] = f"M9A {version} | 亿韭韭韭小助手"
+    interface["title"] = f"MALW {version} | 言神小助手"
 
     # CLI 版本需要移除 HTML 标签
     strip_html_from_interface(interface)
