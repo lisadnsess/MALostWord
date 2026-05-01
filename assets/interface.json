@@ -32,7 +32,11 @@
         {
             "name": "官服",
             "path": [
-                "./resource"
+                "./resource/base"
+            ],
+            "controller": [
+                "ADB",
+                "PlayCover"
             ]
         }
     ],
