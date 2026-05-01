@@ -1,0 +1,16 @@
+{
+    "preset": [
+        {
+            "name": "日常-活动",
+            "description": "非主线版本刷取活动关卡",
+            "task": [
+                {
+                    "name": "每日祈愿",
+                    "label": "$领取奖励",
+                    "entry": "DP_Action",
+                    "group": ["daily"]
+                }
+            ]
+        }
+    ]
+}
