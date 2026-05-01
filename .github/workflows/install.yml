@@ -197,7 +197,7 @@ jobs:
         run: |
           PLATFORM_TAG="win-${{ steps.platform.outputs.tag }}"
           ./install/python/python.exe ./tools/ci/install.py ${{ needs.meta.outputs.tag }} $PLATFORM_TAG
-          cp -rpvn tools/registry/. install/
+#          cp -rpvn tools/registry/. install/
 
       - name: Create CLI version
         shell: bash
