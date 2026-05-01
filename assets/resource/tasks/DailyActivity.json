@@ -6,7 +6,7 @@
             "task": [
                 {
                     "name": "每日祈愿",
-                    "label": "$领取奖励",
+                    "label": "$每日祈愿",
                     "entry": "DP_Action",
                     "group": ["daily"]
                 }
