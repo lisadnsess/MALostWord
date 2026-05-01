@@ -3,7 +3,7 @@
     "interface_version": 2,
     "name": "MALW",
     "description": "使用 MaaFramework 创建的针对东方归言录的新项目。",
-    "contact": "",
+    "contact": "CONTACT",
     "license": "MIT",
     "welcome": "首次使用！欢迎使用 MALW!",
     "github": "https://github.com/lisadnsess/MALostWord",
