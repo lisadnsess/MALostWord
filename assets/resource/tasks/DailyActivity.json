@@ -1,14 +1,10 @@
 {
-    "preset": [
+    "task": [
         {
-            "name": "日常-活动",
-            "description": "非主线版本刷取活动关卡",
-            "task": [
-                {
-                    "name": "每日祈愿",
-                    "label": "$每日祈愿",
-                    "entry": "DP_Action"
-                }
+            "name": "每日祈愿",
+            "entry": "DP_Action",
+          "controller": [
+                "ADB"
             ]
         }
     ]
