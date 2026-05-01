@@ -4,7 +4,35 @@
             "name": "每日祈愿",
             "entry": "DP_Action",
             "description": "每日祈愿加免费EPIC"
-
+        },
+      {
+            "name": "转生镜扫荡",
+            "entry": "MR_Action"
+        },
+      {
+            "name": "日常任务",
+            "entry": "DM_Action",
+        "description": "每日材料本"
+        },
+      {
+            "name": "每日派遣",
+            "entry": "DD_Action"
+        },
+      {
+            "name": "交换所购买",
+            "entry": "BE_Action"
+        },
+      {
+            "name": "每日商城购买",
+            "entry": "DS_Action"
+        },
+      {
+            "name": "领取幻想乡通行证",
+            "entry": "GS_Action"
+        },
+      {
+            "name": "领取每日奖励",
+            "entry": "RD_Action"
         }
     ]
 }
